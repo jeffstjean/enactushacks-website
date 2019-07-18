@@ -3,6 +3,7 @@ const http = require('http');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
 
 // allows access to .env file
 dotenv.config();
@@ -11,7 +12,7 @@ const app = express();
 
 // configure app
 app.use(cors());
-app.use(require('morgan')('dev'));
+app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
