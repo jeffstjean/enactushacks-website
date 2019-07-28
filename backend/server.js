@@ -12,7 +12,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // routes
-app.use('/user', require('./routes/UserRoute'))
+app.use('/user', require('./routes/UserRoute'));
+app.use('/settings', require('./routes/SettingsRoute'));
 
 // connect to database then start server
 console.log('Connecting to database...');

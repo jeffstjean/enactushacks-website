@@ -13,7 +13,7 @@ const create = (reqData) => {
           newUser.save()
             .then(user => {
               if(errorMessages.length > 0) reject(errorMessages);
-              resolve( user._id );
+              else resolve( user._id );
             })
             .catch(error => {
               getCleanValidationErrorMessage(error, errorMessages);
@@ -22,7 +22,7 @@ const create = (reqData) => {
         }
       })
       .catch(error => {
-        console.log(error);
+        reject(error);
       });
   });
 }
@@ -95,12 +95,10 @@ const update = (id, reqData) => {
     else {
       User.findOneAndUpdate( { _id: id }, { "$set":  reqData}, { new: true, runValidators: true } )
         .then(updatedUser => {
-          console.log('success');
           if(!updatedUser) reject('User does not exist');
           else resolve(updatedUser._id);
         })
         .catch(error => {
-          console.log('error');
           getCleanValidationErrorMessage(error, errorMessages);
           reject(errorMessages);
         });
@@ -115,7 +113,7 @@ const getCleanValidationErrorMessage = (error, messages) => {
         messages.push((error.errors[field].message));
       }
     }
-  } 
+  }
 }
 
 module.exports = {
