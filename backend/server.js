@@ -11,6 +11,13 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// ----- TEMPORARY UNDER CONSTRUCTION PAGE -----
+app.use(express.static(__dirname + '/public'));
+app.get('/', (req, res) => {
+  res.render('/public/index.html')
+});
+// -------------------- END --------------------
+
 // routes
 app.use('/user', require('./routes/UserRoute'));
 app.use('/settings', require('./routes/SettingsRoute'));
