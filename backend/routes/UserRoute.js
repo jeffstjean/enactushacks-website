@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const UserController = require('../controllers/UserController');
 
+// TODO: Make this admin only
 router.get('/', (req, res) => {
   UserController.getAll(req.body, '-personal.github -personal.dietary_restrictions -personal.qr -application.questions -resume')
     .then((users) => {
@@ -11,7 +12,7 @@ router.get('/', (req, res) => {
   });
 });
 
-router.post('/', async (req, res) => {
+router.post('/', (req, res) => {
   UserController.create(req.body)
     .then((created_user_id) => {
     res.status(201).json( { created_user_id } );
@@ -21,6 +22,7 @@ router.post('/', async (req, res) => {
   });
 });
 
+// TODO: Make this protected - user can only see itself, admin can see all
 router.get('/:id', (req, res) => {
   UserController.getByID(req.params.id)
     .then((user) => {
@@ -31,6 +33,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
+// TODO: Make this protected - user can only delete itself, admin can delete all
 router.delete('/:id', (req, res) => {
   UserController.remove(req.params.id)
     .then((deleted_user_id) => {
@@ -41,6 +44,7 @@ router.delete('/:id', (req, res) => {
     });
 });
 
+// TODO: Make this protected - user can only update itself, admin can update all
 router.patch('/:id', (req, res) => {
   UserController.update(req.params.id, req.body)
     .then((updated_user_id) => {
