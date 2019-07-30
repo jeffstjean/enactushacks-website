@@ -1,50 +1,72 @@
 const User = require('../models/UserModel');
+const bcrypt = require('bcrypt');
 
 // --- CREATE A NEW USER ---
 const create = (reqData) => {
-  return new Promise((resolve, reject) => {
-    User.findOne( { email_address: reqData.email_address } )
-      .then(user => {
-        if(user) reject('A user with this email already exists');
-        else { // user doesn't exist already -> create new user
-          errorMessages = [];
-          if(reqData.password !== reqData.passwordMatch) errorMessages.push('Passwords must match');
-          const newUser = new User(reqData);
-          newUser.save()
-            .then(user => {
-              if(errorMessages.length > 0) reject(errorMessages);
-              else resolve( user._id );
-            })
-            .catch(error => {
-              getCleanValidationErrorMessage(error, errorMessages);
-              reject(errorMessages);
-            });
+  return new Promise(async (resolve, reject) => {
+    // first check to make sure the password data has been sent and both equal each other
+    if(typeof reqData.password === 'undefined' || typeof reqData.passwordMatch === 'undefined' || reqData.password !== reqData.passwordMatch) reject('Passwords must match');
+    else {
+      try {
+        await userDoesNotExist(reqData.email); // check if the user already exists
+        const hash = await getHashedPassword(reqData.password); // hash the password
+        delete reqData.password;
+        delete reqData.passwordMatch;
+        reqData.hash = hash; // add it to the request object
+        console.log(reqData);
+        const newUser = new User(reqData); // create the new user
+        try {
+          const savedUser = await newUser.save(); // attempt to save - run validations
+          // resolve(savedUser._id); // send the new id back
+          const token = savedUser.generateJWT();
+          resolve({token, _id: savedUser._id});
         }
+        catch(mongoose_errors) {
+          // mongoose threw some validation errors
+          // we don't wanna just send these all out looking ugly so we clean them up first
+          var errorMessages = [];
+          getCleanValidationErrorMessage(mongoose_errors, errorMessages);
+          reject(errorMessages);
+        }
+      }
+      catch (error) {
+        // the user already exists or the passwords were not defined or did not match
+        // either way, send em back!
+        reject(error)
+      }
+    }
+  });
+}
+
+// resolves if a user with that email cannot be found
+const userDoesNotExist = (email) => {
+  return new Promise((resolve, reject) => {
+    User.findOne({'email': email})
+      .then(user => {
+        if(!user) resolve();
+        else reject('A user with that email address already exists');
       })
       .catch(error => {
-        reject(error);
+        reject();
       });
   });
 }
 
-// --- GET ALL USERS ---
-const getAll = (id, options) => {
+// resolves with a hashed password
+const getHashedPassword = (password) => {
   return new Promise((resolve, reject) => {
-    User.find({}, options)
-      .then(result => {
-        resolve(result);
-      })
-      .catch(error => {
-        reject('Could not get users');
-      });
+    bcrypt.hash(password, 12, function(err, hash) {
+      if(err) reject(err)
+      else resolve(hash);
+    });
   });
 }
 
 
 // --- GET A USER BY ID ---
-const getByID = (id) => {
+const getByID = (id, options) => {
   return new Promise((resolve, reject) => {
-    User.findById(id)
+    User.findById(id, options)
       .then(user => {
         if(!user) reject('User does not exist');
         else resolve(user);
@@ -56,9 +78,9 @@ const getByID = (id) => {
 }
 
 // --- GET A USER BY FIELD ---
-const getByField = (query) => {
+const getByQuery = (query, options) => {
   return new Promise((resolve, reject) => {
-    User.findOne(query)
+    User.find(query, options)
       .then(user => {
         if(!user) reject('User does not exist');
         else resolve(user);
@@ -86,11 +108,6 @@ const remove = (id) => {
 // --- UPDATE A USER BY ID ---
 const update = (id, reqData) => {
   return new Promise((resolve, reject) => {
-    // need to check if request has anything auth related content
-    // if there is, reject the response - auth updates only though model
-    let requestForAuthUpdate = false
-    Object.keys(reqData).forEach(key => { if(key.indexOf('auth') !== -1) requestForAuthUpdate = true });
-
     if(requestForAuthUpdate) reject('Wrong method for auth update');
     else {
       User.findOneAndUpdate( { _id: id }, { "$set":  reqData}, { new: true, runValidators: true } )
@@ -114,13 +131,12 @@ const getCleanValidationErrorMessage = (error, messages) => {
       }
     }
   }
-}
+};
 
 module.exports = {
   create,
   getByID,
-  getAll,
   remove,
   update,
-  getByField
+  getByQuery
 }
