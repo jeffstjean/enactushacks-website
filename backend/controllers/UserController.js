@@ -2,10 +2,10 @@ const User = require('../models/UserModel');
 const bcrypt = require('bcrypt');
 
 // --- CREATE A NEW USER ---
-const create = (reqData) => {
+const createUser = (reqData) => {
   return new Promise(async (resolve, reject) => {
     // first check to make sure the password data has been sent and both equal each other
-    if(typeof reqData.password === 'undefined' || typeof reqData.passwordMatch === 'undefined' || reqData.password !== reqData.passwordMatch) reject('Passwords must match');
+    if(typeof reqData.password === undefined || typeof reqData.passwordMatch === undefined || reqData.password !== reqData.passwordMatch) reject('Passwords must match');
     else {
       try {
         await userDoesNotExist(reqData.email); // check if the user already exists
@@ -13,13 +13,12 @@ const create = (reqData) => {
         delete reqData.password;
         delete reqData.passwordMatch;
         reqData.hash = hash; // add it to the request object
-        console.log(reqData);
         const newUser = new User(reqData); // create the new user
         try {
           const savedUser = await newUser.save(); // attempt to save - run validations
           // resolve(savedUser._id); // send the new id back
           const token = savedUser.generateJWT();
-          resolve({token, _id: savedUser._id});
+          resolve({token: token, _id: savedUser._id});
         }
         catch(mongoose_errors) {
           // mongoose threw some validation errors
@@ -62,51 +61,8 @@ const getHashedPassword = (password) => {
   });
 }
 
-
-// --- GET A USER BY ID ---
-const getByID = (id, options) => {
-  return new Promise((resolve, reject) => {
-    User.findById(id, options)
-      .then(user => {
-        if(!user) reject('User does not exist');
-        else resolve(user);
-      })
-      .catch(error => {
-        reject('User does not exist');
-      });
-  });
-}
-
-// --- GET A USER BY FIELD ---
-const getByQuery = (query, options) => {
-  return new Promise((resolve, reject) => {
-    User.find(query, options)
-      .then(user => {
-        if(!user) reject('User does not exist');
-        else resolve(user);
-      })
-      .catch(error => {
-        reject('User does not exist');
-      });
-  });
-}
-
-// --- DELETE A USER BY ID ---
-const remove = (id) => {
-  return new Promise((resolve, reject) => {
-    User.findOneAndDelete( { _id: id } )
-      .then(deleted_user => {
-        if(!deleted_user) reject('User does not exist');
-        else resolve(deleted_user._id);
-      })
-      .catch(error => {
-        reject('User does not exist');
-      });
-  });
-}
-
 // --- UPDATE A USER BY ID ---
-const update = (id, reqData) => {
+const updateUser = (id, reqData) => {
   return new Promise((resolve, reject) => {
     if(requestForAuthUpdate) reject('Wrong method for auth update');
     else {
@@ -134,9 +90,6 @@ const getCleanValidationErrorMessage = (error, messages) => {
 };
 
 module.exports = {
-  create,
-  getByID,
-  remove,
-  update,
-  getByQuery
+  createUser,
+  updateUser
 }

@@ -1,164 +1,192 @@
 <% include partials/header %>
+<% include partials/nav %>
 <div class="container">
-  <div class="row">
-    <h1><%= title %></h1>
-  </div>
+  <div class="jumbotron">
+    <h1 class="display-4 text-center">Register</h1>
+    <style>
+    .required:after { color:red;content:" *"; }
+    </style>
+
+    <form method="POST" action="/register">
+
+
+      <% if(locals.success) { %>
+        <div class="row">
+          <div class="col">
+            <div class="alert alert-success" role="alert">
+              <%= success %>
+            </div>
+          </div>
+        </div>
+      <% } %>
+
+      <% if(locals.errors) { %>
+        <div class="row">
+          <div class="col">
+            <div class="alert alert-danger h-1" role="alert">
+              <% errors.forEach(error => { %>
+                <%= error %> </br>
+                <% }) %>
+            </div>
+          </div>
+        </div>
+      <% } %>
+
+      <!-- FIRST AND LAST NAME -->
+      <div class="form-row">
+        <div class="col">
+          <div class="form-group">
+            <label for="name" class="required">First Name</label>
+            <input autofocus type="text" class="form-control" id="first_name" placeholder="Hacker" name="first_name" required>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="name" class="required">Last Name</label>
+            <input type="text" class="form-control" id="last_name" placeholder="McGavin" name="last_name">
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="gender" class="required">Gender</label>
+            <select class="form-control" id="gender" name="gender">
+              <option selected disabled>Choose</option>
+              <option value="m">Male</option>
+              <option value="f">Female</option>
+              <option value="nb">Non-Binary</option>
+              <option value="na">Prefer Not To Say</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- EMAIL AND PASSWORD -->
+      <div class="form-row">
+        <div class="col">
+          <div class="form-group">
+            <label for="email" class="required">Email address</label>
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="entrepreneur@EnactusHacks.com" name="email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="password" class="required">Password</label>
+            <input type="password" class="form-control" id="password" aria-describedby="passwordHelp" placeholder="Password" name="password">
+            <small id="passwordHelp" class="form-text text-muted">Must be at least 8 characters</small>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="passwordMatch" class="required">Confirm Password</label>
+            <input type="password" class="form-control" id="passwordMatch" placeholder="Confirm Password" name="passwordMatch">
+          </div>
+        </div>
+      </div>
+
+      <!-- PROGRAM AND UNIVERSITY -->
+      <div class="form-row">
+        <div class="col">
+          <div class="form-group">
+            <label for="city" class="required">City</label>
+            <input type="text" class="form-control" id="city" placeholder="London" name="city">
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="university" class="required">University</label>
+            <input type="text" class="form-control" id="university" placeholder="Western" name="university">
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="shirt_size" class="required">Shirt Size</label>
+            <select class="form-control" id="shirt_size" name="shirt_size">
+              <option selected disabled>Choose</option>
+              <option value="xs">Extra Small</option>
+              <option value="s">Small</option>
+              <option value="m">Medium</option>
+              <option value="l">Large</option>
+              <option value="xl">Extra Large</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROGRAM -->
+      <div class="form-row">
+        <div class="col">
+          <div class="form-group">
+            <label for="major" class="required">Major</label>
+            <input type="text" class="form-control" id="major" placeholder="Engineering" name="major">
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="program" class="required">Program</label>
+            <input type="text" class="form-control" id="program" placeholder="Mechanical" name="program">
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="grad_year" class="required">Graduation Year</label>
+            <input type="month" class="form-control" id="grad_year" placeholder="2023" name="grad_year">
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="is_stem" class="required">STEM?</label>
+            <select class="form-control" id="is_stem" name="is_stem">
+              <option value="stem">This is a STEM degree</option>
+              <option value="non-stem">This is a Non-STEM degree</option>
+              <option value="both">This is a bit of both (eg. CS + Business)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- SHIRT SIZE AND RESUME -->
+      <div class="form-row">
+        <div class="col">
+          <div class="form-group">
+            <label for="resume" class="required">Link to Resume</label>
+            <input type="text" class="form-control" id="resume" placeholder="http://dropbox.com/hireme" name="resume">
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="github">Link to Github</label>
+            <input type="text" class="form-control" id="github" placeholder="http://dropbox.com/hireme" name="github">
+            <small id="dietaryHelp" class="form-text text-muted">Optional. Show off your code!</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIETARY -->
+      <div class="form-row">
+        <div class="col">
+          <div class="form-group">
+            <label for="dietary_restrictions">Dietary Restrictions</label>
+            <small id="dietaryHelp" class="form-text text-muted">Leave blank for none</small>
+            <input type="text" class="form-control" id="dietary_restrictions" placeholder="" name="dietary_restrictions">
+            <small id="dietaryHelp" class="form-text text-muted">Leave blank for none</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUBMIT -->
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Register</button>
+          </div>
+        </div>
+      </div>
+
+
+    </form>
+
+
 </div>
-
-<div class="container">
-  <form method="POST">
-    <% if(locals.success) { %>
-      <div class="row">
-        <div class="col">
-          <div class="alert alert-success" role="alert">
-            <%= success %>
-          </div>
-        </div>
-      </div>
-    <% } %>
-
-    <% if(locals.errors) { %>
-      <div class="row">
-        <div class="col">
-          <div class="alert alert-danger h-1" role="alert">
-            <% errors.forEach(error => { %>
-              <%= error %> </br>
-              <% }) %>
-          </div>
-        </div>
-      </div>
-    <% } %>
-
-    <!-- FIRST AND LAST NAME -->
-    <div class="form-row" action="/register">
-      <div class="col">
-        <div class="form-group">
-          <label for="name">First Name</label>
-          <input type="text" class="form-control" id="first_name" placeholder="Hacker" name="first_name">
-        </div>
-      </div>
-      <div class="col">
-        <div class="form-group">
-          <label for="name">Last Name</label>
-          <input type="text" class="form-control" id="last_name" placeholder="McGavin" name="last_name">
-        </div>
-      </div>
-    </div>
-
-    <!-- EMAIL AND PASSWORD -->
-    <div class="form-row">
-      <div class="col">
-        <div class="form-group">
-          <label for="email">Email address</label>
-          <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="entrepreneur@EnactusHacks.com" name="email">
-          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-      </div>
-      <div class="col">
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" aria-describedby="passwordHelp" placeholder="Password" name="password">
-          <small id="passwordHelp" class="form-text text-muted">Must be at least 8 characters</small>
-        </div>
-      </div>
-      <div class="col">
-        <div class="form-group">
-          <label for="passwordMatch">Confirm Password</label>
-          <input type="password" class="form-control" id="passwordMatch" placeholder="Confirm Password" name="passwordMatch">
-        </div>
-      </div>
-    </div>
-
-    <!-- PROGRAM AND UNIVERSITY -->
-    <div class="form-row">
-      <div class="col">
-        <div class="form-group">
-          <label for="city">City</label>
-          <input type="text" class="form-control" id="city" placeholder="London" name="city">
-        </div>
-      </div>
-      <div class="col">
-        <div class="form-group">
-          <label for="university">University</label>
-          <input type="text" class="form-control" id="university" placeholder="Western" name="university">
-        </div>
-      </div>
-    </div>
-
-    <!-- PROGRAM -->
-    <div class="form-row">
-      <div class="col">
-        <div class="form-group">
-          <label for="program">Program</label>
-          <input type="text" class="form-control" id="program" placeholder="Engineering" name="program">
-        </div>
-      </div>
-      <div class="col">
-        <div class="form-group">
-          <label for="type">Specialization</label>
-          <input type="text" class="form-control" id="type" placeholder="Mechanical" name="type">
-        </div>
-      </div>
-      <div class="col">
-        <div class="form-group">
-          <label for="year">Graduation Year</label>
-          <input type="month" class="form-control" id="year" placeholder="2023" name="year">
-        </div>
-      </div>
-      <div class="col">
-        <div class="form-group">
-          <label for="shirt_size">STEM?</label>
-          <select class="form-control" id="shirt_size" name="stem">
-            <option>This is a STEM degree</option>
-            <option>This is a Non-STEM degree</option>
-            <option>This is a bit of both (eg. CS + Business)</option>
-          </select>
-        </div>
-      </div>
-    </div>
-
-    <!-- DIETARY -->
-    <div class="form-row">
-      <div class="col">
-        <div class="form-group">
-          <label for="dietary_restrictions">Dietary Restrictions</label>
-          <input type="text" class="form-control" id="dietary_restrictions" placeholder="" name="dietary_restrictions">
-        </div>
-      </div>
-    </div>
-
-    <!-- SHIRT SIZE AND RESUME -->
-    <div class="form-row">
-      <div class="col">
-        <div class="form-group">
-          <label for="shirt_size">Shirt Size</label>
-          <select class="form-control" id="shirt_size" name="shirt_size">
-            <option>Extra Small</option>
-            <option>Small</option>
-            <option selected="selected">Medium</option>
-            <option>Large</option>
-            <option>Extra Large</option>
-          </select>
-        </div>
-      </div>
-      <div class="col">
-        <div class="form-group">
-          <label for="resume">Link to Resume</label>
-          <input type="text" class="form-control" id="resume" placeholder="http://dropbox.com/hireme" name="resume">
-        </div>
-      </div>
-    </div>
-
-    <!-- SUBMIT -->
-    <div class="row">
-      <div class="col">
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary">Register</button>
-        </div>
-      </div>
-    </div>
-
-
-  </form>
 </div>
 <% include partials/footer %>

@@ -1,12 +1,48 @@
 <% include partials/header %>
-<p>Login</p>
-<form class="" action="/auth/login" method="post">
-  Email:<br>
-  <input type="email" name="email">
-  <br>
-  Password:<br>
-  <input type="password" name="password">
-  <br><br>
-  <input type="submit" value="Login">
-</form>
+<% include partials/nav %>
+<div class="container">
+  <div class="jumbotron">
+
+    <h1 class="display-4 text-center">Login</h1>
+    <% if(locals.success) { %>
+      <div class="row">
+        <div class="col">
+          <div class="alert alert-success" role="alert">
+            <%= success %>
+          </div>
+        </div>
+      </div>
+    <% } %>
+
+    <% if(locals.errors) { %>
+      <div class="row">
+        <div class="col">
+          <div class="alert alert-danger h-1" role="alert">
+            <% errors.forEach(error => { %>
+              <%= error %> </br>
+              <% }) %>
+          </div>
+        </div>
+      </div>
+    <% } %>
+
+    <form action="/login" method="post">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="foo@bar.ca" name="email">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password">
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary">Login</button>
+              </div>
+            </div>
+          </div>
+    </form>
+  </div>
+</div>
 <% include partials/footer %>

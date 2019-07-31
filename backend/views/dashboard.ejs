@@ -1,3 +1,68 @@
 <% include partials/header %>
-<p>Dashboard</p>
+<% include partials/nav %>
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-4 text-center">Dashboard</h1>
+    <table class="table">
+      <tbody>
+        <tr>
+          <td><p class="text-center"><strong>First Name</strong></p></td>
+          <td><p class="text-left"><%= locals.user.first_name %></p></td>
+          <td><p class="text-center"><strong>Last Name</strong></p></td>
+          <td><p class="text-left"><%= locals.user.last_name %></p></td>
+          <td><p class="text-center"><strong>Gender</strong></p></td>
+          <td><p class="text-left"><%= locals.user.gender %></p></td>
+        </tr>
+        <tr>
+          <td><p class="text-center"><strong>City</strong></p></td>
+          <td><p class="text-left"><%= locals.user.city %></p></td>
+          <td><p class="text-center"><strong>University</strong></p></td>
+          <td><p class="text-left"><%= locals.user.university %></p></td>
+        </tr>
+        <tr>
+          <td><p class="text-center"><strong>Major</strong></p></td>
+          <td><p class="text-left"><%= locals.user.major %></p></td>
+          <td><p class="text-center"><strong>Program</strong></p></td>
+          <td><p class="text-left"><%= locals.user.program %></p></td>
+        </tr>
+        <tr>
+          <td><p class="text-center"><strong>Major</strong></p></td>
+          <td><p class="text-left"><%= locals.user.major %></p></td>
+          <td><p class="text-center"><strong>Program</strong></p></td>
+          <td><p class="text-left"><%= locals.user.program %></p></td>
+        </tr>
+        <tr>
+          <td><p class="text-center"><strong>Graduation Year</strong></p></td>
+          <td><p class="text-left"><%= locals.user.grad_year %></p></td>
+          <td><p class="text-center"><strong>is_stem</strong></p></td>
+          <td><p class="text-left"><%= locals.user.is_stem %></p></td>
+        </tr>
+        <tr>
+          <td><p class="text-center"><strong>Application Status</strong></p></td>
+          <td><p class="text-left"><%= locals.user.application_status %></p></td>
+          <td><p class="text-center"><strong>Questions Answered</strong></p></td>
+          <td><p class="text-left"><%= locals.user.application_questions.length %></p></td>
+          <% if(locals.application_date_completed) { %>
+            <td><p class="text-center"><strong>Date of Completion</strong></p></td>
+            <td><p class="text-left"><%= locals.user.application_date_completed %></p></td>
+          <% } %>
+        </tr>
+        <% if(locals.user.dietary_restrictions) { %>
+          <tr>
+            <td><p class="text-center"><strong>Dietary Restrictions Year</strong></p></td>
+            <td><p class="text-left"><%= locals.dietary_restrictions %></p></td>
+          </tr>
+        <% } %>
+        <tr>
+          <% if(locals.user.dietary_restrictions) { %>
+            <td><p class="text-center"><strong>Github</strong></p></td>
+            <td><p class="text-left"><%= locals.user.github %></p></td>
+          <% } %>
+            <td><p class="text-center"><strong>Resume</strong></p></td>
+            <td><p class="text-left"><%= locals.user.resume %></p></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 <% include partials/footer %>

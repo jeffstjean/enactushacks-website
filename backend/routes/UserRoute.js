@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const UserController = require('../controllers/UserController');
-const {auth} = require('../controllers/AuthController')
+const {isAuthenticated} = require('../services/Auth')
 
-router.get('/', auth, (req, res) => {
+router.get('/', isAuthenticated, (req, res) => {
   if(req.payload.role === 'participant') return res.status(401).send();
   console.log(req.query);
   UserController.getByQuery(req.query, 'role application_status _id name email city link')
@@ -25,7 +25,7 @@ router.post('/', (req, res) => {
 });
 
 
-router.get('/me', auth, (req, res) => {
+router.get('/me', isAuthenticated, (req, res) => {
   // if a participant, check to see if they are requesting their own profile
   UserController.getByID(req.payload._id)
     .then((user) => {
@@ -36,7 +36,7 @@ router.get('/me', auth, (req, res) => {
     });
 });
 
-router.get('/:id', auth, (req, res) => {
+router.get('/:id', isAuthenticated, (req, res) => {
   // if a participant, check to see if they are requesting their own profile
   if(req.payload.role === 'participant') return res.status(401).send();
   UserController.getByID(req.params.id)
