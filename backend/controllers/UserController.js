@@ -1,96 +1,69 @@
 const User = require('../models/UserModel');
+const bcrypt = require('bcrypt');
 
 // --- CREATE A NEW USER ---
-const create = (reqData) => {
-  return new Promise((resolve, reject) => {
-    User.findOne( { email_address: reqData.email_address } )
-      .then(user => {
-        if(user) reject('A user with this email already exists');
-        else { // user doesn't exist already -> create new user
-          errorMessages = [];
-          if(reqData.password !== reqData.passwordMatch) errorMessages.push('Passwords must match');
-          const newUser = new User(reqData);
-          newUser.save()
-            .then(user => {
-              if(errorMessages.length > 0) reject(errorMessages);
-              else resolve( user._id );
-            })
-            .catch(error => {
-              getCleanValidationErrorMessage(error, errorMessages);
-              reject(errorMessages);
-            });
+const createUser = (reqData) => {
+  return new Promise(async (resolve, reject) => {
+    // first check to make sure the password data has been sent and both equal each other
+    if(typeof reqData.password === undefined || typeof reqData.passwordMatch === undefined || reqData.password !== reqData.passwordMatch) reject('Passwords must match');
+    else {
+      try {
+        await userDoesNotExist(reqData.email); // check if the user already exists
+        const hash = await getHashedPassword(reqData.password); // hash the password
+        delete reqData.password;
+        delete reqData.passwordMatch;
+        reqData.hash = hash; // add it to the request object
+        const newUser = new User(reqData); // create the new user
+        try {
+          const savedUser = await newUser.save(); // attempt to save - run validations
+          // resolve(savedUser._id); // send the new id back
+          const token = savedUser.generateJWT();
+          resolve({token: token, _id: savedUser._id});
         }
-      })
-      .catch(error => {
-        reject(error);
-      });
+        catch(mongoose_errors) {
+          // mongoose threw some validation errors
+          // we don't wanna just send these all out looking ugly so we clean them up first
+          var errorMessages = [];
+          getCleanValidationErrorMessage(mongoose_errors, errorMessages);
+          reject(errorMessages);
+        }
+      }
+      catch (error) {
+        // the user already exists or the passwords were not defined or did not match
+        // either way, send em back!
+        reject(error)
+      }
+    }
   });
 }
 
-// --- GET ALL USERS ---
-const getAll = (id, options) => {
+// resolves if a user with that email cannot be found
+const userDoesNotExist = (email) => {
   return new Promise((resolve, reject) => {
-    User.find({}, options)
-      .then(result => {
-        resolve(result);
-      })
-      .catch(error => {
-        reject('Could not get users');
-      });
-  });
-}
-
-
-// --- GET A USER BY ID ---
-const getByID = (id) => {
-  return new Promise((resolve, reject) => {
-    User.findById(id)
+    User.findOne({'email': email})
       .then(user => {
-        if(!user) reject('User does not exist');
-        else resolve(user);
+        if(!user) resolve();
+        else reject('A user with that email address already exists');
       })
       .catch(error => {
-        reject('User does not exist');
+        reject();
       });
   });
 }
 
-// --- GET A USER BY FIELD ---
-const getByField = (query) => {
+// resolves with a hashed password
+const getHashedPassword = (password) => {
   return new Promise((resolve, reject) => {
-    User.findOne(query)
-      .then(user => {
-        if(!user) reject('User does not exist');
-        else resolve(user);
-      })
-      .catch(error => {
-        reject('User does not exist');
-      });
-  });
-}
-
-// --- DELETE A USER BY ID ---
-const remove = (id) => {
-  return new Promise((resolve, reject) => {
-    User.findOneAndDelete( { _id: id } )
-      .then(deleted_user => {
-        if(!deleted_user) reject('User does not exist');
-        else resolve(deleted_user._id);
-      })
-      .catch(error => {
-        reject('User does not exist');
-      });
+    bcrypt.hash(password, 12, function(err, hash) {
+      if(err) reject(err)
+      else resolve(hash);
+    });
   });
 }
 
 // --- UPDATE A USER BY ID ---
-const update = (id, reqData) => {
+const updateUser = (id, reqData) => {
   return new Promise((resolve, reject) => {
-    // need to check if request has anything auth related content
-    // if there is, reject the response - auth updates only though model
-    let requestForAuthUpdate = false
-    Object.keys(reqData).forEach(key => { if(key.indexOf('auth') !== -1) requestForAuthUpdate = true });
-
     if(requestForAuthUpdate) reject('Wrong method for auth update');
     else {
       User.findOneAndUpdate( { _id: id }, { "$set":  reqData}, { new: true, runValidators: true } )
@@ -114,13 +87,9 @@ const getCleanValidationErrorMessage = (error, messages) => {
       }
     }
   }
-}
+};
 
 module.exports = {
-  create,
-  getByID,
-  getAll,
-  remove,
-  update,
-  getByField
+  createUser,
+  updateUser
 }

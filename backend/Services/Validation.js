@@ -25,7 +25,15 @@ const isPasswordValid = [
   { validator: isPasswordTooLong, msg: 'Password must have a length of less than 100' }
 ];
 
+const deleteEmpty = (v) => {
+   if(v==null){
+     return undefined;
+   }
+   return v;
+}
+
 module.exports = {
   isEmailValid,
-  isPasswordValid
+  isPasswordValid,
+  deleteEmpty
 }
