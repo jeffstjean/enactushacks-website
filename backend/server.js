@@ -30,6 +30,7 @@ app.get('/', (req, res, next) => { res.render('/public/index.html') });
 app.use('/', require('./routes/AuthRoute'));
 app.use('/user', require('./routes/UserRoute'));
 app.use('/settings', require('./routes/SettingsRoute'));
+app.use('/verify', require('./routes/EmailVerificationRoute'));
 
 // unauthorized
 app.use((err, req, res, next) => {

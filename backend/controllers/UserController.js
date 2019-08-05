@@ -1,5 +1,7 @@
 const User = require('../models/UserModel');
+const VerifyToken = require('../models/VerifyTokenModel');
 const bcrypt = require('bcrypt');
+const {sendEmailVerification} = require('../services/Emailer');
 
 // --- CREATE A NEW USER ---
 const createUser = (reqData) => {
@@ -16,9 +18,12 @@ const createUser = (reqData) => {
         const newUser = new User(reqData); // create the new user
         try {
           const savedUser = await newUser.save(); // attempt to save - run validations
-          // resolve(savedUser._id); // send the new id back
-          const token = savedUser.generateJWT();
-          resolve({token: token, _id: savedUser._id});
+          const jwtToken = savedUser.generateJWT();
+          var newEmailToken = new VerifyToken({user_id: savedUser._id});
+          newEmailToken = await newEmailToken.save();
+          newEmailToken = newEmailToken.token;
+          sendEmailVerification(savedUser.email, newEmailToken);
+          resolve({token: jwtToken, _id: savedUser._id});
         }
         catch(mongoose_errors) {
           // mongoose threw some validation errors

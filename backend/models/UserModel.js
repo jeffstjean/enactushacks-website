@@ -15,7 +15,7 @@ const userSchema = mongoose.Schema({
   major: { type: String, required: "A major is required" },//
   program: { type: String, required: "A program is required" },//
   grad_year: { type: String, required: "A graduation year is required" },//
-  is_stem: { type: String, required: 'You must specify if your program is STEM, non-STEM or both', enum: ['stem', 'non-stem', 'both'] },//
+  is_stem: { type: String, required: 'You must specify if your program is STEM, non-STEM or both', enum: ['stem', 'non_stem', 'both'] },//
   resume: { type: String, required: 'A resume is required' },//
 
   hash: { type: String, required: 'A password is required' },
@@ -48,6 +48,8 @@ userSchema.methods.generateJWT = function() {
     role: this.role
   }, process.env.JWT_SECRET, {expiresIn: expiry });
 };
+
+
 
 
 module.exports = mongoose.model("User", userSchema);
