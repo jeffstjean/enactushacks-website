@@ -61,7 +61,6 @@ router.post('/login', (req, res, next) => {
 });
 
 
-
 router.get('/dashboard', isAuthenticated, async(req, res, next) => {
   try {
     const user = await User.findById(req.user._id)

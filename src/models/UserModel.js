@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { isEmailValid, isPasswordValid, deleteEmpty } = require("../services/Validation.js");
 
@@ -21,8 +21,6 @@ const userSchema = mongoose.Schema({
   hash: { type: String, required: 'A password is required' },
   role: { type: String, default: 'participant', enum: ['participant', 'admin', 'developer'] },
   is_verified: { type: Boolean, default: false },
-  last_updated: { type: Date, default: Date.now },
-  token: { type: String, default: undefined },
 
   github: { type: String, set: deleteEmpty },
   dietary_restrictions: { type: String, set: deleteEmpty },

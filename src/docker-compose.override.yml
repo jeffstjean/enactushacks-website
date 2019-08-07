@@ -1,0 +1,9 @@
+version: '3'
+services:
+  app:
+    command: npm run dev
+    volumes:
+      - .:/app
+    environment:
+      - NODE_ENV=development
+    restart: unless-stopped

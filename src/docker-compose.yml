@@ -1,0 +1,19 @@
+version: '3'
+services:
+  app:
+    image: node:alpine
+    container_name: nodejs
+    working_dir: /app
+    env_file: .env
+    ports:
+      - '${PORT}:${PORT}'
+    links:
+      - database
+    depends_on:
+      - database
+
+  database:
+    image: mongo
+    ports:
+      - "27017:27017"
+    container_name: mongo

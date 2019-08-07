@@ -31,6 +31,7 @@ app.use('/', require('./routes/AuthRoute'));
 app.use('/user', require('./routes/UserRoute'));
 app.use('/settings', require('./routes/SettingsRoute'));
 app.use('/verify', require('./routes/EmailVerificationRoute'));
+app.use('/forgot', require('./routes/ForgotPasswordRoute'));
 
 // unauthorized
 app.use((err, req, res, next) => {
@@ -39,6 +40,6 @@ app.use((err, req, res, next) => {
   }
 });
 
-app.listen(process.env.PORT, process.env.HOSTNAME, () => {
-  console.log(`Server started on http://${process.env.HOSTNAME}:${process.env.PORT}`);
+app.listen(process.env.PORT, () => {
+  console.log(`Server started on port ${process.env.PORT}`);
 });
