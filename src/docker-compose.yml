@@ -3,17 +3,24 @@ services:
   app:
     image: node:alpine
     container_name: nodejs
-    working_dir: /app
     env_file: .env
     ports:
       - '${PORT}:${PORT}'
-    links:
-      - database
     depends_on:
-      - database
+      - db
+    networks:
+      - network
 
-  database:
+  db:
     image: mongo
+    container_name: mongo
     ports:
       - "27017:27017"
-    container_name: mongo
+    volumes:
+      - /data/db:/data/db
+    networks:
+      - network
+
+networks:
+  network:
+    driver: bridge

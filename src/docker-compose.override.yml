@@ -1,9 +1,11 @@
 version: '3'
 services:
   app:
-    command: npm run dev
+
+    command: ./wait-for.sh db:27017 -- node_modules/.bin/nodemon app.js
     volumes:
       - .:/app
+    working_dir: /app
     environment:
       - NODE_ENV=development
     restart: unless-stopped
