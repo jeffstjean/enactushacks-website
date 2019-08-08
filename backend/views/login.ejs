@@ -1,48 +1,73 @@
-<% include partials/header %>
-<% include partials/nav %>
-<div class="container">
-  <div class="jumbotron">
+<!DOCTYPE html>
+<html lang="en">
 
-    <h1 class="display-4 text-center">Login</h1>
-    <% if(locals.success) { %>
-      <div class="row">
-        <div class="col">
-          <div class="alert alert-success" role="alert">
-            <%= success %>
-          </div>
-        </div>
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>EnactusHacks</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="/css/one-page-wonder.min.css" rel="stylesheet">
+
+</head>
+ <nav id="myNav" class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container-fluid">
+       <img class="ml-5" src="../img/enactushacks_logo_transparent.png" height="38px" width="50px" alt="">
+      <a class="navbar-brand" href="#"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">EnactusHacks</a>
+            <li class="nav-item">
+            <a class="nav-link" href="#">Sponsorship</a>
+            <li class="nav-item">
+            <a class="nav-link" href="signup.html">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html">Log In</a>
+          </li>
+        </ul>
       </div>
-    <% } %>
+    </div>
+  </nav>
+  <body class="grey">
+    <br>
+    <br>
+  <div class="container my-5 form-box">
 
-    <% if(locals.errors) { %>
-      <div class="row">
-        <div class="col">
-          <div class="alert alert-danger h-1" role="alert">
-            <% errors.forEach(error => { %>
-              <%= error %> </br>
-              <% }) %>
-          </div>
-        </div>
-      </div>
-    <% } %>
-
-    <form action="/login" method="post">
+    <div class="row">
+      <div class="col-md-8 my-5 mx-auto">
+        <h1 class="text-purple ">Log In</h1>
+        <form class="">
           <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="foo@bar.ca" name="email">
+            <label>Email:</label>
+            <input type="email" name="email" class="form-control">
           </div>
           <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password">
+          <label>Password:</label>
+          <input type="password" name="password" class="form-control">
           </div>
-          <div class="row">
-            <div class="col">
-              <div class="form-group">
-                <button type="submit" class="btn btn-primary">Login</button>
-              </div>
-            </div>
-          </div>
-    </form>
+          <ul class="list-inline">
+          <button type="submit" class="btn list-inline-item btn-dark">Log in</button>
+          <a href="password_recovery.html" class="btn list-inline-item btn-dark"> Forgot my password</a>
+        </form>
+    </div>
   </div>
-</div>
+  </div>
+
+
 <% include partials/footer %>

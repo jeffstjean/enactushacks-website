@@ -1,3 +1,33 @@
 
+<!-- Footer -->
+<footer class="py-5 bg-black">
+<div class="container">
+<p class="m-0 text-center text-white small">Copyright &copy; Your Website 2019</p>
+</div>
+
+<!-- /.container -->
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script>
+var myNav = document.getElementById('myNav');
+$(document).ready(function(){
+$(window).scroll(function() { // check if scroll event happened
+  if ($(document).scrollTop() > 500) { // check if user scrolled more than 50 from top of the browser window
+    $(".fixed-top").css("background-color", "#ffffff"); // if yes, then change the color of class "navbar-fixed-top" to white (#f8f8f8)
+    myNav.classList.add("navbar-light");
+    myNav.classList.remove("navbar-dark");
+
+  } else {
+    $(".fixed-top").css("background-color", "rgba(0,0,0,0)"); // if not, change it back to transparent
+    myNav.classList.remove("navbar-light");
+    myNav.classList.add("navbar-dark");
+
+  }
+});
+});
+</script>
 </body>
 </html>

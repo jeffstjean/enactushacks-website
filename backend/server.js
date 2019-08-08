@@ -28,6 +28,10 @@ app.set('views', __dirname + '/views')
 // routes
 app.get('/', (req, res, next) => { res.render('index') });
 app.get('/test', (req, res, next) => { res.render('logged_in_index') });
+app.get('/login', (req, res, next) => { res.render('login') });
+app.get('/forgot', (req, res, next) => { res.render('password_recovery') });
+
+
 app.use('/', require('./routes/AuthRoute'));
 app.use('/user', require('./routes/UserRoute'));
 app.use('/settings', require('./routes/SettingsRoute'));
