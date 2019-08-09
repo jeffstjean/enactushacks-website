@@ -2,7 +2,7 @@ const router = require('express').Router();
 const passport = require('passport');
 const User = require('../models/UserModel');
 const {sendEmailVerification} = require('../services/Emailer');
-const {isAuthenticated, isParticipant, isAdmin, isDeveloper, verifyTokenFromCookies} = require('../services/auth');
+const {isAuthenticated, isParticipant, isAdmin, isDeveloper, verifyTokenFromCookies} = require('../services/Auth');
 const {createUser} = require('../controllers/UserController')
 const jwt = require('jsonwebtoken');
 

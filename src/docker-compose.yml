@@ -5,22 +5,22 @@ services:
     container_name: nodejs
     env_file: .env
     ports:
-      - '${PORT}:${PORT}'
+      - '${SITE_PORT}:${SITE_PORT}'
     depends_on:
       - db
     networks:
-      - network
+      - dev-network
 
   db:
     image: mongo
     container_name: mongo
     ports:
-      - "27017:27017"
+      - '${MONGO_PORT}:${MONGO_PORT}'
     volumes:
       - /data/db:/data/db
     networks:
-      - network
+      - dev-network
 
 networks:
-  network:
+  dev-network:
     driver: bridge

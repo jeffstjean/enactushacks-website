@@ -8,7 +8,8 @@ const cookieParser = require('cookie-parser');
 
 const app = express();
 
-database.connect(process.env.MONGO_URI).then(() => { console.log('Connected to database'); })
+database.connect('mongodb://' + process.env.MONGO_NAME + ':' + process.env.MONGO_PORT + '/' + process.env.MONGO_NAME)
+  .then(() => { console.log('Connected to database'); })
   .catch(err => { console.log('Error connecting to database: ' + err);
 });
 
@@ -40,6 +41,6 @@ app.use((err, req, res, next) => {
   }
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server started on port ${process.env.PORT}`);
+app.listen(process.env.SITE_PORT, () => {
+  console.log(`Server started on port ${process.env.SITE_PORT}`);
 });
