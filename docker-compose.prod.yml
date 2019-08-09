@@ -1,0 +1,19 @@
+version: '3'
+services:
+  app:
+    command: ../wait-for.sh db:27017 -- node ./server.js
+    environment:
+      - NODE_ENV=PRODUCTION
+    restart: unless-stopped
+    networks:
+      - prod-network
+  db:
+    image: mongo
+    volumes:
+      - /data/db_prod:/data/db
+    networks:
+      - prod-network
+
+networks:
+  prod-network:
+    driver: bridge

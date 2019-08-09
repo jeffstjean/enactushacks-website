@@ -1,0 +1,19 @@
+version: '3'
+services:
+  app:
+    command: ../wait-for.sh db:27017 -- node_modules/.bin/nodemon server
+    environment:
+      - NODE_ENV=DEVELOPMENT
+    restart: unless-stopped
+    networks:
+      - dev-network
+  db:
+    image: mongo
+    volumes:
+      - /data/db_dev:/data/db
+    networks:
+      - dev-network
+
+networks:
+  dev-network:
+    driver: bridge
