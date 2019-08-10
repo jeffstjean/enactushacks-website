@@ -1,5 +1,7 @@
 
-![EnactusHacks Western Logo](logo.png)
+<p align="center">
+  <img width="200" height="200" src="logo.png">
+</p>
 
 # Western's EnactusHacks Website
 
