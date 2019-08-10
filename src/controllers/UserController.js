@@ -1,6 +1,6 @@
 const User = require('../models/UserModel');
 const VerifyToken = require('../models/VerifyTokenModel');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const {sendEmailVerification} = require('../services/Emailer');
 
 // --- CREATE A NEW USER ---
