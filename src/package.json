@@ -1,6 +1,6 @@
 {
   "name": "enactus-hacks-api",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "NodeJS and MongoDB power website for Western's EnactusHacks!",
   "repository": {
       "type": "git",
