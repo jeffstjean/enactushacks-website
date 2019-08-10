@@ -1,11 +1,13 @@
 const router = require('express').Router();
 const UserController = require('../controllers/UserController');
+const {isAuthenticated} = require('../services/Auth')
 
-// TODO: Make this admin only
-router.get('/', (req, res) => {
-  UserController.getAll(req.body, '-personal.github -personal.dietary_restrictions -personal.qr -application.questions -resume')
+router.get('/', isAuthenticated, (req, res) => {
+  if(req.payload.role === 'participant') return res.status(401).send();
+  console.log(req.query);
+  UserController.getByQuery(req.query, 'role application_status _id name email city link')
     .then((users) => {
-    res.status(200).json( { users } );
+      res.status(200).json( { users: users } );
   })
   .catch((errorMessages) => {
     res.status(400).json( { error: true, errorMessages } );
@@ -14,16 +16,29 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   UserController.create(req.body)
-    .then((created_user_id) => {
-    res.status(201).json( { created_user_id } );
+    .then((user) => {
+    res.status(201).json(user);
   })
   .catch((errorMessages) => {
     res.status(400).json( { error: true, errorMessages: errorMessages } );
   });
 });
 
-// TODO: Make this protected - user can only see itself, admin can see all
-router.get('/:id', (req, res) => {
+
+router.get('/me', isAuthenticated, (req, res) => {
+  // if a participant, check to see if they are requesting their own profile
+  UserController.getByID(req.payload._id)
+    .then((user) => {
+      res.status(200).json( { user } );
+    })
+    .catch((errorMessages) => {
+      res.status(404).json( { error: true, errors: errorMessages } );
+    });
+});
+
+router.get('/:id', isAuthenticated, (req, res) => {
+  // if a participant, check to see if they are requesting their own profile
+  if(req.payload.role === 'participant') return res.status(401).send();
   UserController.getByID(req.params.id)
     .then((user) => {
       res.status(200).json( { user } );
@@ -33,8 +48,9 @@ router.get('/:id', (req, res) => {
     });
 });
 
-// TODO: Make this protected - user can only delete itself, admin can delete all
 router.delete('/:id', (req, res) => {
+  var id = req.params.id;
+  if(req.payload.role === 'participant' && req.payload._id !== req.params.id) return res.status(401).send();
   UserController.remove(req.params.id)
     .then((deleted_user_id) => {
       res.status(200).json( { deleted_user_id } );
@@ -44,8 +60,9 @@ router.delete('/:id', (req, res) => {
     });
 });
 
-// TODO: Make this protected - user can only update itself, admin can update all
 router.patch('/:id', (req, res) => {
+  console.log(req.body);
+  if(req.payload.role === 'participant' && req.payload._id !== req.params.id) return res.status(401).send();
   UserController.update(req.params.id, req.body)
     .then((updated_user_id) => {
       res.status(200).json( { updated_user_id } );
