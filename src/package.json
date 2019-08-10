@@ -1,12 +1,17 @@
 {
   "name": "enactus-hacks-api",
   "version": "0.0.0",
-  "description": "",
+  "description": "NodeJS and MongoDB power website for Western's EnactusHacks!",
+  "repository": {
+      "type": "git",
+      "url": "hhttps://github.com/jeffstjean/enactushacks-website.git"
+  },
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "prod": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "prod": "npm start",
+    "test": "echo Not yet implemented && exit 1"
   },
   "author": "",
   "license": "ISC",
