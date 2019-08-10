@@ -1,7 +1,7 @@
 version: '3'
 services:
   app:
-    command: ../wait-for.sh db:27017 -- node ./server.js
+    image: jeffstjean/nodejs-prod
     environment:
       - NODE_ENV=PRODUCTION
     restart: unless-stopped

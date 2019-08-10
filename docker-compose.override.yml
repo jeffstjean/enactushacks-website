@@ -1,7 +1,7 @@
 version: '3'
 services:
   app:
-    command: ../wait-for.sh db:27017 -- node_modules/.bin/nodemon server
+    command: ./wait-for.sh db:${MONGO_PORT} -- node_modules/.bin/nodemon server
     environment:
       - NODE_ENV=DEVELOPMENT
     restart: unless-stopped

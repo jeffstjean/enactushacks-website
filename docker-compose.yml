@@ -5,7 +5,7 @@ services:
     working_dir: /app/src
     volumes:
       - .:/app
-    container_name: nodejs
+    container_name: ${SITE_NAME}
     image: node:alpine
     ports:
       - '${SITE_PORT}:${SITE_PORT}'
@@ -15,5 +15,6 @@ services:
   db:
     image: mongo
     container_name: ${MONGO_NAME}
+    command: mongod --port ${MONGO_PORT}
     ports:
       - '${MONGO_PORT}:${MONGO_PORT}'
