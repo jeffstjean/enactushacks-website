@@ -35,6 +35,10 @@ const {sendPasswordReset} = require('../services/Emailer');
 //   .catch(error => { console.log('ERROR'); res.json(error); })
 // });
 
+router.get('/', (req, res, next) => {
+  res.render('forgot', {title: 'Forgot Password' });
+});
+
 router.get('/:token', (req, res, next) => {
   // find the token and delete it - one time use
   console.log('finding token ' + req.params.token + '...');

@@ -5,6 +5,7 @@ const database = require('./config/mongo.js');
 const session = require('express-session');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
+const flash = require('connect-flash');
 
 const app = express();
 
@@ -15,9 +16,18 @@ database.connect('mongodb://' + process.env.MONGO_NAME + ':' + process.env.MONGO
 
 // middlewares
 app.use(morgan('dev'));
+
+app.use(flash());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 app.use(cookieParser());
+// need a session store
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  secure: false
+}));
 
 // authentication middlewares
 app.use(express.json());
@@ -27,22 +37,22 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views')
 
 // routes
-app.get('/', (req, res, next) => { res.render('index') });
-app.get('/test', (req, res, next) => { res.render('logged_in_index') });
-app.get('/login', (req, res, next) => { res.render('login') });
-app.get('/forgot', (req, res, next) => { res.render('password_recovery') });
+app.get('/', (req, res, next) => { res.render('index', { title: 'EnactusHacks' }) });
 
-
-app.use('/', require('./routes/AuthRoute'));
+app.use('/login', require('./routes/LoginRoute'));
+app.use('/logout', require('./routes/LoginRoute'));
+app.use('/register', require('./routes/RegisterRoute'));
+app.use('/forgot', require('./routes/ForgotRoute'));
+app.use('/dashboard', require('./routes/DashboardRoute'));
 app.use('/user', require('./routes/UserRoute'));
 app.use('/settings', require('./routes/SettingsRoute'));
-app.use('/verify', require('./routes/EmailVerificationRoute'));
-app.use('/forgot', require('./routes/ForgotPasswordRoute'));
+app.use('/verify', require('./routes/VerifyRoute'));
 
 // unauthorized
 app.use((err, req, res, next) => {
   if (err.name === 'UnauthorizedError') {
-    res.status(401).render('unauthorized', { title: err.name });
+    // res.status(401).render('unauthorized', { title: err.name });
+    res.status(401).send('Unauthorized')
   }
 });
 

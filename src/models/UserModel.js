@@ -4,19 +4,19 @@ const jwt = require('jsonwebtoken');
 const { isEmailValid, isPasswordValid, deleteEmpty } = require("../services/Validation.js");
 
 const userSchema = mongoose.Schema({
-  email: { type: String, required: "An email is required" },//
-  first_name: { type: String, required: "A first name is required" },//
-  last_name: { type: String, required: "A last name is required" },//
-  gender: { type: String, required: "A gender is required", enum: ['m', 'f', 'nb', 'na'] },//
-  city: { type: String, required: "A city is required" },//
-  shirt_size: { type: String, required: "A shirt size is required", enum: ['xs', 's', 'm', 'l', 'xl'] },//
+  email: { type: String, required: "An email is required" },
+  first_name: { type: String, required: "A first name is required" },
+  last_name: { type: String, required: "A last name is required" },
+  gender: { type: String, required: "A gender is required", enum: ['m', 'f', 'nb', 'na'] },
+  city: { type: String, required: "A city is required" },
+  shirt_size: { type: String, required: "A shirt size is required", enum: ['xs', 's', 'm', 'l', 'xl'] },
 
-  university: { type: String, required: "A university is required" },//
-  major: { type: String, required: "A major is required" },//
-  program: { type: String, required: "A program is required" },//
-  grad_year: { type: String, required: "A graduation year is required" },//
-  is_stem: { type: String, required: 'You must specify if your program is STEM, non-STEM or both', enum: ['stem', 'non_stem', 'both'] },//
-  resume: { type: String, required: 'A resume is required' },//
+  university: { type: String, required: "A university is required" },
+  major: { type: String, required: "A major is required" },
+  program: { type: String, required: "A program is required" },
+  grad_year: { type: String, required: "A graduation year is required" },
+  is_stem: { type: String, required: 'You must specify if your program is STEM, non-STEM or both', enum: ['stem', 'non_stem', 'both'] },
+  resume: { type: String, required: 'A resume is required' },
 
   hash: { type: String, required: 'A password is required' },
   role: { type: String, default: 'participant', enum: ['participant', 'admin', 'developer'] },

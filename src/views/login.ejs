@@ -1,73 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
+<% include partials/header %>
+<% include partials/nav %>
 
-<head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>EnactusHacks</title>
-
-  <!-- Bootstrap core CSS -->
-  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom fonts for this template -->
-  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <link href="/css/one-page-wonder.min.css" rel="stylesheet">
-
-</head>
- <nav id="myNav" class="navbar navbar-expand-lg navbar-dark fixed-top">
-    <div class="container-fluid">
-       <img class="ml-5" src="../img/enactushacks_logo_transparent.png" height="38px" width="50px" alt="">
-      <a class="navbar-brand" href="#"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">EnactusHacks</a>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Sponsorship</a>
-            <li class="nav-item">
-            <a class="nav-link" href="signup.html">Sign Up</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="login.html">Log In</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <body class="grey">
-    <br>
-    <br>
-  <div class="container my-5 form-box">
-
+<!-- Originally this class was attached to body, makes it very difficult to break free from that design
+      Essentially, you're locking yourself in to every body tag having that css applied
+      Also, good practice is to never write directly in other CSS files (one-page-wonder.css)
+      Cascasing Style Sheets means that the order they're linked in the header is the order they'll
+      be applied in, so put everything in the enactus.css file and don't be afraid to break things up
+      Last thing, a class like 'enactus' doesn't describe what it does. if someone came in to maintain
+      this they would have to know exactly what enactus class does before being able to change anything -->
+<div class="enactus">
+  <br>
+  <br>
+  <div class="container form-box-straight col-md-4 my-5 ">
+    <!-- Check if any error messages present and display them -->
+    <% if(locals.success.length > 0) { %>
     <div class="row">
       <div class="col-md-8 my-5 mx-auto">
-        <h1 class="text-purple ">Log In</h1>
-        <form class="">
+        <div class="alert alert-success" role="alert">
+          <%= success %>
+        </div>
+      </div>
+    </div>
+    <% } %>
+    <!-- End -->
+
+    <div class="row ">
+      <div class="col-md-9 my-5 mx-auto">
+        <!-- This name is much better, now I know what it's doing (could even be 'text-main' or
+              just restyling the h1 tag to suit your needs) -->
+        <h1 class="text-purple">Log In</h1>
+        <form class="" method="POST" action="/login">
           <div class="form-group">
             <label>Email:</label>
             <input type="email" name="email" class="form-control">
           </div>
           <div class="form-group">
-          <label>Password:</label>
-          <input type="password" name="password" class="form-control">
+            <label>Password:</label>
+            <input type="password" name="password" class="form-control">
           </div>
           <ul class="list-inline">
-          <button type="submit" class="btn list-inline-item btn-dark">Log in</button>
-          <a href="password_recovery.html" class="btn list-inline-item btn-dark"> Forgot my password</a>
+            <button type="submit" class="btn btn-purple list-inline-item text-white">Log in</button>
+            <hr>
+            <!-- Need a button to link to the registration page as well -->
+            <a href="password_recovery.html" class="btn list-inline-item btn-purple text-white">Forgot my password</a>
         </form>
+      </div>
     </div>
   </div>
-  </div>
-
+</div>
 
 <% include partials/footer %>
