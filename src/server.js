@@ -47,6 +47,7 @@ app.use('/dashboard', require('./routes/DashboardRoute'));
 app.use('/user', require('./routes/UserRoute'));
 app.use('/settings', require('./routes/SettingsRoute'));
 app.use('/verify', require('./routes/VerifyRoute'));
+app.use('/mail', require('./routes/MailingListRoute'));
 
 // unauthorized
 app.use((err, req, res, next) => {
