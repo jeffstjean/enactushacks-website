@@ -1,22 +1,21 @@
-const router = require('express').Router();
-const {createUser} = require('../controllers/UserController')
-
+const router = require('express').Router()
+const { createUser } = require('../controllers/UserController')
 
 router.get('/', (req, res, next) => {
-  console.log(req.flash('success'));
-  res.render('register', { title: 'Register' , user });
-});
+  console.log(req.flash('success'))
+  res.render('register', { title: 'Register', user })
+})
 
 router.post('/', (req, res, next) => {
   createUser(req.body)
     .then(result => {
-      req.flash('success', 'Your email has been successfully verified');
-      res.redirect('/login');
+      req.flash('success', 'Your email has been successfully verified')
+      res.redirect('/login')
     })
     .catch(error => {
-      res.render('register', { title: 'Register', errors: error, user: req.body });
-    });
-});
+      res.render('register', { title: 'Register', errors: error, user: req.body })
+    })
+})
 
 var user = {
   email: undefined,
@@ -31,7 +30,7 @@ var user = {
   program: undefined,
   grad_year: undefined,
   is_stem: undefined,
-  resume: undefined,
+  resume: undefined
 }
 
-module.exports = router;
+module.exports = router
