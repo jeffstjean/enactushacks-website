@@ -1,0 +1,35 @@
+<% include partials/header %>
+<% include partials/nav %>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="container col-md-8 form-box-straight">
+
+    <div class="row">
+      <div class="col-md-10 my-5 mx-auto">
+        <% if(locals.added_user) { %>
+        <div class="alert alert-success" role="alert">
+          Success! Added <%=locals.added_user%> to mailing list.
+        </div>
+        <% } %>
+        <% if(locals.error_user) { %>
+        <div class="alert alert-danger" role="alert">
+          <%=locals.error_user%> is already on the mailing list.
+        </div>
+        <% } %>
+        <h1 class="text-purple">SUBSCRIBE!</h1>
+        <p> Stay informed about the event by receiving email updates regarding EnactusHacks.</p>
+        <form class="text" action="" method="POST">
+        <div class="form-group">
+          <label>Email:</label>
+          <input type="email" name="email" class="form-control">
+        </div>
+        <ul class="list-inline">
+        <button type="submit" class="btn btn-purple text-white list-inline-item "> Submit</button>
+      </form>
+    </div>
+  </div>
+  </div>
+<% include partials/footer %>

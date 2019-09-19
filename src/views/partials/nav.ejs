@@ -1,36 +1,24 @@
-<!-- Navigation -->
 <nav id="myNav" class="navbar navbar-color navbar-expand-lg navbar-dark fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/"><img class="ml-5" src="../img/enactushacks_logo_transparent.png" height="38px" width="50px" alt=""></a>
+    <a class="navbar-brand" href="/"> EnactusHacks</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="/">Home</a>
+          <a class="nav-link" href="newsletter">Subscribe to Newsletter</a>
         </li>
-        
-        <!-- Only show this if they're logged in -->
-        <% if (locals.logged_in) { %>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">MyAccount</a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">View/Edit profile</a>
-              <a class="dropdown-item" href="MyApplication.html">MyApplication</a>
-              <a class="dropdown-item" href="/logout">Logout</a>
-            </div>
-          </li>
-        <!-- Otherwise just show the register/login links -->
-        <% } else { %>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+          <li class="nav-item">
+          <a class="nav-link" href="#">Sponsorship</a>
+          <li class="nav-item">
+          <a class="nav-link" href="signup.html">Sign Up</a>
+        </li>
         <li class="nav-item">
-          <a class="nav-link" href="register">Register</a>
-        </li>
-        <% } %>
-
-        <li class="nav-item">
-          <a class="nav-link" href="sponsors">Become a Sponsor</a>
-        </li>
+          <a class="nav-link" href="login.html">Log In</a>
+        </li> -->
       </ul>
     </div>
   </div>

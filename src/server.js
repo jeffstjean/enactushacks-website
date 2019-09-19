@@ -39,15 +39,15 @@ app.set('views', path.join(__dirname, 'views'))
 // routes
 app.get('/', (req, res, next) => { res.render('index', { title: 'EnactusHacks' }) })
 
-app.use('/login', require('./routes/LoginRoute'))
-app.use('/logout', require('./routes/LoginRoute'))
-app.use('/register', require('./routes/RegisterRoute'))
-app.use('/forgot', require('./routes/ForgotRoute'))
-app.use('/dashboard', require('./routes/DashboardRoute'))
-app.use('/user', require('./routes/UserRoute'))
-app.use('/settings', require('./routes/SettingsRoute'))
-app.use('/verify', require('./routes/VerifyRoute'))
-app.use('/mail', require('./routes/MailingListRoute'))
+// app.use('/login', require('./routes/LoginRoute'))
+// app.use('/logout', require('./routes/LoginRoute'))
+// app.use('/register', require('./routes/RegisterRoute'))
+// app.use('/forgot', require('./routes/ForgotRoute'))
+// app.use('/dashboard', require('./routes/DashboardRoute'))
+// app.use('/user', require('./routes/UserRoute'))
+// app.use('/settings', require('./routes/SettingsRoute'))
+// app.use('/verify', require('./routes/VerifyRoute'))
+app.use('/newsletter', require('./routes/MailingListRoute'))
 
 // unauthorized
 app.use((err, req, res, next) => {
