@@ -9,12 +9,3 @@ services:
     image: node:alpine
     ports:
       - '${SITE_PORT}:${SITE_PORT}'
-    depends_on:
-      - db
-
-  db:
-    image: mongo
-    container_name: ${MONGO_NAME}
-    command: mongod --port ${MONGO_PORT}
-    ports:
-      - '${MONGO_PORT}:${MONGO_PORT}'

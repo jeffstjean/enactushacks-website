@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser');
 
 const app = express();
 
-database.connect('mongodb://' + process.env.MONGO_NAME + ':' + process.env.MONGO_PORT + '/' + process.env.MONGO_NAME)
+database.connect(process.env.DB_CONNECTION)
   .then(() => { console.log('Connected to database'); })
   .catch(err => { console.log('Error connecting to database: ' + err);
 });
