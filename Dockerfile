@@ -12,4 +12,4 @@ COPY ./src .
 
 EXPOSE 8080
 
-CMD ./wait-for.sh db:${MONGO_PORT} && npm run prod
+CMD npm run prod

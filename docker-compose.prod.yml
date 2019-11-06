@@ -2,7 +2,6 @@ version: '3'
 services:
   app:
     image: jeffstjean/nodejs-prod
-    command: node server
     environment:
       - NODE_ENV=PRODUCTION
     restart: unless-stopped
