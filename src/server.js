@@ -27,12 +27,12 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views')
 
 // routes
-app.get('/', (req, res, next) => { res.render('/public/index.html') });
-app.use('/', require('./routes/AuthRoute'));
-app.use('/user', require('./routes/UserRoute'));
-app.use('/settings', require('./routes/SettingsRoute'));
-app.use('/verify', require('./routes/EmailVerificationRoute'));
-app.use('/forgot', require('./routes/ForgotPasswordRoute'));
+app.get('/', (req, res, next) => { res.render('index') });
+// app.use('/', require('./routes/AuthRoute'));
+// app.use('/user', require('./routes/UserRoute'));
+// app.use('/settings', require('./routes/SettingsRoute'));
+// app.use('/verify', require('./routes/EmailVerificationRoute'));
+// app.use('/forgot', require('./routes/ForgotPasswordRoute'));
 
 // unauthorized
 app.use((err, req, res, next) => {

@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900&display=swap');
+
+body {
+  margin:0;
+  padding:0;
+  height: auto;
+}
+
+.wrapper {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1fr;
+  grid-template-rows: 10% 90%;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.masthead {
+  grid-area: 2 / 1 / 3 / 2;
+  background-image: linear-gradient(45deg,rgba(124,151,234,0.20),rgba(124,151,234,0.10)), url(/img/masthead-bg.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+nav {
+  grid-area: 1 / 1 / 2 / 2;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  background-color: #444;
+}
+nav li {
+  margin: auto 2px;
+}
+
+nav a {
+  color: white;
+  font-family:"Source Sans Pro";
+  font-weight: 400;
+  text-decoration: none;
+  padding: 40px 40px;
+  font-size: 1.15em;
+}
+
+nav a:hover {
+  background-color: #666;
+}
+
+.masthead img {
+  position:relative;
+  top: 12vh;
+  width: 60%;
+  left: 20%;
+}
+
+.masthead h1 {
+  position:relative;
+  width: 100%;
+  top: 13.5vh;
+  font-size: 2.5em;
+  font-family:"Source Sans Pro";
+  font-weight: 900;
+  color: #FFD700;
+  text-align: center;
+  margin: 0;
+}
+
+.masthead h6 {
+  position:relative;
+  margin: 0;
+  width: 100%;
+  top: 13vh;
+  font-size: 2em;
+  font-family:"Source Sans Pro";
+  font-weight: 400;
+  color: #C0C0C0;
+  text-align: center;
+}
+
+.masthead .button {
+  width:100%;
+  position:relative;
+  top: 23vh;
+  text-align: center;
+}
+
+.masthead a {
+  width: 100%;
+  font-size: 1em;
+  font-family:"Source Sans Pro";
+  font-weight: 400;
+  color: white;
+  background-color: #2679AF;
+  text-decoration: none;
+  padding: 15px 40px;
+  border-radius: 50px;
+  text-align: center;
+}
+
+.masthead a:hover {
+  background-color: #296389;
+}
+
+
+
+@media only screen and (min-width: 768px) {
+
+  .wrapper {
+    grid-template-rows: 8% 92%;
+  }
+
+  .masthead img {
+    top: 8vh;
+    width: 25%;
+    left: 37%;
+  }
+  .masthead h1 {
+    top: 10vh;
+  }
+
+  .masthead h6 {
+    top: 9vh;
+  }
+
+  .masthead .button {
+    top: 20vh;
+  }
+
+  .masthead a {
+    padding: 15px 80px;
+  }
+}
