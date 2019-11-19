@@ -5,15 +5,3 @@ services:
     environment:
       - NODE_ENV=PRODUCTION
     restart: unless-stopped
-    networks:
-      - prod-network
-  db:
-    image: mongo
-    volumes:
-      - /data/db_prod:/data/db
-    networks:
-      - prod-network
-
-networks:
-  prod-network:
-    driver: bridge
