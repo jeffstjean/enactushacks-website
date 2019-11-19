@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 ,user-scalable=no shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="HandheldFriendly" content="true">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>EnactusHacks</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/new-design.css" rel="stylesheet">
+
+</head>
+
+<body >
+
+  <%- include partials/nav.ejs %>
+
+    <header>
+    <div class=" formhead map text-center ">
+      <img class="logo-s" src="img/enactushacks_logo_transparent.png" >
+       <h1 class="light-enactus">SIGN UP</h1>
+       <img class="squares" src="img/squares.png">
+     </div>
+  </header>
+  <div class=" container form-box-straight">
+
+    <div class="row">
+      <div class="col-md-8 my-2 mx-auto">
+
+
+          <form class="">
+            <h2 class="text-purple">Let's get to know you!</h2>
+          <div class="form-group">
+            <label>First Name:</label>
+            <input type="text" name="name" class="form-control">
+          </div>
+          <div class="form-group">
+          <label>Last Name:</label>
+          <input type="text" name="name" class="form-control">
+          </div>
+          <div class="form-group">
+          <label>City:</label>
+          <input type="text" name="City" class="form-control">
+          </div>
+          <div class="form-group">
+          <label>T-shirt size:</label>
+          <p>
+          <select id="myList">
+            <option value="1"> Small</option>
+            <option value="2"> Medium</option>
+            <option value="3"> Large</option>
+            <option value="4"> Extra-large</option>
+          </select>
+          </div>
+          <div class="form-group">
+          <div class="form-group">
+          <label>Indentified Gender:</label>
+          <p>
+          <select id="genderList">
+            <option value="1"> Female</option>
+            <option value="2"> Male</option>
+            <option value="3"> Other</option>
+            <option value="4"> Prefer not to say</option>
+          </select>
+          </div>
+          <br>
+          <hr class="enactus">
+          <br>
+          <h2 class="text-purple">Some technical details...</h2>
+          <div class="form-group">
+          <label>Email:</label>
+          <input type="Email" name="Email" class="form-control">
+          </div>
+          <div class="form-group">
+          <label>Password:</label>
+          <input type="password" name="password" class="form-control">
+          </div>
+          <br>
+          <hr class="enactus">
+          <br>
+          <h2 class="text-purple">Your education?</h2>
+          <div class="form-group">
+          <label>University:</label>
+          <input type="text" name="University" class="form-control">
+          </div>
+          <div class="form-group">
+          <label>Program:</label>
+          <input type="text" name="Program" class="form-control">
+          </div>
+          <div class="form-group">
+          <label>Field of study:</label>
+          <p>
+          <select id="myList">
+            <option value="1"> STEM</option>
+            <option value="2"> None-STEM</option>
+            <option value="3"> Both</option>
+          </select>
+          </div>
+          <div class="form-group">
+          <label>Graduation Year:</label>
+          <input type="text" name="Year" class="form-control">
+          </div>
+
+            <label>Resume:</label>
+            <input type="file" name="Resume">
+          </div>
+
+          <button type="submit" class="btn text-white btn-enactus">Submit</button>
+        </form>
+        <br>
+    </div>
+  </div>
+  </div>
+
+ <%- include partials/nav.ejs %>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+
+</body>
+
+</html>

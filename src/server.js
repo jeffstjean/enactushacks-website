@@ -28,6 +28,10 @@ app.set('views', __dirname + '/views')
 
 // routes
 app.get('/', (req, res, next) => { res.render('index') });
+app.get('/about', (req, res, next) => { res.render('about') });
+app.get('/apply', (req, res, next) => { res.render('apply') });
+app.get('/login', (req, res, next) => { res.render('login') });
+app.use('/newsletter', require('./routes/MailingListRoute'));
 // app.use('/', require('./routes/AuthRoute'));
 // app.use('/user', require('./routes/UserRoute'));
 // app.use('/settings', require('./routes/SettingsRoute'));
