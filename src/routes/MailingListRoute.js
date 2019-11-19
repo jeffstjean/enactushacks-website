@@ -1,28 +1,36 @@
 const router = require('express').Router()
 const { addToMailingList, deleteFromMailingList } = require('../services/Emailer')
 
-router.post('/:list', async (req, res, next) => {
+router.get('/', (req, res, next) => {
+  res.render('newsletter')
+})
+
+router.get('/delete', (req, res, next) => {
+  console.log('Delete')
+  res.render('newsletter_delete', { title: 'Remove from Newsletter :(' })
+})
+
+router.post('/', async (req, res, next) => {
   if (req.body.email === undefined) { res.send('Please enter an email...'); return }
   const email = req.body.email
-  const list = req.params.list
+  const list = 'eh1'
   try {
     await addToMailingList(list, email)
-    res.send(`Added user ${email} to list ${list}`)
+    res.render('newsletter', { title: 'Newsletter', added_user: email })
   } catch (err) {
-    // console.log(err);
-    res.status(409).send('Email address already exists')
+    res.render('newsletter', { title: 'Newsletter - Error', error_user: email })
   }
 })
 
-router.delete('/:list', async (req, res, next) => {
+router.post('/delete', async (req, res, next) => {
   if (req.body.email === undefined) { res.send('Please enter an email...'); return }
   const email = req.body.email
-  const list = req.params.list
+  const list = 'eh1'
   try {
     await deleteFromMailingList(list, email)
-    res.send(`Deleted user ${email} from list ${list}`)
+    res.render('newsletter_delete', { title: 'Newsletter :(', removed_user: email })
   } catch (err) {
-    res.status(404).send('Email address not found in mailing list')
+    res.render('newsletter_delete', { title: 'Newsletter - Error', error_user: email })
   }
 })
 

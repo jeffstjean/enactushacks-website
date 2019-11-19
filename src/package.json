@@ -3,23 +3,22 @@
   "version": "0.0.1",
   "description": "NodeJS and MongoDB power website for Western's EnactusHacks!",
   "repository": {
-    "type": "git",
-    "url": "hhttps://github.com/jeffstjean/enactushacks-website.git"
+      "type": "git",
+      "url": "hhttps://github.com/jeffstjean/enactushacks-website.git"
   },
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
     "prod": "npm start",
-    "pretest": "standard",
     "test": "echo Not yet implemented && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.4",
+    "dotenv": "^8.0.0",
     "ejs": "^2.6.2",
     "express": "^4.17.1",
     "express-session": "^1.16.2",
@@ -32,14 +31,6 @@
     "path": "^0.12.7"
   },
   "devDependencies": {
-    "nodemon": "^1.19.1",
-    "standard": "^14.0.0"
-  },
-  "standard": {
-    "ignore": [
-      "public/",
-      "emails/",
-      "views/"
-    ]
+    "nodemon": "^1.19.1"
   }
 }

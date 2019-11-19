@@ -1,79 +1,52 @@
-<% include partials/header %>
-<% include partials/nav %>
+<!DOCTYPE html>
+<html lang="en">
 
-<header  class="masthead text-center text-white">
-  <div class="masthead-content">
-    <div class="container" >
-      <img src="../img/enactushacks_logo_transparent.png" height="350px" width="455px">
-      <h1 class="masthead-heading text-enactus mb-0">EnactusHacks</h1>
-      <h1 class="masthead-subheading text-enactus mb-0">// 24hr startup</h1>
-      <!-- We want this button to be visible on page load no matter what, it's the main CTA -->
-      <a href="signup.html" class="btn btn-primary display-3 btn-xl rounded-pill my-5">Stay Updated</a>
-    </div>
-  </div>
+<head>
 
-</header>
-<div class="container-fluid enactus">
-<section>
-  <div class="container white text-center">
-    <!-- Use margins/padding instead -->
-    <br>
-    <h1 class="section-title">About us</h1>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 ,user-scalable=no shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="HandheldFriendly" content="true">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-  </div>
-  <div class="container white">
-    <div class="row align-items-center">
-      <div class="col-lg-6 order-lg-2">
-        <div class="p-5">
-          <img class="img-fluid rounded-circle" src="img/01.jpg" alt="">
-        </div>
+  <title>EnactusHacks</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/new-design.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <%- include partials/nav.ejs %>
+  <header  class="masthead text-center ">
+    <div class="image"></div>
+    <div class="masthead-content up ">
+
+       <img class="left" src="img/left.png">
+       <img class="right" src="img/right.png">
+        <img class="logo" src="img/enactushacks_logo_transparent.png" >
+        <h1 class="masthead-heading text-black bold mb-0">ENACTUSHACKS</h1>
+          <a href="newsletter" class="btn btn-enactus  btn-xl rounded-pill mt-4"> Subscribe to newsletter </a>
       </div>
-      <div class="col-lg-6 order-lg-1">
-        <div class="p-5">
-          <h2 class="display-4">The Goal</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section>
-  <div class="container white">
-    <div class="row align-items-center">
-      <div class="col-lg-6">
-        <div class="p-5">
-          <img class="img-fluid rounded-circle" src="img/02.jpg" alt="">
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="p-5">
-          <h2 class="display-4">The Reason</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  </header>
 
-<section>
-  <div class="container white">
-    <div class="row align-items-center">
-      <div class="col-lg-6 order-lg-2">
-        <div class="p-5">
-          <img class="img-fluid rounded-circle" src="img/03.jpg" alt="">
-        </div>
-      </div>
-      <div class="col-lg-6 order-lg-1">
-        <div class="p-5">
-          <h2 class="display-4">The People</h2>
-          <p>Lorem ipsum dolor sit amet, consecteur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  <!-- Bootstrap core JavaScript -->
 
-</div>
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<% include partials/footer %>
+
+
+
+</body>
+
+</html>
