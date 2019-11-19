@@ -15,7 +15,8 @@ const userSchema = mongoose.Schema({
   major: { type: String, required: "A major is required" },//
   program: { type: String, required: "A program is required" },//
   grad_year: { type: String, required: "A graduation year is required" },//
-  is_stem: { type: String, required: 'You must specify if your program is STEM, non-STEM or both', enum: ['stem', 'non_stem', 'both'] },//
+  is_stem: { type: String, required: 'You must specify if your program is STEM, non-STEM or both',
+    enum: ['stem', 'non_stem', 'both'] },//
   resume: { type: String, required: 'A resume is required' },//
 
   hash: { type: String, required: 'A password is required' },
@@ -26,7 +27,8 @@ const userSchema = mongoose.Schema({
   dietary_restrictions: { type: String, set: deleteEmpty },
 
   application_questions: [],
-  application_status: { type: String, default:'incomplete', enum: ['incomplete', 'complete', 'waitlisted', 'accetped', 'confirmed', 'rejected'] },
+  application_status: { type: String, default:'incomplete',
+    enum: ['incomplete', 'complete', 'waitlisted', 'accetped', 'confirmed', 'rejected'] },
   application_date_completed: { type: Date, default: undefined }
 }, { versionKey: false } );
 

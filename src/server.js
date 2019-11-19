@@ -11,7 +11,7 @@ const app = express();
 database.connect(process.env.DB_CONNECTION)
   .then(() => { console.log('Connected to database'); })
   .catch(err => { console.log('Error connecting to database: ' + err);
-});
+  });
 
 // middlewares
 app.use(morgan('dev'));
