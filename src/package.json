@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "description": "NodeJS and MongoDB power website for Western's EnactusHacks!",
   "repository": {
-      "type": "git",
-      "url": "hhttps://github.com/jeffstjean/enactushacks-website.git"
+    "type": "git",
+    "url": "hhttps://github.com/jeffstjean/enactushacks-website.git"
   },
   "main": "server.js",
   "scripts": {
