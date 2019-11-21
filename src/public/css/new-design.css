@@ -271,23 +271,23 @@
 			@media only screen and (max-device-width: 500px)
 		{
 			.btn{
-				width: 80%;
+				width: 70%;
 				}
 			.section-title{
 				font-size: 3.5rem;
 						  }
 		    .left{
 		    	background-repeat: repeat-y;
-		    	width:50vw;
-		    	height: 45vh;
+		    	width:45vw;
+		    	height: 40vh;
 		    }
 		    .right{
 		    	background-repeat: repeat-y;
-		    	width:50vw;
-		    	height: 45vh;
+		    	width:45vw;
+		    	height: 40vh;
 		    }
 			.btn-xl{
-				text-transform:uppercase;padding:1.3rem 2.5rem;font-size:1.3rem;font-weight:900;letter-spacing:.03rem;
+				text-transform:uppercase;padding:1.1rem 2rem;font-size:1.1rem;font-weight:900;letter-spacing:.03rem;
 			}
 		    header.masthead .masthead-content{z-index:1;position:relative}
 			header.masthead .masthead-content .masthead-heading{
@@ -311,8 +311,8 @@
 
 			.logo{
 					padding-top: 12vh;
-					padding-bottom:3vh;
-					width: 45vw;
+					padding-bottom:5vh;
+					width: 42vw;
 					height: auto;
 			}
 			.logo-s{
