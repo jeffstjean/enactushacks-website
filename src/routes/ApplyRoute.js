@@ -32,12 +32,13 @@ router.get('/', async (req, res) => {
 router.post('/', (req, res) => {
   UserController.createUser(req.body)
     .then((user) => {
+    res.cookie('token', user.token)
     res.redirect('/login');
   })
   .catch((errorMessages) => {
+    console.log(errorMessages)
     delete req.body.password
     delete req.body.password_match
-    console.log(req.body.question1);
     if(req.body.gender) {
       if(req.body.gender === 'female') req.body.female = true;
       else if(req.body.gender === 'male') req.body.male = true;
@@ -56,7 +57,6 @@ router.post('/', (req, res) => {
       else if(req.body.is_stem === 'non_stem') req.body.non_stem = true;
       else if(req.body.is_stem === 'both') req.body.both = true;
     }
-    console.log(req.body)
     res.render('apply', { error: true, errors: errorMessages, user: req.body } );
   });
 });

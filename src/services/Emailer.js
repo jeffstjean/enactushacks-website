@@ -52,3 +52,17 @@ module.exports.deleteFromMailingList = (listName, email) => {
     })
   })
 }
+
+module.exports.sendUserCreationConfirmation = (recipient) => {
+  const file = fs.readFileSync('./emails/userCreationTemplate.ejs', 'utf8')
+  const email = ejs.render(file)
+  const data = {
+    from: 'EnactusHacks <info@enactushacks.com>',
+    to: recipient,
+    subject: 'Thank you for applying to EnactusHacks!',
+    html: email
+  }
+  mg.messages().send(data, function (error, body) {
+    if (error) console.log(error)
+  })
+}

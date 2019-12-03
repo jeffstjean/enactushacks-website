@@ -1,7 +1,7 @@
 const User = require('../models/UserModel');
 const VerifyToken = require('../models/VerifyTokenModel');
 const bcrypt = require('bcryptjs');
-const {sendEmailVerification} = require('../services/Emailer');
+const {sendUserCreationConfirmation} = require('../services/Emailer');
 
 // --- CREATE A NEW USER ---
 const createUser = (reqData) => {
@@ -19,15 +19,13 @@ const createUser = (reqData) => {
         try {
           const savedUser = await newUser.save(); // attempt to save - run validations
           const jwtToken = savedUser.generateJWT();
-          var newEmailToken = new VerifyToken({user_id: savedUser._id});
-          newEmailToken = await newEmailToken.save();
-          newEmailToken = newEmailToken.token;
-          sendEmailVerification(savedUser.email, newEmailToken);
+          sendUserCreationConfirmation(savedUser.email);
           resolve({token: jwtToken, _id: savedUser._id});
         }
         catch(mongoose_errors) {
           // mongoose threw some validation errors
           // we don't wanna just send these all out looking ugly so we clean them up first
+          console.log(mongoose_errors)
           var errorMessages = [];
           getCleanValidationErrorMessage(mongoose_errors, errorMessages);
           reject(errorMessages);
@@ -36,6 +34,7 @@ const createUser = (reqData) => {
       catch (error) {
         // the user already exists or the passwords were not defined or did not match
         // either way, send em back!
+        console.log(error)
         reject([error])
       }
     }
