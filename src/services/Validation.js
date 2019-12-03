@@ -32,8 +32,16 @@ const deleteEmpty = (v) => {
    return v;
 }
 
+isResumeValid = [
+  { validator: (link) => {
+    var re = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/;
+    return re.test(link);
+  }, msg: 'Must be a valid link to your resume' }
+]
+
 module.exports = {
   isEmailValid,
   isPasswordValid,
-  deleteEmpty
+  deleteEmpty,
+  isResumeValid
 }

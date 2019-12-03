@@ -29,14 +29,12 @@ app.set('views', __dirname + '/views')
 // routes
 app.get('/', (req, res, next) => { res.render('index') });
 app.get('/about', (req, res, next) => { res.render('about') });
-app.get('/apply', (req, res, next) => { res.render('apply') });
-app.get('/login', (req, res, next) => { res.render('login') });
+app.get('/recover', (req, res, next) => { res.render('password_recovery') });
+app.use('/forgot', require('./routes/ForgotPasswordRoute'));
 app.use('/newsletter', require('./routes/MailingListRoute'));
-// app.use('/', require('./routes/AuthRoute'));
-// app.use('/user', require('./routes/UserRoute'));
-// app.use('/settings', require('./routes/SettingsRoute'));
-// app.use('/verify', require('./routes/EmailVerificationRoute'));
-// app.use('/forgot', require('./routes/ForgotPasswordRoute'));
+app.use('/status', require('./routes/StatusRoute'));
+app.use('/apply', require('./routes/ApplyRoute'));
+app.use('/login', require('./routes/LoginRoute'));
 
 // unauthorized
 app.use((err, req, res, next) => {

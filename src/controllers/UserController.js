@@ -7,13 +7,13 @@ const {sendEmailVerification} = require('../services/Emailer');
 const createUser = (reqData) => {
   return new Promise(async (resolve, reject) => {
     // first check to make sure the password data has been sent and both equal each other
-    if(typeof reqData.password === undefined || typeof reqData.passwordMatch === undefined || reqData.password !== reqData.passwordMatch) reject('Passwords must match');
+    if(typeof reqData.password === undefined || typeof reqData.password_match === undefined || reqData.password !== reqData.password_match) reject(['Passwords must match']);
     else {
       try {
         await userDoesNotExist(reqData.email); // check if the user already exists
         const hash = await getHashedPassword(reqData.password); // hash the password
         delete reqData.password;
-        delete reqData.passwordMatch;
+        delete reqData.password_match;
         reqData.hash = hash; // add it to the request object
         const newUser = new User(reqData); // create the new user
         try {
@@ -36,7 +36,7 @@ const createUser = (reqData) => {
       catch (error) {
         // the user already exists or the passwords were not defined or did not match
         // either way, send em back!
-        reject(error)
+        reject([error])
       }
     }
   });

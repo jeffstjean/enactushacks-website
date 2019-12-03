@@ -20,7 +20,7 @@ module.exports.sendEmailVerification = (recipient, token) => {
 module.exports.sendPasswordReset = (recipient, token) => {
   console.log('sending email to ' + recipient + ' with a password token of ' + token)
   const file = fs.readFileSync('./emails/verifyEmailTemplate.ejs', 'utf8')
-  const email = ejs.render(file, { link: 'http://localhost:3000/verify/token/' + token })
+  const email = ejs.render(file, { link: 'http://localhost:3000/forgot/' + token })
   const data = {
     from: 'EnactusHacks <info@enactushacks.com>',
     to: recipient,

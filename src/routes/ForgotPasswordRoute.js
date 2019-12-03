@@ -3,37 +3,9 @@ const Token = require('../models/PasswordTokenModel');
 const User = require('../models/UserModel');
 const {sendPasswordReset} = require('../services/Emailer');
 
-// router.get('/token/:token', (req, res, next) => {
-//   // find the token and delete it - one time use
-//   console.log('finding token ' + req.params.token + '...');
-//   Token.findOneAndDelete({token: req.params.token})
-//   .then(token => {
-//     console.log('search done.');
-//     if(token) {
-//       console.log('found token.');
-//       if(token.expiry < new Date()) res.send('expired token');
-//       // if we find a valid token then find the user attached to that token
-//       console.log('finding user ' + token.user_id + '...');
-//       User.findById(token.user_id)
-//         .then(user => {
-//           if(user) {
-//             console.log('found user.');
-//             // if that user exists then set them to verified
-//             user.is_verified = true;
-//             console.log('saving user...');
-//             user.save()
-//               .then(savedUser => {
-//                 console.log('saved user.');
-//                 res.send('Success! Please login');
-//               })
-//               .catch(error => { res.send('Error saving user') });
-//           }
-//         })
-//         .catch(error => { res.send('Error getting user') });
-//     } else { res.send('invalid token'); }
-//   })
-//   .catch(error => { console.log('ERROR'); res.json(error); })
-// });
+router.get('/', (req, res, next) => {
+  res.render('password_recovery');
+});
 
 router.get('/:token', (req, res, next) => {
   // find the token and delete it - one time use
@@ -62,6 +34,10 @@ router.get('/:token', (req, res, next) => {
 router.post('/', async(req, res, next) => {
   try {
     const user = await User.findOne({email: req.body.email});
+    if(user == null) {
+      res.render('password_recovery', { msg: 'If a user with that email exists, more instructions have been sent to their inbox' });
+      return;
+    }
     const token = await Token.findOne({user_id: user._id});
     // if the token exists: check if timeout has been waited for and delete the token
     if(token) {

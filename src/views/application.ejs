@@ -28,14 +28,16 @@
   <body class="off-purple">
     <img class="left-l" src="img/left.png">
        <img class="right-l" src="img/right.png">
+     </br>
     <h1 class="text-center box-title">Application</h1>
 
   <div class="container form-box-straight col-md-6 ">
 
     <div class="row ">
       <div class=" col-md-11 my-5 mx-auto">
-        <h1>HELLO *NAME*,</h1>
-        <p> STATUS UPDATE: *message changes depending on their status. So awaiting, accepted or rejected*</p>
+        <h1>Hello <%=user.first_name%>,</h1>
+        </br>
+        <p>The status of your application is <strong><%=user.application_status%></strong>.</p>
     </div>
   </div>
   </div>
