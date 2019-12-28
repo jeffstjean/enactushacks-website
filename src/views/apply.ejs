@@ -25,18 +25,19 @@
 </head>
 
 <body>
-
+<div class="navigation">
   <%- include partials/nav.ejs %>
+</div>
 
   <header>
-    <div class=" formhead map text-center ">
-      <img class="logo-s" src="img/enactushacks_logo_transparent.png">
-      <h1 class="light-enactus">SIGN UP</h1>
+    <div class="text-center ">
       <img class="squares" src="img/squares.png">
     </div>
   </header>
   <div class=" container form-box-straight">
+
     <div class="row">
+
       <div class="col-md-8 my-2 mx-auto">
         <!-- check if there's any error messages and display them -->
         <% if(locals.error) { %>
@@ -58,6 +59,11 @@
         <!-- End -->
 
         <form action="/apply" method="POST">
+          <br>
+          <h1 class="sleek-large-row-header no-margin">Apply Now!</h1>
+          <h1 class="sleek-row-subtext">You're only ten minutes away from your chance at $1000!</h1>
+          <br>
+
           <h2 class="text-purple">Let's get to know you!</h2>
           <div class="form-group">
             <label>First Name:</label>
@@ -160,14 +166,13 @@
           </div>
 
 
-          <button type="submit" class="btn text-white btn-enactus">Submit</button>
+          <button type="submit" class="btn text-black btn-enactus">Submit</button>
         </form>
         <br>
       </div>
     </div>
   </div>
 
-  <%- include partials/nav.ejs %>
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
