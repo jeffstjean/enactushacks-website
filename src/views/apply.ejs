@@ -145,7 +145,20 @@
             <input type="number" name="grad_year" class="form-control" value="<%= user.grad_year %>">
             </br>
             <div class="form-group">
-              <label>Link to Resume:</label>
+              <label>Link to resume: <span class="popup text-purple"onclick="popup()">(i)
+						<span class="popuptext" id="myPopup">
+						 How to upload your resume:
+						 <br>
+						 1.) Place a copy of your resume into a google drive.
+						 <br>
+						 2.) Make sure this google doc is open to the public to ensure we are able to view it.
+						 <br>
+						 3.) Right click the file and select 'share'.
+						 <br>
+						 4.) Click 'Copy link' or manually copy the link displayed and paste it into the space for resume submission in your enactushacks application.
+						 </span>
+						</span>
+					</label>
               <input type="text" name="resume" class="form-control" value="<%= user.resume %>">
             </div>
           </div>
