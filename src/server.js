@@ -30,6 +30,7 @@ app.set('views', __dirname + '/views')
 app.get('/', (req, res, next) => { res.render('index') });
 app.get('/about', (req, res, next) => { res.render('about') });
 app.get('/recover', (req, res, next) => { res.render('password_recovery') });
+app.get('/faq', (req, res, next) => { res.render('faq') });
 app.use('/forgot', require('./routes/ForgotPasswordRoute'));
 app.use('/newsletter', require('./routes/MailingListRoute'));
 app.use('/status', require('./routes/StatusRoute'));

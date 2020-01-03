@@ -91,7 +91,7 @@
           </div>
           <div class="form-group">
             <div class="form-group">
-              <label>Indentified Gender:</label>
+              <label>Gender:</label>
               <select id="genderList" name="gender">
                 <% if(!locals.user.gender) {%><option selected disabled>Choose</option><%}%>
                 <option <% if(locals.user.female) {%> selected <%}%> value="female">Female</option>
@@ -125,7 +125,7 @@
             <input type="text" name="university" class="form-control" value="<%= user.university %>">
           </div>
           <div class="form-group">
-            <label>Major:</label>
+            <label>Faculty:</label>
             <input type="text" name="major" class="form-control" value="<%= user.major %>">
           </div>
           <div class="form-group">

@@ -31,7 +31,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .content {
 	position: relative;
-	overflow-y: auto;
+	overflow-y: scroll;
     margin-top: 7vh;
 }
 .section-title {
@@ -45,6 +45,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .stack {
     position: absolute;
+}
+.inner-content {
+    max-height: 97%;
 }
 /* Popup container - can be anything you want */
 .popup {
@@ -584,7 +587,6 @@ img {
 
 .btn-xl {
     position: relative;
-    margin-left: 4%;
     margin-top: 1.5rem;
     text-transform: uppercase;
     padding: 1.5rem 3rem;
