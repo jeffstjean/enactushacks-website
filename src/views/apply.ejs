@@ -10,7 +10,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>EnactusHacks</title>
+  <title>EnactusHacks: Application</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -78,14 +78,15 @@
             <input type="text" name="city" class="form-control value=" value="<%= user.city %>">
           </div>
           <div class="form-group">
-            <label>T-shirt size:</label>
+            <section>
+              Note that we will not be able to provide travel reimbursement for out of town guests. We will happily assist you with travel plans and overnight accommodations if you wish. Please reach out to us at enactushacks@gmail.com if you require any assistance. Please select I agree to agree to these terms and continue the application.
+            </section>
+          </div>
+          <div class="form-group">
+            <span></span>
             <select id="myList" name="shirt_size">
               <% if(!locals.user.shirt_size) {%><option selected disabled>Choose</option><%}%>
-              <option <% if(locals.user.xs) {%> selected <%}%> value="xs">Extra Small</option>
-              <option <% if(locals.user.s) {%> selected <%}%> value="s">Small</option>
-              <option <% if(locals.user.m) {%> selected <%}%> value="m">Medium</option>
-              <option <% if(locals.user.l) {%> selected <%}%> value="l">Large</option>
-              <option <% if(locals.user.xl) {%> selected <%}%> value="xl">Extra-large</option>
+              <option <% if(locals.user.xs) {%> selected <%}%> value="xs">I Agree</option>
             </select>
           </div>
           <div class="form-group">
@@ -131,6 +132,11 @@
             <label>Program:</label>
             <input type="text" name="program" class="form-control" value="<%= user.program %>">
           </div>
+            <div class="form-group">
+              <section>
+                At the event, teams will include a mix of STEM and non-STEM participants. Note that STEM students do not need to know how to code prior to the event, though they will be expected to contribute in a technical role (through any mix of designs, schematics, code, etc). Please self-identify as a STEM or non-STEM student below:
+              </section>
+            </div>
           <div class="form-group">
           <label>Field of study:</label>
           <select class="form-group" id="myList" name="is_stem">
@@ -147,15 +153,13 @@
             <div class="form-group">
               <label>Link to resume: <span class="popup" onclick="popup()">ⓘ
 						<span class="popuptext" id="myPopup">
-						 How to upload your resume:
+						 Don't have it online yet? No problem.
 						 <br>
-						 1.) Place a copy of your resume into a google drive.
+						 1.) Place a copy of your resume into Google Drive.
 						 <br>
-						 2.) Make sure this google doc is open to the public to ensure we are able to view it.
+						 2.) Right click the file and select 'Share'.
 						 <br>
-						 3.) Right click the file and select 'share'.
-						 <br>
-						 4.) Click 'Copy link' or manually copy the link displayed and paste it into the space for resume submission in your enactushacks application.
+						 3.) Click 'Copy link', or manually copy the link displayed, and paste the link into your EnactusHacks application.
 						 </span>
 						</span>
 					</label>
@@ -165,15 +169,15 @@
           <h2 class="text-purple">Application Questions</h2>
           <div class="form-group">
             <div class="form-group">
-              <label>Question 1</label>
+              <label>Tell us about something you’re passionate about. (100-150 words)</label>
               <textarea name="question1" class="form-control"><%=user.question1%></textarea>
             </div>
             <div class="form-group">
-              <label>Question 2</label>
+              <label>Talk about a social issue of special interest to you. How would you try to solve this issue? (150-250 words)</label>
               <textarea name="question2" class="form-control"><%=user.question2%></textarea>
             </div>
             <div class="form-group">
-              <label>Question 3</label>
+              <label>If you only had ten words to describe yourself, what would they be? (10 words)</label>
               <textarea name="question3" class="form-control"><%=user.question3%></textarea>
             </div>
           </div>
