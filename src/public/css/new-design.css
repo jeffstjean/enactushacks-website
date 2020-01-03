@@ -55,6 +55,7 @@ h1, h2, h3, h4, h5, h6 {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+    color: #8046AA;
 }
 
 /* The actual popup */
@@ -66,7 +67,8 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 6px;
   padding: 8px 10px;
   position: absolute;
-  z-index: 1;
+    font-size: 1rem !important;
+    z-index: 1;
   bottom: 125%;
   left: 50%;
   margin-left: -80px;
@@ -77,7 +79,7 @@ h1, h2, h3, h4, h5, h6 {
   content: "";
   position: absolute;
   top: 100%;
-  left: 50%;
+  left: 78px;
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
@@ -294,6 +296,10 @@ label {
 		height: 95vh;
         margin-top: 0 !important;
 	}
+
+    .popup .popuptext {
+        width: 60vw !important;
+    }
     .apply-button {
         padding-top: 7vh !important;
         padding-bottom: 3vh !important;
