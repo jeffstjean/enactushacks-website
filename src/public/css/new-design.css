@@ -34,6 +34,11 @@ h1, h2, h3, h4, h5, h6 {
 	overflow-y: scroll;
     margin-top: 7vh;
 }
+.faqcontent {
+    position: relative;
+    overflow-y: scroll;
+    padding-top: 7vh;
+}
 .section-title {
     font-size: 4rem;
 }
@@ -48,6 +53,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .inner-content {
     max-height: 97%;
+    width:100%;
 }
 /* Popup container - can be anything you want */
 .popup {
@@ -299,6 +305,16 @@ label {
 		height: 95vh;
         margin-top: 0 !important;
 	}
+
+    .faqcontent {
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        /*align-self: center;*/
+        flex-direction: column;
+        height: 90vh;
+        bottom: 0;
+    }
 
     .popup .popuptext {
         width: 60vw !important;
@@ -906,4 +922,49 @@ header.masthead .bg-circle-4 {
             margin-bottom: 5px !important;
         }
 	}
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 90%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+    background-color: #ccc;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+    padding: 0 18px;
+    background-color: #eee;
+    max-height: 0;
+    margin-right: 5%;
+    margin-left: 5%;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.lr-faq {
+    padding-right: 40px;
+}
+
+.accordion:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 18px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+
+}
+
+.active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
