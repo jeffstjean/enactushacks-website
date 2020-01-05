@@ -6,6 +6,8 @@ const session = require('express-session');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
+const favicon = require('serve-favicon');
+const path = require('path');
 
 const app = express();
 
@@ -15,10 +17,11 @@ database.connect(process.env.DB_CONNECTION)
   });
 
 // middlewares
-app.use(morgan('dev'));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 app.use(cookieParser());
+app.use(morgan('dev'));
 
 // authentication middlewares
 app.use(express.json());
