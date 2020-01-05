@@ -19,15 +19,12 @@
           <li class="nav-item">
           <a class="nav-link" href="faq">FAQ</a>
          </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link" href="newsletter">Newsletter</a>
-        </li> -->
-        <!-- <li class="nav-item">
-          <a class="nav-link" href="#">Sponsorship</a>
-        </li> -->
         <% if(locals.logged_in) { %>
           <li class="nav-item">
-            <a class="nav-link" href="application">Application Status</a>
+            <a class="nav-link" href="status">Application Status</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="logout">Logout</a>
           </li>
         <%} else {%>
           <li class="nav-item">

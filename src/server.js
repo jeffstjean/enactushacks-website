@@ -5,6 +5,7 @@ const database = require('./config/mongo.js');
 const session = require('express-session');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
 
 const app = express();
 
@@ -26,6 +27,21 @@ require('./config/passport').init();
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views')
 
+// juicy little way to add a flag if a user is logged in so ejs get render the right navbar
+app.use(function(req, res, next) {
+    if(req.cookies && req.cookies.token) {
+      try {
+        const token = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
+        res.locals.logged_in = true;
+      }
+      catch {
+        // this shouldn't be invoked but in case they have an invalid token
+        res.clearCookie('token');
+      }
+    }
+    next();
+});
+
 // routes
 app.get('/', (req, res, next) => { res.render('index') });
 app.get('/about', (req, res, next) => { res.render('about') });
@@ -36,6 +52,7 @@ app.use('/newsletter', require('./routes/MailingListRoute'));
 app.use('/status', require('./routes/StatusRoute'));
 app.use('/apply', require('./routes/ApplyRoute'));
 app.use('/login', require('./routes/LoginRoute'));
+app.use('/logout', require('./routes/LogoutRoute'));
 
 // unauthorized
 app.use((err, req, res, next) => {
