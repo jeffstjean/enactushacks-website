@@ -53,7 +53,7 @@ app.get('/faq', (req, res, next) => { res.render('faq') });
 app.use('/forgot', require('./routes/ForgotPasswordRoute'));
 app.use('/newsletter', require('./routes/MailingListRoute'));
 app.use('/status', require('./routes/StatusRoute'));
-app.use('/apply', require('./routes/ApplyRoute'));
+// app.use('/apply', require('./routes/ApplyRoute'));
 app.use('/login', require('./routes/LoginRoute'));
 app.use('/logout', require('./routes/LogoutRoute'));
 
