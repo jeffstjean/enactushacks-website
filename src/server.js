@@ -64,6 +64,11 @@ app.use((err, req, res, next) => {
   }
 });
 
+app.use(function(req, res, next) {
+  console.log('404');
+  res.redirect('/');
+});
+
 app.listen(process.env.SITE_PORT, () => {
   console.log(`Server started on port ${process.env.SITE_PORT} in mode ${process.env.NODE_ENV}`);
 });
