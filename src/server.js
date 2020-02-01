@@ -12,9 +12,69 @@ const path = require('path');
 const app = express();
 
 database.connect(process.env.DB_CONNECTION)
-  .then(() => { console.log('Connected to database'); })
-  .catch(err => { console.log('Error connecting to database: ' + err);
-  });
+  .then(() => {
+    console.log('Connected to database');
+    // update_users();
+  })
+  .catch(err => { console.log('Error connecting to database: ' + err); });
+
+// const update_users = function() {
+//   console.log('Processing accepted users');
+//   const User = require('./models/UserModel');
+//   const fs = require('fs');
+//   const filename = 'accepted.csv'
+//
+//   fs.readFile(filename, 'utf8', (err, contents) => {
+//     fs.unlinkSync('result.txt');
+//     const emails = contents.split('\n');
+//     var result = '';
+//     fs.writeFileSync('result.txt', `Found ${emails.length} emails in file\n\n`)
+//
+//     emails.forEach((email, index, array) => {
+//       email = email.trim();
+//       User.find({ email: email })
+//         .then(db_result => {
+//           if(!db_result) {
+//             fs.appendFileSync('result.txt', `Error finding ${email}\n`);
+//             error_count++;
+//           }
+//           else {
+//             if(db_result.length > 1) {
+//               fs.appendFileSync('result.txt', `Found more than one user for ${email}\n`);
+//             }
+//             else if(db_result.length == 0) {
+//               fs.appendFileSync('result.txt', `Could not find ${email}\n`);
+//             }
+//             else {
+//               if(db_result[0].application_status === 'pending review') {
+//                 User.findOneAndUpdate({ _id: db_result[0]._id }, { application_status: 'accepted' }, function(err, result) {
+//                   if(err) {
+//                     error_string = JSON.stringify(err)
+//                     fs.appendFileSync('result.txt', `Unable to accept ${email} - ${error_string}\n`);
+//                   }
+//                   else {
+//                     fs.appendFileSync('result.txt', `Accepted ${email}.\n`);
+//                   }
+//                 });
+//               }
+//               else if(db_result[0].application_status === 'accepted') {
+//                 fs.appendFileSync('result.txt', `Did not update - ${email} has already been accepted\n`);
+//               }
+//               else {
+//                 fs.appendFileSync('result.txt', `Did not update ${email} because status is ${db_result[0].application_status}\n`);
+//               }
+//             }
+//           }
+//           if(index === array.length - 1) resolve(result);
+//         })
+//         .catch(error => {
+//           result += `error with database on ${email}`;
+//         });
+//     });
+//   });
+//   console.log('Done');
+// };
+
 
 // middlewares
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
@@ -53,7 +113,7 @@ app.get('/faq', (req, res, next) => { res.render('faq') });
 app.use('/forgot', require('./routes/ForgotPasswordRoute'));
 app.use('/newsletter', require('./routes/MailingListRoute'));
 app.use('/status', require('./routes/StatusRoute'));
-// app.use('/apply', require('./routes/ApplyRoute'));
+app.use('/apply', require('./routes/ApplyRoute'));
 app.use('/login', require('./routes/LoginRoute'));
 app.use('/logout', require('./routes/LogoutRoute'));
 
@@ -65,7 +125,6 @@ app.use((err, req, res, next) => {
 });
 
 app.use(function(req, res, next) {
-  console.log('404');
   res.redirect('/');
 });
 

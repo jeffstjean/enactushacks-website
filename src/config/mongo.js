@@ -17,5 +17,6 @@ const connect = uri => {
 };
 
 module.exports = {
-  connect
+  connect,
+  mongoose
 };

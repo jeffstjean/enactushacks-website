@@ -30,7 +30,7 @@ const userSchema = mongoose.Schema({
   question2: { type: String, required: "You must complete the second application question" },
   question3: { type: String, required: "You must complete the third application question" },
   application_status: { type: String, default:'pending review',
-    enum: ['pending review', 'waitlisted', 'accetped', 'confirmed', 'rejected'] },
+    enum: ['pending review', 'waitlisted', 'accepted', 'confirmed', 'rejected'] },
   application_date_completed: { type: Date, default: undefined }
 }, { versionKey: false } );
 

@@ -25,7 +25,7 @@ module.exports.sendPasswordReset = (recipient, token) => {
     from: 'EnactusHacks <info@enactushacks.com>',
     to: recipient,
     subject: 'Please verify your email',
-    html: email
+    html: file
   }
   mg.messages().send(data, function (error, body) {
     if (error) console.log(error)
