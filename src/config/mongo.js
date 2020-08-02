@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 
 const options = {
-  reconnectTries: Number.MAX_VALUE,
-  reconnectInterval: 500,
   connectTimeoutMS: 10000,
 };
 
@@ -12,6 +10,7 @@ const connect = uri => {
   mongoose.set('useNewUrlParser', true);
   mongoose.set('useFindAndModify', false);
   mongoose.set('useCreateIndex', true);
+  mongoose.set('useUnifiedTopology', true);
 
   return mongoose.connect(uri, options);
 };
