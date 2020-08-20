@@ -38,6 +38,8 @@ jobs:
     deploy:
         name: Deploy to production
         runs-on: ubuntu-latest
+        
+        steps:
 
         - name: Deploy to remote server
           uses: appleboy/ssh-action@master
