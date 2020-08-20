@@ -10,9 +10,6 @@ env:
     DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
     DOCKER_NAME: jeffstjean/enactushacks_nodejs:prod
     DOCKER_PATH: ./api
-    DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
-    DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
-    DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
     DEPLOY_NAME: eh_prod
     DEPLOY_PATH: /home/jeff/enactus-prod
 
@@ -34,13 +31,13 @@ jobs:
 
         - name: Push api docker image
           run: docker push $DOCKER_NAME
-
+          
         - name: Deploy to remote server
           uses: appleboy/ssh-action@master
           with:
-            host: $DEPLOY_HOST
-            username: $DEPLOY_USER
-            key: $DEPLOY_KEY
-            envs: DEPLOY_HOST,DEPLOY_USER,DEPLOY_KEY,DEPLOY_PATH,DEPLOY_NAME
+            host: ${{ secrets.DEPLOY_HOST }}
+            username: ${{ secrets.DEPLOY_USER }}
+            key: ${{ secrets.DEPLOY_KEY }}
+            envs: DEPLOY_PATH,DEPLOY_NAME
             script: docker stack deploy -c $DEPLOY_PATH/docker-compose.yml -c $DEPLOY_PATH/docker-compose.prod.yml $DEPLOY_NAME
 
