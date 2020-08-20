@@ -17,8 +17,8 @@ env:
     DEPLOY_PATH: /home/jeff/enactus-prod
 
 jobs:
-    build:
-        name: Build docker image
+    build-push-deploy:
+        name: Build, Push and Deploy
         runs-on: ubuntu-latest
 
         steps:
@@ -34,12 +34,6 @@ jobs:
 
         - name: Push api docker image
           run: docker push $DOCKER_NAME
-
-    deploy:
-        name: Deploy to production
-        runs-on: ubuntu-latest
-        
-        steps:
 
         - name: Deploy to remote server
           uses: appleboy/ssh-action@master
