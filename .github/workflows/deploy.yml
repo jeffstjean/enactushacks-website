@@ -17,7 +17,7 @@ env:
     DEPLOY_PATH: /home/jeff/enactus-prod
 
 jobs:
-    build-push-deploy:
+    build:
         name: Build, Push and Deploy
         runs-on: ubuntu-latest
 
@@ -35,12 +35,13 @@ jobs:
         - name: Push api docker image
           run: docker push $DOCKER_NAME
 
+    deploy:
         - name: Deploy to remote server
           uses: appleboy/ssh-action@master
           with:
-            host: ${{ secrets.DEPLOY_HOST }}
-            username: ${{ secrets.DEPLOY_USER }}
-            key: ${{ secrets.DEPLOY_KEY }}
+            host: $DEPLOY_HOST
+            username: $DEPLOY_USER
+            key: $DEPLOY_KEY
             envs: DEPLOY_PATH,DEPLOY_NAME
             script: docker stack deploy -c $DEPLOY_PATH/docker-compose.yml -c $DEPLOY_PATH/docker-compose.prod.yml $DEPLOY_NAME
 
