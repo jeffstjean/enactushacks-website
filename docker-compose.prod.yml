@@ -1,7 +1,16 @@
+# Any configurations that apply only to the production environment
+
 version: '3'
 services:
-  app:
-    image: jeffstjean/nodejs-prod
-    environment:
-      - NODE_ENV=PRODUCTION
-    restart: unless-stopped
+    api:
+        image: jeffstjean/enactushacks_nodejs:prod
+        deploy:
+            replicas: 3
+            restart_policy: 
+                max_attempts: 3
+                condition: on-failure
+            update_config:
+                parallelism: 1
+                delay: 10s
+        environment:
+            - NODE_ENV=PRODUCTION 

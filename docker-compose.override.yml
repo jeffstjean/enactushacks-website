@@ -1,7 +1,0 @@
-version: '3'
-services:
-  app:
-    command: node_modules/.bin/nodemon server
-    environment:
-      - NODE_ENV=DEVELOPMENT
-    restart: unless-stopped

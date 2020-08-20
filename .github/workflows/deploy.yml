@@ -1,0 +1,45 @@
+name: Build, Push and Deploy to Production Server
+
+on:
+    push:
+        branches:
+            - master
+
+env:
+    DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+    DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+    DOCKER_NAME: jeffstjean/enactushacks_nodejs:prod
+    DOCKER_PATH: ./api
+    DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+    DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+    DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+    DEPLOY_NAME: eh_prod
+    DEPLOY_PATH: /home/jeff/enactus-prod
+
+jobs:
+    build-push-deploy:
+        name: Build, Push and Deploy
+        runs-on: ubuntu-latest
+
+        steps:
+            
+        - name: Checkout
+          uses: actions/checkout@v2 
+
+        - name: Login to docker
+          run: echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
+
+        - name: Build api docker image
+          run: docker build -t $DOCKER_NAME $DOCKER_PATH
+
+        - name: Push api docker image
+          run: docker push $DOCKER_NAME
+
+        - name: Deploy to remote server
+          uses: appleboy/ssh-action@master
+          with:
+            host: $secrets.DEPLOY_HOST
+            username: $DEPLOY_USER
+            key: $DEPLOY_KEY
+            script: docker stack deploy -c $DEPLOY_PATH/docker-compose.yml -c $DEPLOY_PATH/docker-compose.prod.yml $DEPLOY_NAME
+

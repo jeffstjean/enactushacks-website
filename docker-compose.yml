@@ -1,11 +1,26 @@
+# Any base level configurations that will apply to all deployments (local dev, staging, prod)
+
 version: '3'
 services:
-  app:
-    env_file: .env
-    working_dir: /app/src
-    volumes:
-      - .:/app
-    container_name: ${SITE_NAME}
-    image: node:alpine
-    ports:
-      - '${SITE_PORT}:${SITE_PORT}'
+    api:
+        env_file: .env
+        networks:
+            - app-network
+    proxy:
+        image: jeffstjean/enactushacks_nginx
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - ./proxy:/etc/nginx/
+        networks:
+            - app-network
+        depends_on: 
+            - api
+        deploy:
+            placement:
+                constraints: [node.role == manager]
+
+networks:
+    app-network:
+        driver: overlay
