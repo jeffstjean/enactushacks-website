@@ -6,8 +6,7 @@ COPY package*.json ./
 
 USER root
 
-# If you are building your code for production add --only=production
-RUN npm install
+RUN npm install --only=production
 
 COPY . .
 
