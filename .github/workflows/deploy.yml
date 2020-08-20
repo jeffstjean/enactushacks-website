@@ -35,6 +35,9 @@ jobs:
         - name: Push api docker image
           run: docker push $DOCKER_NAME
 
+        - name: echo $DEPLOY_HOST
+          run: echo $DEPLOY_HOST
+
         - name: Deploy to remote server
           uses: appleboy/ssh-action@master
           with:
