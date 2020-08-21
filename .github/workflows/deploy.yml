@@ -1,9 +1,13 @@
 name: Build, Push and Deploy to Production Server
 
 on:
-    push:
-        branches:
-            - master
+  push:
+    branches:
+      - 'master'
+  workflow_dispatch:
+    branches:
+      - '*'
+    
 
 env:
     DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
