@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # run this to add the renew_certificates.sh script to user's cron
+# make sure to run 'crontab -e' at least once to install crontab for the user
 
 directory=$1
 
