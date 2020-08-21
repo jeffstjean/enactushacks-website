@@ -7,7 +7,6 @@ services:
         networks:
             - app-network
     proxy:
-        image: jeffstjean/enactushacks_nginx
         ports:
             - "80:80"
             - "443:443"
