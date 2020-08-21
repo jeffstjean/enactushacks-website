@@ -15,6 +15,10 @@ services:
                 delay: 10s
         environment:
             - NODE_ENV=PRODUCTION 
+    proxy:
+        volumes: 
+            - /etc/letsencrypt:/etc/letsencrypt
+            - /usr/share/nginx/html:/usr/share/nginx/html
 configs:
     proxy:
         file: ./nginx/prod.conf
