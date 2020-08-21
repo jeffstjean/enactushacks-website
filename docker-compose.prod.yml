@@ -1,6 +1,7 @@
 # Any configurations that apply only to the production environment
 
-version: '3'
+version: '3.8'
+
 services:
     api:
         image: jeffstjean/enactushacks_nodejs:prod
@@ -15,4 +16,9 @@ services:
         environment:
             - NODE_ENV=PRODUCTION 
     proxy:
-        image: jeffstjean/enactushacks_nginx:prod
+        volumes: 
+            - /etc/letsencrypt:/etc/letsencrypt
+            - /usr/share/nginx/html:/usr/share/nginx/html
+configs:
+    proxy:
+        file: ./nginx/prod.conf
