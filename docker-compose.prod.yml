@@ -14,3 +14,5 @@ services:
                 delay: 10s
         environment:
             - NODE_ENV=PRODUCTION 
+    proxy:
+        image: jeffstjean/enactushacks_nginx:prod

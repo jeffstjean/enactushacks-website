@@ -16,6 +16,8 @@ services:
             update_config:
                 parallelism: 1
                 delay: 0s
+    proxy:
+        image: jeffstjean/enactushacks_nginx:dev
     db:
         image: mongo:4.4.0
         ports:

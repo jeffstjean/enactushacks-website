@@ -1,9 +1,13 @@
 name: Build, Push and Deploy to Production Server
 
 on:
-    push:
-        branches:
-            - master
+  push:
+    branches:
+      - 'master'
+  workflow_dispatch:
+    branches:
+      - '*'
+    
 
 env:
     DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
@@ -31,6 +35,16 @@ jobs:
 
         - name: Push api docker image
           run: docker push $DOCKER_NAME
+
+        # testing passing envs to other 'with' params (DEPLOY_PATH)
+        - name: Pull from git
+          uses: appleboy/ssh-action@master
+          with:
+            host: ${{ secrets.DEPLOY_HOST }}
+            username: ${{ secrets.DEPLOY_USER }}
+            key: ${{ secrets.DEPLOY_KEY }}
+            envs: DEPLOY_PATH 
+            script: git -C $DEPLOY_PATH pull
           
         - name: Deploy to remote server
           uses: appleboy/ssh-action@master
