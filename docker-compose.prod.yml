@@ -1,6 +1,7 @@
 # Any configurations that apply only to the production environment
 
-version: '3'
+version: '3.8'
+
 services:
     api:
         image: jeffstjean/enactushacks_nodejs:prod
@@ -14,5 +15,6 @@ services:
                 delay: 10s
         environment:
             - NODE_ENV=PRODUCTION 
+configs:
     proxy:
-        image: jeffstjean/enactushacks_nginx:prod
+        file: ./nginx/prod.conf

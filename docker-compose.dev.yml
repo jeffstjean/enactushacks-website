@@ -1,6 +1,7 @@
 # Any configurations that apply only to local development
 
-version: '3'
+version: '3.8'
+
 services:
     api:
         image: jeffstjean/enactushacks_nodejs:dev
@@ -16,8 +17,6 @@ services:
             update_config:
                 parallelism: 1
                 delay: 0s
-    proxy:
-        image: jeffstjean/enactushacks_nginx:dev
     db:
         image: mongo:4.4.0
         ports:
@@ -34,5 +33,8 @@ services:
             update_config:
                 parallelism: 1
                 delay: 0s
+configs:
+    proxy:
+        file: ./nginx/dev.conf
 volumes:
     database:
