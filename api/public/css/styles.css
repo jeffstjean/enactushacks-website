@@ -25,12 +25,19 @@ body, html {
     .right-img {
         display: none;
     }
+
     .left-img {
         display: none;
     }
+
     body {
         background: rgb(123,96,128);
         background: linear-gradient(45deg, rgba(123,96,128,0.3) 0%, rgba(123,96,128,0.2) 100%);
+    }
+
+    .logo {
+        width: 25%;
+        margin: 0px 0;
     }
 }
 
@@ -42,6 +49,12 @@ body, html {
     justify-content: center;
     align-items: center;
     z-index: 10;
+}
+
+@media only screen and (max-width: 800px) {
+    .container {
+        width: 100vw;
+    }
 }
 
 @media only screen and (min-width: 800px) {
@@ -67,9 +80,12 @@ body, html {
     color: #604d63;
 }
 
-.logo {
-    width: 20%;
-    margin: 20px 0;
+
+@media only screen and (min-width: 800px) {
+    .logo {
+        width: 20%;
+        margin: 20px 0;
+    }
 }
 
 .main-content {
@@ -111,6 +127,10 @@ i:hover {
 }
 
 .email input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    
     width: 350px;
     font-size: 0.9em;
     text-align: center;

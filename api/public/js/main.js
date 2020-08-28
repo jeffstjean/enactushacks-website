@@ -99,7 +99,6 @@ const add_email = async (event) => {
 
   document.activeElement.blur();
   event.childNodes[1].disabled = true;
-  console.log(event.childNodes)
   loading(event.childNodes[1]);
 
   const start_time = Date.now();
