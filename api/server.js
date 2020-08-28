@@ -4,6 +4,7 @@ const dotenv = require('dotenv').config();
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
+const favicon = require('serve-favicon');
 
 const database = require('./config/mongo.js');
 
@@ -14,6 +15,7 @@ const app = express();
 
 // middlewares
 app.use(express.static('public'));
+app.use(favicon(path.join(__dirname,'public','img','favicon.ico')));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.json());
@@ -26,6 +28,20 @@ app.set('views', __dirname + '/views')
 
 // routes
 app.get('/', (req, res, next) => { res.render('index') });
+app.use('/click', require('./routes/ClickRoute'));
+app.use('/mail', require('./routes/MailingListRoute'));
+app.use((req, res, next) => {
+  if(res.statusCode === 404) {
+    res.send('Not found')
+  }
+  else if(res.statusCode === 406) {
+    res.send('Bad request (406)')
+  }
+  else {
+    console.log(res.statusCode)
+    res.send('Server error')
+  }
+})
 
 // for debugging
 if(node_env === 'development') {
