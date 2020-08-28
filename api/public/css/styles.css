@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap');
+
+body, html {
+    background-color: #F8F8F8;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.left-img {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+}
+
+.right-img {
+    position: absolute;
+    top: 0px;
+    right: -100px;
+    height: 100vh;
+}
+
+@media only screen and (max-width: 800px) {
+    .right-img {
+        display: none;
+    }
+    .left-img {
+        display: none;
+    }
+    body {
+        background: rgb(123,96,128);
+        background: linear-gradient(45deg, rgba(123,96,128,0.3) 0%, rgba(123,96,128,0.2) 100%);
+    }
+}
+
+.container {
+    width: 70vw;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.container div:first-child {
+    margin-right: auto;
+  }
+
+.sponsor {
+    padding: 5px 10px;
+    margin: 20px 100px;
+}
+
+.sponsor a {
+    text-decoration: none;
+    color: #7B6080;
+    font-size: 1.1em;
+    transition: 200ms;
+}
+
+.sponsor a:hover {
+    color: #604d63;
+}
+
+.logo {
+    width: 20%;
+    margin: 20px 0;
+}
+
+.main-content {
+    margin: 20px 0;
+    text-align: center;
+}
+
+h1 {
+    margin: 25px 0;
+    font-weight: 400;
+}
+
+h2 {
+    font-weight: 700;
+    color: #411E58;
+    margin-bottom: 10px;
+}
+
+h3 {
+    margin-top: 10px;
+    font-weight: 400;
+    color: #535c68;
+}
+
+i {
+    font-size: 30px;
+    margin: 10px 5px;
+    color: #411E58;
+    transition: 200ms;
+}
+
+i:hover {
+    color: #281236;
+}
+
+.email {
+    margin: 10px 0;
+    -webkit-text-fill-color: #fff !important;
+}
+
+.email input {
+    width: 350px;
+    font-size: 0.9em;
+    text-align: center;
+    border-radius: 25px;
+    padding: 5px 0;
+    color: #fff;
+}
+
+.email input::placeholder {
+    color: #fff;
+    opacity: 1; /* Firefox */
+}
+
+.email input::-ms-input-placeholder  { /* Microsoft Edge */
+    color: #fff;
+}
+
+.normal,
+.normal:-webkit-autofill,
+.normal:-webkit-autofill:hover, 
+.normal:-webkit-autofill:focus, 
+.normal:-webkit-autofill:active  {
+    box-shadow: inherit;
+    -webkit-box-shadow: 0 0 0 30px #7B6080 inset !important;
+    -webkit-text-fill-color: #fff !important;
+    transition: 0s;
+    background-color: #7B6080;
+    border: 1px solid #7B6080 !important;
+    transition: 1s;
+}
+
+.loading,
+.loading:-webkit-autofill,
+.loading:-webkit-autofill:hover, 
+.loading:-webkit-autofill:focus, 
+.loading:-webkit-autofill:active  {
+    box-shadow: inherit;
+    -webkit-box-shadow: 0 0 0 30px #a3a3a3 inset !important;
+    -webkit-text-fill-color: #fff !important;
+    background-color: #a3a3a3;
+    border: 1px solid #a3a3a3 !important;
+    transition: 200ms;
+}
+
+.complete,
+.complete:-webkit-autofill,
+.complete:-webkit-autofill:hover, 
+.complete:-webkit-autofill:focus, 
+.complete:-webkit-autofill:active  {
+    box-shadow: inherit;
+    -webkit-box-shadow: 0 0 0 30px #27ae60 inset !important;
+    -webkit-text-fill-color: #fff !important;
+    transition: 1s;
+    background-color: #27ae60;
+    border: 1px solid #27ae60 !important;
+}
+
+.error,
+.error:-webkit-autofill,
+.error:-webkit-autofill:hover, 
+.error:-webkit-autofill:focus, 
+.error:-webkit-autofill:active  {
+    box-shadow: inherit;
+    -webkit-box-shadow: 0 0 0 30px #c0392b inset !important;
+    -webkit-text-fill-color: #fff !important;
+    background-color: #c0392b;
+    border: 1px solid #c0392b !important;
+}
+
+.footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+.footer p {
+    margin: 10px auto;
+    text-align: center;
+    color: #D5D5D5;
+    font-size: 0.7em;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #D5D5D5;
+    transition: 200ms;
+}
+
+.footer a:hover {
+    color: #AAAAAA;
+}
