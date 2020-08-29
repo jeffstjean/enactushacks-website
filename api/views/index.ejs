@@ -24,9 +24,10 @@
             <a href="/click?q=https%3A%2F%2Fwww.instagram.com%2Fenactushacksuwo%2F&source=landing" target="_blank"><i class="fab fa-instagram-square"></i></a>
         </div>
         <div class="email">
-            <form onsubmit="event.preventDefault(); add_email(this);">
-                <input class="normal" type="email" id="email" name="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'GET EMAIL UPDATES'" placeholder="GET EMAIL UPDATES">
+            <form id="email-signup" onsubmit="event.preventDefault(); add_email(this);">
+                <input class="normal" type="email" id="email" name="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'GET EMAIL UPDATES'" placeholder="GET EMAIL UPDATES"></br>
             </form>
+            <input class="submit" form="email-signup" type="submit">
         </div>
         <div class="footer">
             <p>&copy;EnactusHacks 2020 | <a href="http://github.com/jeffstjean" target="_blank">Created by Jeff St. Jean</a></p>
