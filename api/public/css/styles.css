@@ -127,7 +127,7 @@ i:hover {
     -webkit-text-fill-color: #fff !important;
 }
 
-.email input {
+.email input[type="email"] {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -140,12 +140,12 @@ i:hover {
     color: #fff;
 }
 
-.email input::placeholder {
+.email input[type="email"]::placeholder {
     color: #fff;
     opacity: 1; /* Firefox */
 }
 
-.email input::-ms-input-placeholder  { /* Microsoft Edge */
+.email input[type="email"]::-ms-input-placeholder  { /* Microsoft Edge */
     color: #fff;
 }
 
@@ -199,6 +199,20 @@ i:hover {
     -webkit-text-fill-color: #fff !important;
     background-color: #c0392b;
     border: 1px solid #c0392b !important;
+}
+
+.email input[type="submit"] {
+    width: 40%;
+    background-color: #34495e;
+    margin: 8px 30%;
+    border: 1px solid #000; 
+    border-radius: 25px;
+}
+
+@media only screen and (min-width: 800px) {
+    .submit {
+        display: none;
+      }
 }
 
 .footer p {
