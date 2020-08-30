@@ -28,7 +28,6 @@ app.set('views', __dirname + '/views')
 
 // routes
 app.get('/', (req, res, next) => { res.render('index') });
-app.use('/click', require('./routes/ClickRoute'));
 app.use('/mail', require('./routes/MailingListRoute'));
 app.use((req, res, next) => {
   if(res.statusCode === 404) {
