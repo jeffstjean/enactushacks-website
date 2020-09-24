@@ -3,27 +3,36 @@ const bcrypt = require('bcrypt')
 const { SALT_ROUNDS } = require('../config/bcrypt')
 
 const user_schema = mongoose.Schema({
+  // account info
   email: { type: String, required: 'An email is required', unique: true },
-  first_name: { type: String, required: 'A first name is required' },
-  last_name: { type: String, required: 'A last name is required' },
-  gender: { type: String, required: 'A gender is required', enum: ['male', 'female', 'other', 'na'] },
-  city: { type: String, required: 'A city is required' },
-//   shirt_size: { type: String, required: 'A shirt size is required', enum: ['xs', 's', 'm', 'l', 'xl'] },
-
-//   university: { type: String, required: 'A university is required' },
-//   major: { type: String, required: 'A major is required' },
-//   program: { type: String, required: 'A program is required' },
-//   grad_year: { type: Number, required: 'A graduation year is required' },
-//   is_stem: { type: String, required: 'You must specify if your program is STEM, non-STEM or both', enum: ['stem', 'non_stem', 'both'] },
-//   resume: { type: String, required: 'A resume is required' },
-
   password: { type: String, required: 'A password is required' },
   role: { type: String, default: 'participant', enum: ['participant'] },
   is_verified: { type: Boolean, default: false },
 
-  application_status: { type: String, default:'review',
-    enum: ['review', 'waitlisted', 'accepted', 'confirmed', 'rejected'] },
-  date_application_completed: { type: Date, default: undefined }
+  // application info
+  application_status: { type: String, default:'under review',
+    enum: ['under review', 'waitlisted', 'accepted', 'confirmed', 'rejected'] },
+  date_application_completed: { type: Date, default: undefined },
+  first_name: { type: String },
+  last_name: { type: String },
+  gender: { type: String, enum: ['male', 'female', 'other', 'na'] },
+  city: { type: String },
+
+  university: { type: String },
+  major: { type: String },
+  program: { type: String },
+  grad_year: { type: Number},
+  is_stem: { type: String, enum: ['stem', 'non_stem', 'both'] },
+  resume: { type: String },
+
+  // shipping info
+  ship_name: { type: String },
+  ship_address: { type: String },
+  ship_apartment: { type: String },
+  ship_city: { type: String },
+  ship_country: { type: String },
+  ship_province: { type: String },
+  ship_postal: { type: String },
 }, { versionKey: false } );
 
 user_schema.pre('save', function(next) {
@@ -36,7 +45,6 @@ user_schema.pre('save', function(next) {
 })
 
 user_schema.methods.is_valid_password = function(candidate_password) {
-    console.log(`Comparing ${candidate_password} to ${this.password}`)
     return bcrypt.compareSync(candidate_password, this.password);
   };
 

@@ -1,21 +1,38 @@
 const router = require('express').Router();
 const { create_user } = require('../controllers/UserController')
+const { is_user, get_user } = require('../services/AuthService')
 
 const MONGO_DUPLICATE_ERROR_CODE = 11000;
 
-router.get('/apply', (req, res) => {
-    console.log(req.session)
+router.get('/signup', (req, res) => {
     res.render('apply')
+})
+
+router.get('/apply', (req, res) => {
+    res.render('apply')
+})
+
+router.post('/login', (req, res) => {
+    get_user(req.body.email)
+    req.session.id = user._id;
+})
+
+router.post('/logout', (req, res) => {
+    req.session = null;
+    res.send('ERRRRROR')
+})
+
+router.get('/status', is_user, (req, res) => {
+    let user = req.session.user
+    res.render('status', { user })
 })
 
 router.post('/user', async (req, res, next) => {
     try {
         const { user, err } = await create_user(req.body);
-        const pass = req.body.password;
         if(user) {
-            console.log(user._id)
-            req.session._id = user._id;
-            return res.json(user)
+            req.session.id = user._id;
+            return res.redirect('status')
         }
         else {
             switch(err.name) {

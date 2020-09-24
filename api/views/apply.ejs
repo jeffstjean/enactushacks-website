@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +16,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apply | EnactusHacks</title>
-    <link rel="stylesheet" href="css/styles.css">
     <script src="js/apply.js" defer></script>
     <script src="https://kit.fontawesome.com/9b01fa1231.js" crossorigin="anonymous"></script>
 </head>
@@ -24,20 +24,17 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHRZRC2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <form action="/user" method="POST" id="apply">
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" value="jeffrey@stjean.ca" required><br>
-
-        <label for="first_name">First name:</label><br>
+        <label for="first_name">First Name:</label><br>
         <input type="text" id="first_name" name="first_name" value="Jeff" required><br>
 
-        <label for="last_name">Last name:</label><br>
+        <label for="last_name">Last Name:</label><br>
         <input type="text" id="last_name" name="last_name" value="St. Jean" required><br>
 
         <label for="gender">Gender:</label><br>
-        <select id="gender" name="gender" required>
+        <select id="gender" name="gender">
             <option selected disabled>Choose</option>
-            <option value="male">Male</option>
             <option value="female">Female</option>
+            <option value="male">Male</option>
             <option value="other">Other</option>
             <option value="na">Prefer not to say</option>
         </select><br>
@@ -45,11 +42,67 @@
         <label for="city">City:</label><br>
         <input type="text" id="city" name="city" value="London" required><br>
 
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" value="TestTest123!" required><br>
+        <label for="university">University:</label><br>
+        <input type="text" id="university" name="university" value="Western University" required><br>
 
-        <label for="password_verify">Verify Password:</label><br>
-        <input type="password" id="password_verify" name="password_verify" value="TestTest123!" required><br>
+        <label for="major">Major:</label><br>
+        <input type="text" id="major" name="major" value="Engineering" required><br>
+
+        <label for="program">Program:</label><br>
+        <input type="text" id="program" name="program" value="Mechatronic Systems Engineering" required><br>
+
+        <label for="is_stem">Field of Study:</label><br>
+        <select id="is_stem" name="is_stem">
+            <option selected disabled>Choose</option>
+            <option value="stem">Stem</option>
+            <option value="non_stem">Non-Stem</option>
+            <option value="both">Both</option>
+        </select><br>
+
+        <label for="grad_year">Grad Year:</label><br>
+        <input type="date" id="grad_year" name="grad_year" value="2020-04-30" required><br>
+
+        <label for="resume">Program:</label><br>
+        <input type="url" id="resume" name="resume" value="http://resume.com" required><br>
+
+        <label for="shipping">Shipping:</label><br>
+        <input type="checkbox" id="shipping" name="shipping"><br>
+
+        <div id="shipping_div" style="display: none;"> <!-- Default to hidden -->
+            <label for="ship_name">Name:</label><br>
+            <input type="text" id="ship_name" name="ship_name" value="Jeff"><br>
+
+            <label for="ship_address">Address:</label><br>
+            <input type="text" id="ship_address" name="ship_address" value="176 Woodward Avenue"><br>
+
+            <label for="ship_apartment">Apartment Number:</label><br>
+            <input type="text" id="ship_apartment" name="ship_apartment" value=""><br>
+
+            <label for="ship_city">City:</label><br>
+            <input type="text" id="ship_city" name="ship_city" value="London"><br>
+
+            <label for="ship_postal">Country:</label><br>
+            <input type="text" id="ship_postal" name="ship_postal" value="Canada"><br>
+
+            <label for="ship_postal">Postal Code:</label><br>
+            <input type="text" id="ship_postal" name="ship_postal" value="N6H2H3"><br>
+        </div>
+
+        <label for="is_entrepreneur">Have you ever considered becoming an entrepreneur?</label><br>
+        <select id="is_entrepreneur" name="is_entrepreneur">
+            <option selected disabled>Choose</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select><br>
+
+        <label for="q_quality">What do you think is the most important quality to have working in tech? Working in business?</label><br>
+        <textarea name="q_quality" id="q_quality" required>Magic</textarea><br>
+
+        <label for="q_responsibility">What do you think social responsibility is and why is it important, especially now in 2020?</label><br>
+        <textarea name="q_responsibility" id="q_responsibility" required>Me</textarea><br>
+
+        <label for="q_experience">What do you hope to gain from this experience?</label><br>
+        <textarea name="q_experience" id="q_experience" required>Stuff</textarea><br>
 
         <br>
         <input type="submit" value="Submit">
