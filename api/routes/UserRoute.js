@@ -111,7 +111,7 @@ router.get('/verify/:token', async (req, res, next) => {
                 user.application_status = 'incomplete'
                 user.is_verified = true
                 await user.save()
-                return res.redirect('/status')
+                return res.redirect('/apply')
             }
         }
     }
