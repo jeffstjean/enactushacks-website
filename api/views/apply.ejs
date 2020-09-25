@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176563315-1"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-176563315-1');</script>
+    <!-- End Global site tag (gtag.js) - Google Analytics -->
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MHRZRC2');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply | EnactusHacks</title>
+    <script src="js/apply.js" defer></script>
+    <script src="https://kit.fontawesome.com/9b01fa1231.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHRZRC2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <form action="/apply" method="POST" id="apply">
+        <label for="first_name">First Name:</label><br>
+        <input type="text" id="first_name" name="first_name" value="Jeff" required><br>
+
+        <label for="last_name">Last Name:</label><br>
+        <input type="text" id="last_name" name="last_name" value="St. Jean" required><br>
+
+        <label for="gender">Gender:</label><br>
+        <select id="gender" name="gender">
+            <option selected disabled>Choose</option>
+            <option value="female">Female</option>
+            <option value="male">Male</option>
+            <option value="other">Other</option>
+            <option value="na">Prefer not to say</option>
+        </select><br>
+
+        <label for="city">City:</label><br>
+        <input type="text" id="city" name="city" value="London" required><br>
+
+        <label for="university">University:</label><br>
+        <input type="text" id="university" name="university" value="Western University" required><br>
+
+        <label for="major">Major:</label><br>
+        <input type="text" id="major" name="major" value="Engineering" required><br>
+
+        <label for="program">Program:</label><br>
+        <input type="text" id="program" name="program" value="Mechatronic Systems Engineering" required><br>
+
+        <label for="is_stem">Field of Study:</label><br>
+        <select id="is_stem" name="is_stem">
+            <option selected disabled>Choose</option>
+            <option value="stem">Stem</option>
+            <option value="non_stem">Non-Stem</option>
+            <option value="both">Both</option>
+        </select><br>
+
+        <label for="grad_year">Grad Year:</label><br>
+        <input type="date" id="grad_year" name="grad_year" value="2020-04-30" required><br>
+
+        <label for="resume">Program:</label><br>
+        <input type="url" id="resume" name="resume" value="http://resume.com" required><br>
+
+        <p>If you'd like to receive merchandise (i.e. stickers, postcards, masks, etc.) and/or appreciation gifts, please enter your shipping address below. EnactusHacks respects the privacy of our users. This information will not be shared with anyone other than EnactusHacks. EnactusHacks will be using the following information to ship merchandise. If you do not wish to disclose this information, simply leave the below unchecked. <a href="/privacy" target="_blank">See full privacy policy.</a></p>
+
+        <label for="shipping">Shipping:</label><br>
+        <input type="checkbox" id="shipping" name="shipping"><br>
+
+        <div id="shipping_div" style="display: none;"> <!-- Default to hidden -->
+            <label for="ship_name">Name:</label><br>
+            <input type="text" id="ship_name" name="ship_name" value="Jeff"><br>
+
+            <label for="ship_address">Address:</label><br>
+            <input type="text" id="ship_address" name="ship_address" value="176 Woodward Avenue"><br>
+
+            <label for="ship_apartment">Apartment Number:</label><br>
+            <input type="text" id="ship_apartment" name="ship_apartment" value=""><br>
+
+            <label for="ship_city">City:</label><br>
+            <input type="text" id="ship_city" name="ship_city" value="London"><br>
+
+            <label for="ship_postal">Country:</label><br>
+            <input type="text" id="ship_country" name="ship_country" value="Canada"><br>
+
+            <label for="ship_postal">Postal Code:</label><br>
+            <input type="text" id="ship_postal" name="ship_postal" value="N6H2H3"><br>
+        </div>
+
+        <label for="is_entrepreneur">Have you ever considered becoming an entrepreneur?</label><br>
+        <select id="is_entrepreneur" name="is_entrepreneur">
+            <option selected disabled>Choose</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select><br>
+
+        <label for="q_quality">What do you think is the most important quality to have working in tech? Working in business?</label><br>
+        <textarea name="q_quality" id="q_quality" required>Magic</textarea><br>
+
+        <label for="q_responsibility">What do you think social responsibility is and why is it important, especially now in 2020?</label><br>
+        <textarea name="q_responsibility" id="q_responsibility" required>Me</textarea><br>
+
+        <label for="q_experience">What do you hope to gain from this experience?</label><br>
+        <textarea name="q_experience" id="q_experience" required>Stuff</textarea><br>
+
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

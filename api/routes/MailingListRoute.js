@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const { add_to_mailing_list } = require('../services/Email')
+const { add_to_mailing_list } = require('../services/EmailService')
 
-router.post('/', async (req, res) => {
+router.post('/mail', async (req, res) => {
     const list = req.body.list
     const email = req.body.email
     if(!email) {

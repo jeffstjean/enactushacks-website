@@ -9,6 +9,7 @@ services:
             - "5000:5000"
         volumes:
             - ./api:/home/node/app
+            - /home/node/app/node_modules
         deploy:
             replicas: 1
             restart_policy: 
