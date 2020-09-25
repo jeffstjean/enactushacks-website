@@ -23,6 +23,7 @@ app.use(express.static('public'));
 app.use(favicon(path.join(__dirname,'public','img','favicon.ico')));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieSession(cookie_config));
+app.use(cookieParser());
 app.use(express.json());
 if(node_env === 'production') app.use(morgan('combined'));
 else app.use(morgan('dev'));
@@ -34,6 +35,10 @@ app.set('views', __dirname + '/views')
 // routes
 app.get('/', (req, res, next) => { res.render('index') });
 app.use('/', require('./routes/MailingListRoute'));
+app.use((req, res, next) => {
+  if(req.cookies.dev) next();
+  else res.redirect('/')
+})
 app.use('/', require('./routes/UserRoute'));
 // for debugging
 if(node_env === 'development') {

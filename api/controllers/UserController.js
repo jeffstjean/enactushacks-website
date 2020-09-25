@@ -29,6 +29,42 @@ const create_user = async(user_data) => {
 
 }
 
+const get_user = async(_id) => {
+    try {
+        const user = await User.findById(_id)
+        return (user) ? { user, err: null } : { user: null, err: 'NoUser' }
+    }
+    catch(err) {
+        return { user: null, err }
+    }
+
+}
+
+const get_user_by_email = async(email) => {
+    try {
+        const user = await User.findOne({ email: email })
+        return (user) ? { user, err: null } : { user: null, err: 'NoUser' }
+    }
+    catch(err) {
+        return { user: null, err }
+    }
+
+}
+
+const get_user_by_token = async(token) => {
+    try {
+        const user = await User.findOne({ token: token })
+        return (user) ? { user, err: null } : { user: null, err: 'NoUser' }
+    }
+    catch(err) {
+        return { user: null, err }
+    }
+
+}
+
 module.exports = {
-    create_user
+    create_user,
+    get_user,
+    get_user_by_email,
+    get_user_by_token
 }

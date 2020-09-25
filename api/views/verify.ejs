@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,32 +15,23 @@
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup | EnactusHacks</title>
-    <script src="js/signup.js" defer></script>
+    <title>Verify Email | EnactusHacks</title>
     <script src="https://kit.fontawesome.com/9b01fa1231.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHRZRC2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <% if(locals.errors) { %>
-        <% errors.forEach(error => { %>
-            <p><%= error.message %></p>
-        <% }) %>
+    <% if(locals.user) { %>
+    <p>We have sent an email to <%= user.email %>. Please click the link in that email before proceeding (check your spam/junk).</p>
+    <%} else if(locals.expired) { %>
+        <p>Sorry that token has expired. Please request a new one below.</p>
     <% } %>
-    <form action="/user" method="POST" id="apply">
+    <h1>Resend Verification</h1></p>
+    <form action="/verify" method="POST" id="verify">
         <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" value="jeffrey@stjean.ca" required><br>
-
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" value="TestTest123!" required><br>
-
-        <label for="password_verify">Verify Password:</label><br>
-        <input type="password" id="password_verify" name="password_verify" value="TestTest123!" required><br>
-
-        <br>
+        <input type="email" id="email" name="email" required><br>
         <input type="submit" value="Submit">
     </form>
-    <a href="/login">Already have an account?</a>
 </body>
 </html>

@@ -5,6 +5,7 @@ const is_user = async (req, res, next) => {
         try {
             const user = await User.findById(req.session.id)
             if(!user) return next('NoUser')
+            if(user.application_status === 'unverified') return res.render('verify', { user })
             req.session.user = user;
             next()
         }
@@ -13,7 +14,8 @@ const is_user = async (req, res, next) => {
         }
     }
     else {
-        res.redirect('/login')
+        console.log('Redirecting user to signup')
+        res.redirect('/signup')
     }
 }
 
