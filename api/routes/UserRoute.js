@@ -5,7 +5,12 @@ const { is_user } = require('../services/AuthService')
 const MONGO_DUPLICATE_ERROR_CODE = 11000;
 
 router.get('/signup', (req, res) => {
-    res.render('login')
+    if(req.session.id) {
+        res.redirect('status')
+    }
+    else {
+        res.render('login')
+    }
 })
 
 router.get('/apply', is_user, (req, res) => {
@@ -122,7 +127,12 @@ router.get('/verify/:token', async (req, res, next) => {
 })
 
 router.get('/login', (req, res) => {
-    res.render('login')
+    if(req.session.id) {
+        res.redirect('status')
+    }
+    else {
+        res.render('login')
+    }
 })
 
 router.post('/login', async (req, res) => {
