@@ -31,6 +31,7 @@ body, html {
 
 .container {
     width: 70vw;
+    height: 95vh;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -171,11 +172,18 @@ body, html {
     border-radius: 25px;
 }
 
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    height: 5vh;
+}
+
 .footer p {
     margin: 10px auto;
     text-align: center;
     color: #a8a8a8;
-    font-size: 0.7em;
+    font-size: 2rem;
 }
 
 .footer a {

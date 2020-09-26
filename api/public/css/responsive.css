@@ -1,1 +1,15 @@
+@media screen and (max-width: 850px) {
+    .title-image {
+        width: 94vw;
+    }
+}
 
+@media screen and (max-width: 500px) {
+    .title-image {
+        width: 94vw;
+    }
+
+    :root {
+        font-size: 2vw;
+    }
+}
