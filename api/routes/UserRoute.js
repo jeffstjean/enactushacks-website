@@ -5,7 +5,7 @@ const { is_user } = require('../services/AuthService')
 const MONGO_DUPLICATE_ERROR_CODE = 11000;
 
 router.get('/signup', (req, res) => {
-    res.render('signup')
+    res.render('login')
 })
 
 router.get('/apply', is_user, (req, res) => {
