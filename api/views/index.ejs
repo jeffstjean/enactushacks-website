@@ -4,6 +4,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176563315-1"></script>
     <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-176563315-1');</script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
     <!-- End Global site tag (gtag.js) - Google Analytics -->
     <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -15,7 +16,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EnactusHacks | 24 Hour Startup</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/button.css">
+    <link rel="stylesheet" href="css/responsive.css">
     <script src="js/main.js" defer></script>
     <script src="https://kit.fontawesome.com/9b01fa1231.js" crossorigin="anonymous"></script>
 </head>
@@ -23,29 +29,18 @@
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHRZRC2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <div class="img-wrapper"><img class="left-img" src="img/left.png"/></div>
-    <div class="img-wrapper"><img class="right-img" src="img/right.png"/></div>
     <div class="container">
-        <div class="nav">
-            <ul>
-                <li><a href="https://enactushacks.devpost.com/" target="_blank">Last Year's Winners</a></li>
-                <li><a href="/docs/sponsorship_package.pdf" download="Enactus Hacks Sponsorship Package 2020">Become a Sponsor!</a></li>
-            </ul>
-        </div>
-        <img class="logo" src="img/logo.svg" alt="EnactusHacks | A 24 Hour Startup">
+        <img class="logo" src="img/enactushacksLogoNoText.png" alt="EnactusHacks | A 24 Hour Startup">
+        <img class="title-image" src="img/enactushacksText.png" alt="EnactusHacks 2.0">
+        <!-- For SEO Purposes -->
+        <h1 hidden>EnactusHacks 2.0</h1>
         <div class="main-content">
-            <h1 id="random-title">/__*^{!</h1>
             <h2>October 24th - 25th, 2020</h2>
-            <h3>// Virtual Hackathon</h3>
-            <a id="social-facebook" href="https://www.facebook.com/enactushacksuwo" target="_blank"><i class="fab fa-facebook-square"></i></a>
-            <a id="social-instagram" href="https://www.instagram.com/enactushacksuwo/" target="_blank"><i class="fab fa-instagram-square"></i></a>
+            <h2 id="random-title">/__*^{!</h2>
         </div>
-        <div class="email">
-            <form id="email-signup" onsubmit="event.preventDefault(); add_email(this);">
-                <input class="normal" type="email" id="email" name="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'GET EMAIL UPDATES'" placeholder="GET EMAIL UPDATES"></br>
-            </form>
-            <input class="submit" form="email-signup" type="submit">
-        </div>
+        <a href="learnMore.ejs" class="btn-round btn-purple"><span class="btn-text">Learn More</span></a>
+        <a href="apply.ejs" class="btn-round btn-yellow"><span class="btn-text">Apply Now</span></a>
+
         <div class="footer">
             <p>&copy;EnactusHacks 2020 | <a href="http://github.com/jeffstjean" target="_blank">Created by Jeff St. Jean</a></p>
         </div>

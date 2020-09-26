@@ -1,0 +1,24 @@
+:root {
+    --logo-width: 40rem;
+    --logo-margin-top: 3rem;
+    --h1-color: white;
+    --h1-font-weight: 700;
+    --h1-font-size: 4rem;
+    --h2-color: white;
+    --h2-font-weight: 600;
+    --h2-font-size: 3rem;
+    --h3-color: white;
+    --h3-font-weight: 400;
+    --h3-font-size: 2.5rem;
+    --i-color: #a13fed;
+    --i-color-hover: pink;
+    --title-image-width: 80rem;
+    --btn-text-color-light: white;
+    --btn-text-color-dark: black;
+    --btn-text-font-size: 3rem;
+    --btn-yellow-background: #f4e600;
+    --btn-purple-background: #a13fed;
+    --btn-shadow-offset-x: 0;
+    --btn-shadow-offset-y: 0;
+    --btn-shadow-offset-blur: 1.8rem;
+}

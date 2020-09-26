@@ -1,0 +1,32 @@
+.btn-round {
+    background-color: whitesmoke;
+    color: var(--btn-text-color-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1000px;
+    width: 40rem;
+    height: 6rem;
+    margin-bottom: 2.5rem;
+}
+
+.btn-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--btn-text-color-dark);
+    font-size: var(--btn-text-font-size);
+}
+
+.btn-yellow {
+    box-shadow: var(--btn-shadow-offset-x) var(--btn-shadow-offset-y) var(--btn-shadow-offset-blur) var(--btn-yellow-background);
+    background-color: var(--btn-yellow-background);
+    padding: 1rem;
+}
+
+.btn-purple {
+    box-shadow: var(--btn-shadow-offset-x) var(--btn-shadow-offset-y) var(--btn-shadow-offset-blur) var(--btn-purple-background);
+    background-color: var(--btn-purple-background);
+    padding: 1rem;
+}
+

@@ -1,11 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap');
-
 body, html {
-    background-color: #F8F8F8;
+    background-color: black;
     margin: 0;
     height: 100%;
     width: 100%;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Cairo', sans-serif;
+}
+
+.logo {
+    margin-top: var(--logo-margin-top);
+    width: var(--logo-width);
+}
+
+.title-image {
+    width: var(--title-image-width);
 }
 
 .left-img {
@@ -22,26 +29,6 @@ body, html {
     height: 100vh;
 }
 
-@media only screen and (max-width: 800px) {
-    .right-img {
-        display: none;
-    }
-
-    .left-img {
-        display: none;
-    }
-
-    body {
-        background: rgb(123,96,128);
-        background: linear-gradient(45deg, rgba(123,96,128,0.3) 0%, rgba(123,96,128,0.2) 100%);
-    }
-
-    .logo {
-        width: 25%;
-        margin: 0px 0;
-    }
-}
-
 .container {
     width: 70vw;
     margin: auto;
@@ -50,12 +37,6 @@ body, html {
     justify-content: center;
     align-items: center;
     z-index: 10;
-}
-
-@media only screen and (max-width: 800px) {
-    .container {
-        width: 100vw;
-    }
 }
 
 .nav {
@@ -98,45 +79,9 @@ body, html {
     color: #604d63;
 }
 
-
-@media only screen and (min-width: 800px) {
-    .logo {
-        width: 20%;
-        margin: 20px 0;
-    }
-}
-
 .main-content {
     margin: 20px 0;
     text-align: center;
-}
-
-h1 {
-    margin: 25px 0;
-    font-weight: 400;
-}
-
-h2 {
-    font-weight: 700;
-    color: #411E58;
-    margin-bottom: 10px;
-}
-
-h3 {
-    margin-top: 10px;
-    font-weight: 400;
-    color: #535c68;
-}
-
-i {
-    font-size: 30px;
-    margin: 10px 5px;
-    color: #411E58;
-    transition: 200ms;
-}
-
-i:hover {
-    color: #281236;
 }
 
 .email {
@@ -226,12 +171,6 @@ i:hover {
     border-radius: 25px;
 }
 
-@media only screen and (min-width: 800px) {
-    .submit {
-        display: none;
-      }
-}
-
 .footer p {
     margin: 10px auto;
     text-align: center;
@@ -247,15 +186,4 @@ i:hover {
 
 .footer a:hover {
     color: #AAAAAA;
-}
-
-@media only screen and (min-width: 800px) {
-    .footer {
-        position: absolute;
-        width: 100%;
-        bottom: 0;
-    }   
-    .footer p, .footer a {
-        color: #D5D5D5;
-    }
 }
