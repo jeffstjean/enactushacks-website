@@ -35,18 +35,14 @@ app.set('views', __dirname + '/views')
 // routes
 app.get('/', (req, res, next) => { res.render('index') });
 app.use('/', require('./routes/MailingListRoute'));
-app.use((req, res, next) => {
-  if(req.cookies.dev) next();
-  else res.redirect('/')
-})
 app.use('/', require('./routes/UserRoute'));
+app.use('/', require('./routes/AboutRoute'));
 // for debugging
 if(node_env === 'development') {
   const os = require('os');
   app.get('/test', (req, res, next) => { res.send(`Hello from ${os.hostname()}`) });
 }
 app.use((error, req, res, next) => {
-  console.log(error)
   if(res.statusCode === 406) {
     res.send('406 Bad request')
   }
