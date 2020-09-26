@@ -4,7 +4,6 @@ This universal selector, * will select every element
 *, *::after, *::before {
     margin: 0;
     padding: 0;
-
     box-sizing: inherit;
 }
 
@@ -18,7 +17,7 @@ This is the same as 62.5%. It's better to use percentages for accessibility reas
 Not supported below IE9.
 */
 html {
-    font-size: 62.5%
+    font-size: 62.5%;
 }
 
 body {

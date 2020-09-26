@@ -5,9 +5,14 @@
     align-items: center;
     justify-content: center;
     border-radius: 1000px;
-    width: 40rem;
-    height: 6rem;
-    margin-bottom: 2.5rem;
+    width: var(--btn-round-width);
+    height: var(--btn-round-height);
+    margin-bottom: var(--btn-round-margin-bottom);
+    transition: var(--transition-time);
+}
+
+.btn-round:hover {
+    transform: scale(var(--btn-round-hover-scale));
 }
 
 .btn-text {
@@ -21,12 +26,12 @@
 .btn-yellow {
     box-shadow: var(--btn-shadow-offset-x) var(--btn-shadow-offset-y) var(--btn-shadow-offset-blur) var(--btn-yellow-background);
     background-color: var(--btn-yellow-background);
-    padding: 1rem;
+    padding: var(--btn-padding);
 }
 
 .btn-purple {
     box-shadow: var(--btn-shadow-offset-x) var(--btn-shadow-offset-y) var(--btn-shadow-offset-blur) var(--btn-purple-background);
     background-color: var(--btn-purple-background);
-    padding: 1rem;
+    padding: var(--btn-padding);
 }
 
