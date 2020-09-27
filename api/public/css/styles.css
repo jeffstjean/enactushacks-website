@@ -15,6 +15,11 @@ body, html {
     width: var(--title-image-width);
 }
 
+.title-container {
+    margin-top: var(--title-margin-top);
+    width: 100%;
+}
+
 .left-img {
     position: absolute;
     top: 0px;
@@ -30,13 +35,11 @@ body, html {
 }
 
 .container {
-    width: 70vw;
+    width: var(--container-width);
     min-height: 95vh;
     margin: auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     z-index: 10;
 }
 
