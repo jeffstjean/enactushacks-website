@@ -38,11 +38,14 @@
                 <% } else { %>
                     <h1>Hi, your application status is <span class="status-alternate"><%= user.application_status.toUpperCase() %></span>.</h1>
                 <% } %>
-                <% if(!user.date_application_completed) { %>
+                <% if(!user.date_application_completed && accepting_applications) { %>
                     <a href="/apply"><button class="btn btn-purple action">Complete Application</button></a>
                 <% } else { %>
                     <a href="/about"><button class="btn btn-purple action">About EnactusHacks</button></a>
                 <% } %>
+                <% if(!accepting_applications) { %>
+                    <p>Applications are now closed.</p>
+                <% }  %>
             </div>
         </div>
     </div>

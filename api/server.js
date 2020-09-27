@@ -36,8 +36,10 @@ app.set('views', __dirname + '/views')
 app.get('/', (req, res, next) => { res.render('index', { is_homepage: true }) });
 app.use('/', require('./routes/AboutRoute'));
 app.use('/', require('./routes/MailingListRoute'));
+if(accepting_applications) {
+  app.use('/', require('./routes/ApplyRoute'));
+}
 app.use('/', require('./routes/AccountRoute'));
-app.use('/', require('./routes/ApplyRoute'));
 app.use('/', require('./routes/AuthRoute'));
 app.use('/', require('./routes/VerifyRoute'));
 // for debugging

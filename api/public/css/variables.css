@@ -6,6 +6,8 @@
 }
 
 :root {
+    --container-width: 70vw;
+    --title-margin-top: 8rem;
     --logo-width: 40rem;
     --logo-margin-top: 3rem;
     --logo-small-width: 10rem;

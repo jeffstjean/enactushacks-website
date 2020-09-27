@@ -14,7 +14,6 @@ const is_user = async (req, res, next) => {
         }
     }
     else {
-        console.log('Redirecting user to signup')
         res.redirect('/signup')
     }
 }

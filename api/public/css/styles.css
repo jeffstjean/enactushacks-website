@@ -21,6 +21,11 @@ body, html {
     width: var(--title-image-width);
 }
 
+.title-container {
+    margin-top: var(--title-margin-top);
+    width: 100%;
+}
+
 .left-img {
     position: absolute;
     top: 0px;
@@ -36,13 +41,11 @@ body, html {
 }
 
 .container {
-    width: 70vw;
-    height: 95vh;
+    width: var(--container-width);
+    min-height: 95vh;
     margin: auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     z-index: 10;
 }
 
@@ -179,8 +182,6 @@ body, html {
 }
 
 .footer {
-    position: absolute;
-    bottom: 0;
     width: 100vw;
     height: 5vh;
 }

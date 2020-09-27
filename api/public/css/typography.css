@@ -58,3 +58,7 @@ a {
 .text-yellow {
     color: var(--color-yellow) !important;
 }
+
+.text-purple {
+    color: var(--color-purple) !important;
+}
