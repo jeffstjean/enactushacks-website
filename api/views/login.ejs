@@ -15,44 +15,61 @@
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Authenticate | EnactusHacks</title>
+    <title>Welcome | EnactusHacks</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/button.css">
+    <link rel="stylesheet" href="css/utility.css">
+    <link rel="stylesheet" href="css/responsive.css">
     <script src="https://kit.fontawesome.com/9b01fa1231.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHRZRC2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <% if(locals.errors) { %>
-        <% errors.forEach(error => { %>
-            <% if(error === 'InvalidCredentials') { %>
-                <p>Incorrect email or password.</p>
+    <!-- <a href="/"><img class="logo-small" src="img/enactushacksLogoNoText.png" alt="EnactusHacks | A 24 Hour Startup"></a> -->
+    <%- include('partials/nav.ejs') %>
+    <img class="img-title" src="img/signin_text.png" alt="Sign-In">
+    <div class="form-container">
+        <div class="flex-container">
+            <% if(locals.errors) { %>
+                <div class="error">
+                    <% errors.forEach(error => { %>
+                        <% if(error === 'InvalidCredentials') { %>
+                            <p>Incorrect email or password.</p>
+                        <% } else if(error === 'PasswordMismatch') { %>
+                            <p>Passwords do not match.</p>
+                        <% } else if(error === 'DuplicateUser') { %>
+                            <p>A user with that email already exists.</p>
+                        <% } else if(error === 'InvalidPassword') { %>
+                            <p>Passwords must be at least 8 characters, container one uppercase and lowercase letter, a special character and a number.</p>
+                        <% } else {%>
+                            <p><%= error %></p>
+                        <% } %>
+                    <% }) %>
+                </div>
             <% } %>
-        <% }) %>
-    <% } %>
-    <form action="/login" method="POST" id="apply">
-        <h1>Login</h1>
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" value="jeffrey@stjean.ca" required><br>
-
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" value="TestTest123!" required><br>
-
-        <br>
-        <input type="submit" value="Log In">
-    </form>
-    <form action="/user" method="POST" id="create">
-        <h1>Create Account</h1>
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" value="jeffrey@stjean.ca" required><br>
-
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" value="TestTest123!" required><br>
-
-        <label for="password_verify">Verify Password:</label><br>
-        <input type="password" id="password_verify" name="password_verify" value="TestTest123!" required><br>
-
-        <br>
-        <input type="submit" value="Submit">
-    </form>
+            <form action="/login" method="POST" id="login">
+                <h1>Login</h1>
+                <input type="email" id="email" name="email" placeholder="Email" required><br>
+        
+                <input type="password" id="password" name="password" placeholder="Password" required><br>
+        
+                <br>
+                <input type="submit" value="Log In" class="btn btn-purple action">
+            </form>
+            <form action="/signup" method="POST" id="create">
+                <h1>Create Account</h1>
+                <input type="email" id="email" name="email" placeholder="Email" required><br>
+        
+                <input type="password" id="password" name="password" placeholder="Password" required><br>
+        
+                <br>
+                <input type="submit" value="Sign Up" class="btn btn-yellow action">
+            </form>
+        </div>
+    </div>
 </body>
 </html>

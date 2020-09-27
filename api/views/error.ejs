@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +15,7 @@
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Status | EnactusHacks</title>
+    <title>Error | EnactusHacks</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/styles.css">
@@ -29,21 +30,16 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHRZRC2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <%- include('partials/nav.ejs') %>
-    <img class="img-title" src="img/status_text.png" alt="Sign-In">
+    <img class="img-title" src="img/error_text.png" alt="Sign-In">
     <div class="form-container">
         <div class="flex-container">
-            <div class="status">
-                <% if(user.first_name) { %>
-                    <h1>Hi <span class="status-alternate"><%= user.first_name %></span>, your application status is <span class="status-alternate"><%= user.application_status.toUpperCase() %></span>.</h1>
-                <% } else { %>
-                    <h1>Hi, your application status is <span class="status-alternate"><%= user.application_status.toUpperCase() %></span>.</h1>
-                <% } %>
-                <% if(!user.date_application_completed) { %>
-                    <a href="/apply"><button class="btn btn-purple action">Complete Application</button></a>
-                <% } else { %>
-                    <a href="/about"><button class="btn btn-purple action">About EnactusHacks</button></a>
-                <% } %>
-            </div>
+            <% if(statusCode >= 500) { %>
+                <h1>Uh-oh! Looks like something went wrong on our end. Please try again later.</h1>
+            <% } else if(statusCode === 404) { %>
+                <h1>That page doesn't exist!</h1>
+            <% } else { %>
+                <h1>Uh-oh! Looks like something went wrong with your request. Please try again later.</h1>
+            <% } %>
         </div>
     </div>
 </body>
