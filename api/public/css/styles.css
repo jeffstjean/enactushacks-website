@@ -31,7 +31,7 @@ body, html {
 
 .container {
     width: 70vw;
-    height: 95vh;
+    min-height: 95vh;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -173,8 +173,6 @@ body, html {
 }
 
 .footer {
-    position: absolute;
-    bottom: 0;
     width: 100vw;
     height: 5vh;
 }
