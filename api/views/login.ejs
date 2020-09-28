@@ -25,16 +25,16 @@
     <link rel="stylesheet" href="css/responsive.css">
     <script src="https://kit.fontawesome.com/9b01fa1231.js" crossorigin="anonymous"></script>
 </head>
+<%- include('partials/nav.ejs') %>
 <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHRZRC2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <!-- <a href="/"><img class="logo-small" src="img/enactushacksLogoNoText.png" alt="EnactusHacks | A 24 Hour Startup"></a> -->
-    <%- include('partials/nav.ejs') %>
     <div class="container u-flex-center">
-        <img class="img-title" src="img/signin_text.png" alt="Sign-In">
-        <div class="form-container">
-            <div class="flex-container">
+        <img class="title-image" src="img/signin_text.png" alt="Sign-In">
+        <div class="form-container u-full-width">
+            <div class="flex-container u-full-width u-text-center u-flex-center" id="login-form">
                 <% if(locals.errors) { %>
                     <div class="error">
                         <% errors.forEach(error => { %>

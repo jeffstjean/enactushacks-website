@@ -25,11 +25,11 @@
     <link rel="stylesheet" href="css/responsive.css">
     <script src="https://kit.fontawesome.com/9b01fa1231.js" crossorigin="anonymous"></script>
 </head>
+<%- include('partials/nav.ejs') %>
 <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHRZRC2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <%- include('partials/nav.ejs') %>
     <div class="container u-flex-center">
         <img class="img-title" src="img/error_text.png" alt="Yikes!">
         <% if(statusCode >= 500) { %>

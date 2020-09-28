@@ -1,6 +1,36 @@
+@media screen and (max-width: 950px) {
+    #login-form {
+        flex-direction: column;
+    }
+
+    .flex-container form:not(:last-child) {
+        border-right: none;
+        border-bottom: 1px solid var(--color-purple);
+        padding-bottom: 4rem;
+    }
+
+    .flex-container form:not(:first-child) {
+        padding-top: 3rem;
+    }
+
+    .flex-container form h1 {
+        margin: 0;
+    }
+}
+
 @media screen and (max-width: 850px) {
     .title-image {
         width: 95vw;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .form-container {
+        width: 95vw;
+    }
+
+    :root {
+        --container-width: 90vw;
     }
 }
 

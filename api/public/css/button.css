@@ -54,7 +54,7 @@ button {
     cursor: pointer;
     border-width: 0px;
     border-radius: 1000px;
-    width: 10rem;
+    width: var(--action-width);
     height: var(--action-height);
     font-size: var(--action-font-size);
 }

@@ -23,6 +23,8 @@
 }
 
 .title-container {
+    display: flex;
+    flex-direction: column;
     margin-top: var(--title-margin-top);
     width: 100%;
 }
@@ -229,10 +231,8 @@ section:not(:last-child) {
     width: 75%;
     margin: auto;
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     border-radius: 2rem;
-    text-align: center;
 }
 
 .flex-container form:not(:last-child) {
@@ -275,17 +275,21 @@ form input[type=email], form input[type=password] {
 
 .nav {
     position: absolute;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 1px 1px;
-    grid-template-areas: "logo . action";
     width: 100vw;
 }
 
 .nav-logo {
+    position: absolute;
+    left: var(--nav-lr-margin);
+    top: calc(var(--nav-top-margin)*11/12);
     grid-area: logo;
     height: var(--action-height);
+}
+
+.btn-nav {
+    position: absolute;
+    right: var(--nav-lr-margin);
+    top: var(--nav-top-margin);
 }
 
 .nav-action {
@@ -319,9 +323,9 @@ form input[type=email], form input[type=password] {
 #apply input[type="date"],
 #apply input[type="url"],
 #apply textarea {
-    width: 30rem;
+    width: 100%;
     margin: 1rem 0 1.5rem;
-    height: 2.5rem;
+    height: 3.5rem;
     padding: 1.25rem 0.75rem;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -329,22 +333,22 @@ form input[type=email], form input[type=password] {
 }
 
 #apply select {
-    width: 30rem;
+    width: 100%;
     margin: 1rem 0 1.5rem;
-    height: 2.5rem;
+    height: 3.5rem;
     padding: 0 0.75rem;
 }
 
 .caption-label {
     margin-top: 0.75rem;
-    font-size: 1.25rem;
+    font-size: 2.1rem;
 }
 
 .shipping-wrapper {
     border: var(--color-yellow) 4px solid;
     border-radius: 5rem;
     padding: 2rem;
-    margin: 2rem;
+    margin: 2rem 0;
 }
 
 .shipping-wrapper input[type="checkbox"] {
@@ -366,5 +370,4 @@ form input[type=email], form input[type=password] {
 
 textarea {
     min-height: 10rem;
-    min-width: 50rem;
 }

@@ -24,30 +24,28 @@
     <link rel="stylesheet" href="css/responsive.css">
     <script src="https://kit.fontawesome.com/9b01fa1231.js" crossorigin="anonymous"></script>
 </head>
+<%- include('partials/nav.ejs') %>
 <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHRZRC2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <%- include('partials/nav.ejs') %>
-    <img class="img-title" src="img/status_text.png" alt="Sign-In">
-    <div class="form-container">
-        <div class="flex-container">
-            <div class="status">
-                <% if(user.first_name) { %>
-                    <h1>Hi <span class="status-alternate"><%= user.first_name %></span>, your application status is <span class="status-alternate"><%= user.application_status.toUpperCase() %></span>.</h1>
-                <% } else { %>
-                    <h1>Hi, your application status is <span class="status-alternate"><%= user.application_status.toUpperCase() %></span>.</h1>
-                <% } %>
-                <% if(!user.date_application_completed && accepting_applications) { %>
-                    <a href="/apply"><button class="btn btn-purple action">Complete Application</button></a>
-                <% } else { %>
-                    <a href="/about"><button class="btn btn-purple action">About EnactusHacks</button></a>
-                <% } %>
-                <% if(!accepting_applications) { %>
-                    <p>Applications are now closed.</p>
-                <% }  %>
-            </div>
+    <div class="container u-flex-center">
+        <img class="title-image" src="img/status_text.png" alt="Your Profile">
+        <div class="status u-text-center">
+            <% if(user.first_name) { %>
+                <h1>Hi <span class="status-alternate"><%= user.first_name %></span>, your application status is <span class="status-alternate"><%= user.application_status.toUpperCase() %></span>.</h1>
+            <% } else { %>
+                <h1>Hi, your application status is <span class="status-alternate"><%= user.application_status.toUpperCase() %></span>.</h1>
+            <% } %>
         </div>
+        <% if(!user.date_application_completed && accepting_applications) { %>
+            <a href="apply" class="btn-round btn-purple"><span class="btn-text">Finish Applying</span></a>
+        <% } else { %>
+            <a href="about" class="btn-round btn-purple"><span class="btn-text">Learn More</span></a>
+        <% } %>
+        <% if(!accepting_applications) { %>
+            <p class="text-small">Applications are now closed.</p>
+        <% }  %>
     </div>
 </body>
 </html>

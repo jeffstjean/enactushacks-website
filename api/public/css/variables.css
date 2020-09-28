@@ -8,6 +8,7 @@
 :root {
     --action-font-size: 1.6rem;
     --action-height: 4rem;
+    --action-width: 13rem;
     --vertical-margin-small: 2rem;
     --section-padding: 5rem;
     --container-width: 70vw;
@@ -52,4 +53,6 @@
     --btn-shadow-offset-y: 0;
     --btn-shadow-offset-blur: 1.8rem;
     --transition-time: 200ms;
+    --nav-top-margin: 4rem;
+    --nav-lr-margin: 3rem;
 }

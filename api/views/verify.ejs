@@ -30,22 +30,21 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHRZRC2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <%- include('partials/nav.ejs') %>
-    <img class="img-title" src="/img/verify_text.png" alt="Sign-In">
-    <div class="form-container">
-        <div class="flex-container">
-            <form action="/verify" method="POST" id="verify">
-                <div class="verify-msg">
-                    <% if(locals.user) { %>
-                        <p>We have sent an email to <%= user.email %>. Please click the link in that email before proceeding (check your spam/junk).</p>
-                    <%} else if(locals.expired) { %>
-                        <p>Sorry that token has expired. Please request a new one below.</p>
-                    <% } %>
-                </div>
-                <h3>Resend Verification</h3></p>
-                <label for="email">Email:</label><br>
-                <input type="email" id="email" name="email" placeholder="Email" required><br>
-                <input type="submit" value="Resend Verification" class="btn btn-purple action">
-            </form>
+    <div class="container u-flex-center">
+        <img class="title-image" src="img/verify_text.png" alt="Verify Your Email">
+        <% if(locals.user) { %>
+            <p class="text-small u-text-center">We have sent an email to <%= user.email %>. Please click the link in that email before proceeding (check your spam/junk).</p>
+        <%} else if(locals.expired) { %>
+            <p class="text-small u-text-center">Sorry that token has expired. Please request a new one below.</p>
+        <% } %>
+        <div class="form-container">
+            <div class="flex-container u-text-center">
+                <form action="/verify" method="POST" id="verify">
+                    <h2>Resend Verification</h2>
+                    <input type="email" id="email" name="email" placeholder="Email" required><br>
+                    <input type="submit" value="Resend" class="btn btn-purple action">
+                </form>
+            </div>
         </div>
     </div>
 </body>

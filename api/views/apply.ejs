@@ -25,20 +25,26 @@
     <link rel="stylesheet" href="css/responsive.css">
     <script src="https://kit.fontawesome.com/9b01fa1231.js" crossorigin="anonymous"></script>
 </head>
+<%- include('partials/nav.ejs') %>
 <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHRZRC2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <%- include('partials/nav.ejs') %>
-    <img class="img-title" src="img/apply_text.png" alt="Sign-In">
-    <div class="form-container">
-        <div class="flex-container">
+    <div class="container">
+        <div class="title-container u-flex-center">
+            <img class="title-image" src="img/apply_text.png" alt="Sign-In">
+            <p class="text-small u-text-center">
+                You're 20 minutes away from your ticket to EnactusHacks&nbsp;2.0.<br>
+                We can't wait to read your application.
+            </p>
+        </div>
+        <div class="flex-container u-full-width">
             <form action="/apply" method="POST" id="apply">
                 <label for="first_name" class="caption-label">First Name</label><br>
-                <input type="text" id="first_name" name="first_name" placeholder="John" required><br>
+                <input type="text" id="first_name" name="first_name" placeholder="Sandra" required><br>
                 
                 <label for="last_name" class="caption-label">Last Name</label><br>
-                <input type="text" id="last_name" name="last_name" placeholder="Smith" required><br>
+                <input type="text" id="last_name" name="last_name" placeholder="Anderson" required><br>
         
                 <label for="gender" class="caption-label">Gender</label><br>
                 <select id="gender" name="gender">
@@ -56,10 +62,10 @@
                 <input type="text" id="university" name="university" placeholder="Western University" required><br>
                 
                 <label for="major" class="caption-label">Major</label><br>
-                <input type="text" id="major" name="major" placeholder="Engineering" required><br>
+                <input type="text" id="major" name="major" placeholder="Social Science" required><br>
                 
                 <label for="program" class="caption-label">Program</label><br>
-                <input type="text" id="program" name="program" placeholder="Software Engineering" required><br>
+                <input type="text" id="program" name="program" placeholder="Psychology" required><br>
                 
                 <label for="is_stem" class="caption-label">Field of Study</label><br>
                 <select id="is_stem" name="is_stem">
@@ -69,17 +75,18 @@
                     <option value="both">Both</option>
                 </select><br>
                 
-                <label for="grad_year" class="caption-label">Graduation Year</label><br>
+                <label for="grad_year" class="caption-label">Graduation Date</label><br>
                 <input type="date" id="grad_year" name="grad_year" value="2020-04-30" required><br>
                 
                 <label for="resume" class="caption-label">Link to Resume</label><br>
                 <input type="url" id="resume" name="resume" placeholder="https://drive.google.com/drive/folders/xxxx" required><br>
                 
                 <div class="shipping-wrapper">
-                    <p class="shipping-notice">If you'd like to receive merchandise (i.e. stickers, postcards, masks, etc.) and/or appreciation gifts, please enter your shipping address below. EnactusHacks respects the privacy of our users. This information will not be shared with anyone other than EnactusHacks. EnactusHacks will be using the following information to ship merchandise. If you do not wish to disclose this information, simply leave the below unchecked.<br><a href="/privacy" target="_blank">See full privacy policy.</a></p>
-            
-                    <label for="is_shipping" class="caption-label" id="ship-merch">Ship Me Merch!</label>
-                    <input type="checkbox" id="is_shipping" name="is_shipping"><br>
+                    <p class="shipping-notice u-text-center">If you'd like to receive merchandise (i.e. stickers, postcards, masks, etc.) and/or appreciation gifts, please enter your shipping address below. EnactusHacks respects the privacy of our users. This information will not be shared with anyone other than EnactusHacks. EnactusHacks will be using the following information to ship merchandise. If you do not wish to disclose this information, simply leave the below unchecked.<br><a href="/privacy" target="_blank">See full privacy policy.</a></p>
+                    <div class="u-text-center">
+                        <label for="is_shipping" class="caption-label u-text-center" id="ship-merch">Ship Me Merch!</label>
+                        <input type="checkbox" class="u-text-center" id="is_shipping" name="is_shipping"><br>
+                    </div>
             
                     <div id="shipping_div" style="display: none;"> <!-- Default to hidden -->
                         <label for="ship_name" class="caption-label">Shipping Name</label><br>
@@ -102,19 +109,21 @@
                     </div>
                 </div>
         
-                <label for="q_quality" class="caption-label">What do you think is the most important quality to have working in tech? Working in business?</label><br>
+                <label for="q_quality" class="caption-label">What do you think is the most important quality to have working in industry?</label><br>
                 <textarea name="q_quality" id="q_quality" rows="15" cols="100" required></textarea><br>
         
-                <label for="q_responsibility" class="caption-label">What do you think social responsibility is and why is it important, especially now in 2020?</label><br>
+                <label for="q_responsibility" class="caption-label">What does social responsibility mean to you? Why is it important?</label><br>
                 <textarea name="q_responsibility" id="q_responsibility" rows="15" cols="100"  required></textarea><br>
         
-                <label for="q_experience" class="caption-label">What do you hope to gain from this experience?</label><br>
+                <label for="q_experience" class="caption-label">What do you hope to gain from EnactusHacks 2.0?</label><br>
                 <textarea name="q_experience" id="q_experience" rows="15" cols="100" required></textarea><br>
                 
                 <br>
-                <label class="caption-label">Once you submit your application, you will not be able to alter it.</label><br>
-                <br>
-                <input type="submit" value="Apply" class="btn btn-purple action">
+                <div class="u-text-center">
+                    <label class="caption-label">Once you submit your application, you will not be able to alter it.</label><br>
+                    <br>
+                    <input type="submit" value="Apply" class="btn btn-purple action">
+                </div>
             </form>
         </div>
     </div>
