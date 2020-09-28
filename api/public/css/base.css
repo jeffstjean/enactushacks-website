@@ -7,7 +7,6 @@ This universal selector, * will select every element
     box-sizing: inherit;
 }
 
-
 /*
 This is where you specify the root font size
 Using REM for design makes it really easy to make mobile versions of a site

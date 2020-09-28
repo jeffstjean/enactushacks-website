@@ -1,12 +1,12 @@
 <div class="nav">
     <% if(!locals.is_homepage) { %>
-        <a href="/" class="nav-logo"><img class="logo-small" src="/img/enactushacksLogoNoText.png" alt="EnactusHacks | A 24 Hour Startup"></a>
+        <a href="/" class="nav-logo"><img class="logo-nav" src="/img/enactushacksLogoNoText.png" alt="EnactusHacks | A 24 Hour Startup"></a>
     <% } %>
     <div class="nav-action">
         <% if(locals.user) { %>
-            <a href="/logout"><button class="btn btn-yellow action">Logout</button></a>
+            <a href="/logout" class="btn-round btn-yellow action"><span class="btn-text-small">Sign Out</span></a>
         <% } else { %>
-            <a href="/login"><button class="btn btn-yellow action">Login</button></a>
+            <a href="/login" class="btn-round btn-yellow action"><span class="btn-text-small">Sign In</span></a>
         <% } %>
     </div>
 </div>

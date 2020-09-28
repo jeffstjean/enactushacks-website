@@ -30,16 +30,17 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHRZRC2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <%- include('partials/nav.ejs') %>
-    <img class="img-title" src="img/error_text.png" alt="Sign-In">
-    <div class="form-container">
+    <div class="container">
         <div class="flex-container">
+            <img class="img-title" src="img/error_text.png" alt="Yikes!">
             <% if(statusCode >= 500) { %>
                 <h1>Uh-oh! Looks like something went wrong on our end. Please try again later.</h1>
             <% } else if(statusCode === 404) { %>
-                <h1>That page doesn't exist!</h1>
+                <h1>Looks like you're a bit lost.</h1>
             <% } else { %>
                 <h1>Uh-oh! Looks like something went wrong with your request. Please try again later.</h1>
             <% } %>
+            <a href="." class="btn-round btn-purple u-vertical-margin-small"><span class="btn-text">Return to Homepage</span></a>
         </div>
     </div>
 </body>
