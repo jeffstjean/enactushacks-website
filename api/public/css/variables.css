@@ -6,6 +6,8 @@
 }
 
 :root {
+    --vertical-margin-small: 2rem;
+    --section-padding: 5rem;
     --container-width: 70vw;
     --title-margin-top: 8rem;
     --logo-width: 40rem;
