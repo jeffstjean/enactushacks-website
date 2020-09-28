@@ -6,6 +6,7 @@
 }
 
 :root {
+    --action-font-size: 1.6rem;
     --action-height: 4rem;
     --vertical-margin-small: 2rem;
     --section-padding: 5rem;

@@ -51,10 +51,12 @@ button {
 }
 
 .action {
+    cursor: pointer;
     border-width: 0px;
     border-radius: 1000px;
     width: 10rem;
     height: var(--action-height);
+    font-size: var(--action-font-size);
 }
 
 .action:not(:last-child) {
