@@ -33,25 +33,25 @@
     <!-- <a href="/"><img class="logo-small" src="img/enactushacksLogoNoText.png" alt="EnactusHacks | A 24 Hour Startup"></a> -->
     <div class="container u-flex-center">
         <img class="title-image" src="img/signin_text.png" alt="Sign-In">
+        <% if(locals.errors) { %>
+            <div class="error u-text-center">
+                <% errors.forEach(error => { %>
+                    <% if(error === 'InvalidCredentials') { %>
+                        <p>Incorrect email or password.</p>
+                    <% } else if(error === 'PasswordMismatch') { %>
+                        <p>Passwords do not match.</p>
+                    <% } else if(error === 'DuplicateUser') { %>
+                        <p>A user with that email already exists.</p>
+                    <% } else if(error === 'InvalidPassword') { %>
+                        <p>Passwords must be at least 8 characters, container one uppercase and lowercase letter, a special character and a number.</p>
+                    <% } else {%>
+                        <p><%= error %></p>
+                    <% } %>
+                <% }) %>
+            </div>
+        <% } %>
         <div class="form-container u-full-width">
             <div class="flex-container u-full-width u-text-center u-flex-center" id="login-form">
-                <% if(locals.errors) { %>
-                    <div class="error">
-                        <% errors.forEach(error => { %>
-                            <% if(error === 'InvalidCredentials') { %>
-                                <p>Incorrect email or password.</p>
-                            <% } else if(error === 'PasswordMismatch') { %>
-                                <p>Passwords do not match.</p>
-                            <% } else if(error === 'DuplicateUser') { %>
-                                <p>A user with that email already exists.</p>
-                            <% } else if(error === 'InvalidPassword') { %>
-                                <p>Passwords must be at least 8 characters, container one uppercase and lowercase letter, a special character and a number.</p>
-                            <% } else {%>
-                                <p><%= error %></p>
-                            <% } %>
-                        <% }) %>
-                    </div>
-                <% } %>
                 <form action="/login" method="POST" id="login">
                     <h1>Login</h1>
                     <input type="email" id="email" name="email" placeholder="Email" required><br>
