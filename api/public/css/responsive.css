@@ -1,3 +1,9 @@
+@media screen and (max-width: 1150px) {
+    .title-image {
+        width: var(--container-width);
+    }
+}
+
 @media screen and (max-width: 950px) {
     #login-form {
         flex-direction: column;
@@ -19,12 +25,14 @@
 }
 
 @media screen and (max-width: 850px) {
-    .title-image {
-        width: 95vw;
+    .img-text-flex {
+        flex-direction: column;
     }
-}
 
-@media screen and (max-width: 850px) {
+    .title-image {
+        width: 90vw;
+    }
+
     .form-container {
         width: 95vw;
     }

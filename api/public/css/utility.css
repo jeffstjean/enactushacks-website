@@ -8,6 +8,11 @@
     margin-bottom: var(--vertical-margin-small) !important;
 }
 
+.u-vertical-margin-large {
+    margin-top: calc(var(--vertical-margin-small)*3) !important;
+    margin-bottom: calc(var(--vertical-margin-small)*3) !important;
+}
+
 .u-text-center {
     text-align: center;
 }
