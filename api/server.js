@@ -25,6 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieSession(cookie_config));
 app.use(cookieParser());
 app.use(express.json());
+app.use((req, res, next) => { res.locals.id = req.session.id; next(); })
 if(node_env === 'production') app.use(morgan('combined'));
 else app.use(morgan('dev'));
 
