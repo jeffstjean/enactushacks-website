@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { create_user, get_user_by_email } = require('../controllers/UserController')
 
 const MONGO_DUPLICATE_ERROR_CODE = 11000;
-const valid_password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+const valid_password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^(){}])[A-Za-z\d@$!%*?&#^(){}]{8,}$/;
 
 router.get('/signup', (req, res) => {
     if(req.session.id) {
