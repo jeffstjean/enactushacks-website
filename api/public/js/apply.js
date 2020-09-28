@@ -1,4 +1,4 @@
-const shipping_check = document.getElementById('shipping');
+const shipping_check = document.getElementById('is_shipping');
 const shipping_div = document.getElementById('shipping_div');
 const form = document.getElementById('apply');
 

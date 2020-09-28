@@ -16,97 +16,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apply | EnactusHacks</title>
     <script src="js/apply.js" defer></script>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/button.css">
+    <link rel="stylesheet" href="css/utility.css">
+    <link rel="stylesheet" href="css/responsive.css">
     <script src="https://kit.fontawesome.com/9b01fa1231.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHRZRC2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <form action="/apply" method="POST" id="apply">
-        <label for="first_name">First Name:</label><br>
-        <input type="text" id="first_name" name="first_name" value="Jeff" required><br>
-
-        <label for="last_name">Last Name:</label><br>
-        <input type="text" id="last_name" name="last_name" value="St. Jean" required><br>
-
-        <label for="gender">Gender:</label><br>
-        <select id="gender" name="gender">
-            <option selected disabled>Choose</option>
-            <option value="female">Female</option>
-            <option value="male">Male</option>
-            <option value="other">Other</option>
-            <option value="na">Prefer not to say</option>
-        </select><br>
-
-        <label for="city">City:</label><br>
-        <input type="text" id="city" name="city" value="London" required><br>
-
-        <label for="university">University:</label><br>
-        <input type="text" id="university" name="university" value="Western University" required><br>
-
-        <label for="major">Major:</label><br>
-        <input type="text" id="major" name="major" value="Engineering" required><br>
-
-        <label for="program">Program:</label><br>
-        <input type="text" id="program" name="program" value="Mechatronic Systems Engineering" required><br>
-
-        <label for="is_stem">Field of Study:</label><br>
-        <select id="is_stem" name="is_stem">
-            <option selected disabled>Choose</option>
-            <option value="stem">Stem</option>
-            <option value="non_stem">Non-Stem</option>
-            <option value="both">Both</option>
-        </select><br>
-
-        <label for="grad_year">Grad Year:</label><br>
-        <input type="date" id="grad_year" name="grad_year" value="2020-04-30" required><br>
-
-        <label for="resume">Program:</label><br>
-        <input type="url" id="resume" name="resume" value="http://resume.com" required><br>
-
-        <p>If you'd like to receive merchandise (i.e. stickers, postcards, masks, etc.) and/or appreciation gifts, please enter your shipping address below. EnactusHacks respects the privacy of our users. This information will not be shared with anyone other than EnactusHacks. EnactusHacks will be using the following information to ship merchandise. If you do not wish to disclose this information, simply leave the below unchecked. <a href="/privacy" target="_blank">See full privacy policy.</a></p>
-
-        <label for="shipping">Shipping:</label><br>
-        <input type="checkbox" id="shipping" name="shipping"><br>
-
-        <div id="shipping_div" style="display: none;"> <!-- Default to hidden -->
-            <label for="ship_name">Name:</label><br>
-            <input type="text" id="ship_name" name="ship_name" value="Jeff"><br>
-
-            <label for="ship_address">Address:</label><br>
-            <input type="text" id="ship_address" name="ship_address" value="176 Woodward Avenue"><br>
-
-            <label for="ship_apartment">Apartment Number:</label><br>
-            <input type="text" id="ship_apartment" name="ship_apartment" value=""><br>
-
-            <label for="ship_city">City:</label><br>
-            <input type="text" id="ship_city" name="ship_city" value="London"><br>
-
-            <label for="ship_postal">Country:</label><br>
-            <input type="text" id="ship_country" name="ship_country" value="Canada"><br>
-
-            <label for="ship_postal">Postal Code:</label><br>
-            <input type="text" id="ship_postal" name="ship_postal" value="N6H2H3"><br>
+    <%- include('partials/nav.ejs') %>
+    <img class="img-title" src="img/apply_text.png" alt="Sign-In">
+    <div class="form-container">
+        <div class="flex-container">
+            <form action="/apply" method="POST" id="apply">
+                <label for="first_name" class="caption-label">First Name</label><br>
+                <input type="text" id="first_name" name="first_name" placeholder="John" required><br>
+                
+                <label for="last_name" class="caption-label">Last Name</label><br>
+                <input type="text" id="last_name" name="last_name" placeholder="Smith" required><br>
+        
+                <label for="gender" class="caption-label">Gender</label><br>
+                <select id="gender" name="gender">
+                    <option selected disabled>Choose</option>
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                    <option value="other">Other</option>
+                    <option value="na">Prefer not to say</option>
+                </select><br>
+                
+                <label for="city" class="caption-label">City</label><br>
+                <input type="text" id="city" name="city" placeholder="London" required><br>
+                
+                <label for="university" class="caption-label">University</label><br>
+                <input type="text" id="university" name="university" placeholder="Western University" required><br>
+                
+                <label for="major" class="caption-label">Major</label><br>
+                <input type="text" id="major" name="major" placeholder="Engineering" required><br>
+                
+                <label for="program" class="caption-label">Program</label><br>
+                <input type="text" id="program" name="program" placeholder="Software Engineering" required><br>
+                
+                <label for="is_stem" class="caption-label">Field of Study</label><br>
+                <select id="is_stem" name="is_stem">
+                    <option selected disabled>Choose</option>
+                    <option value="stem">Stem</option>
+                    <option value="non_stem">Non-Stem</option>
+                    <option value="both">Both</option>
+                </select><br>
+                
+                <label for="grad_year" class="caption-label">Graduation Year</label><br>
+                <input type="date" id="grad_year" name="grad_year" value="2020-04-30" required><br>
+                
+                <label for="resume" class="caption-label">Link to Resume</label><br>
+                <input type="url" id="resume" name="resume" placeholder="https://drive.google.com/drive/folders/xxxx" required><br>
+                
+                <div class="shipping-wrapper">
+                    <p class="shipping-notice">If you'd like to receive merchandise (i.e. stickers, postcards, masks, etc.) and/or appreciation gifts, please enter your shipping address below. EnactusHacks respects the privacy of our users. This information will not be shared with anyone other than EnactusHacks. EnactusHacks will be using the following information to ship merchandise. If you do not wish to disclose this information, simply leave the below unchecked.<br><a href="/privacy" target="_blank">See full privacy policy.</a></p>
+            
+                    <label for="is_shipping" class="caption-label" id="ship-merch">Ship Me Merch!</label>
+                    <input type="checkbox" id="is_shipping" name="is_shipping"><br>
+            
+                    <div id="shipping_div" style="display: none;"> <!-- Default to hidden -->
+                        <label for="ship_name" class="caption-label">Shipping Name</label><br>
+                        <input type="text" id="ship_name" name="ship_name" placeholder="John Smith"><br>
+            
+                        <label for="ship_address" class="caption-label">Shipping Address</label><br>
+                        <input type="text" id="ship_address" name="ship_address" placeholder="1151 Richmond St"><br>
+            
+                        <label for="ship_apartment" class="caption-label">Shipping Apartment Number</label><br>
+                        <input type="text" id="ship_apartment" name="ship_apartment" placeholder="Shipping Apartment #"><br>
+            
+                        <label for="ship_city" class="caption-label">Shipping City</label><br>
+                        <input type="text" id="ship_city" name="ship_city" placeholder="Shipping City"><br>
+            
+                        <label for="ship_postal" class="caption-label">Shipping Country</label><br>
+                        <input type="text" id="ship_country" name="ship_country" placeholder="Shipping Country"><br>
+            
+                        <label for="ship_postal" class="caption-label">Shipping Postal Code</label><br>
+                        <input type="text" id="ship_postal" name="ship_postal" placeholder="Shipping Postal/ZIP"><br>
+                    </div>
+                </div>
+        
+                <label for="q_quality" class="caption-label">What do you think is the most important quality to have working in tech? Working in business?</label><br>
+                <textarea name="q_quality" id="q_quality" rows="15" cols="100" required></textarea><br>
+        
+                <label for="q_responsibility" class="caption-label">What do you think social responsibility is and why is it important, especially now in 2020?</label><br>
+                <textarea name="q_responsibility" id="q_responsibility" rows="15" cols="100"  required></textarea><br>
+        
+                <label for="q_experience" class="caption-label">What do you hope to gain from this experience?</label><br>
+                <textarea name="q_experience" id="q_experience" rows="15" cols="100" required></textarea><br>
+                
+                <br>
+                <label class="caption-label">Once you submit your application, you will not be able to alter it.</label><br>
+                <br>
+                <input type="submit" value="Apply" class="btn btn-purple action">
+            </form>
         </div>
-
-        <label for="is_entrepreneur">Have you ever considered becoming an entrepreneur?</label><br>
-        <select id="is_entrepreneur" name="is_entrepreneur">
-            <option selected disabled>Choose</option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-        </select><br>
-
-        <label for="q_quality">What do you think is the most important quality to have working in tech? Working in business?</label><br>
-        <textarea name="q_quality" id="q_quality" required>Magic</textarea><br>
-
-        <label for="q_responsibility">What do you think social responsibility is and why is it important, especially now in 2020?</label><br>
-        <textarea name="q_responsibility" id="q_responsibility" required>Me</textarea><br>
-
-        <label for="q_experience">What do you hope to gain from this experience?</label><br>
-        <textarea name="q_experience" id="q_experience" required>Stuff</textarea><br>
-
-        <br>
-        <input type="submit" value="Submit">
-    </form>
+    </div>
 </body>
 </html>

@@ -3,6 +3,12 @@
     width: var(--logo-width);
 }
 
+.logo-small {
+    margin-top: var(--logo-small-margin-top);
+    margin-left: var(--logo-small-margin-left);
+    width: var(--logo-small-width);
+}
+
 .title-image {
     width: var(--title-image-width);
 }
@@ -196,4 +202,167 @@ section {
 section:not(:last-child) {
     padding: var(--section-padding) 0;
     border-bottom: 1px solid var(--color-purple);
+}
+
+.img-title {
+    display: block;
+    margin: 5rem auto 0;
+    width: 50%;
+}
+
+.form-container {
+    width: 95%;
+    margin: auto 0;
+}
+
+.flex-container {
+    padding: 3rem 0;
+    width: 75%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 2rem;
+    text-align: center;
+}
+
+form {
+    width: 40rem;
+}
+
+form h1 {
+    margin: 1rem 0;
+    text-align:center;
+}
+
+form input[type=email], form input[type=password] {
+    margin: 1rem 0 1.5rem;
+    height: 2.5rem;
+    width: 25rem;
+    padding: 1.25rem 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.action {
+    border-width: 0px;
+    border-radius: 1000px;
+    width: 20rem;
+    height: 4rem;
+    margin-bottom: var(--btn-round-margin-bottom);
+}
+
+.action:hover {
+    transform: scale(var(--btn-round-hover-scale));
+    transition: 100ms;
+}
+
+.error {
+    background-color: #e74c3c;
+    width: 70%;
+    border: #e74c3c 1px solid;
+    border-radius: 1rem;
+    padding: 0.75rem 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.verify-msg {
+    margin-bottom: 2rem;
+}
+
+.nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 1px 1px;
+    grid-template-areas: "logo . action";
+    width: 100vw;
+}
+
+.nav-logo {
+    grid-area: logo;
+}
+
+.nav-action {
+    grid-area: action;
+    margin: auto;
+    margin-bottom: 1rem; /* offset enough to make it look more centered */
+}
+
+.nav-action button {
+    width: 10rem;
+    margin: auto;
+}
+
+.status {
+    margin-top: 4rem;
+}
+
+.status-alternate {
+    margin-top: 4rem;
+    color: var(--color-purple);
+}
+
+.status h1 {
+    margin-bottom: 4rem;
+}
+
+#apply {
+    width: 100%;
+}
+
+#apply input[type="text"],
+#apply input[type="date"],
+#apply input[type="url"],
+#apply textarea {
+    width: 30rem;
+    margin: 1rem 0 1.5rem;
+    height: 2.5rem;
+    padding: 1.25rem 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#apply select {
+    width: 30rem;
+    margin: 1rem 0 1.5rem;
+    height: 2.5rem;
+    padding: 0 0.75rem;
+}
+
+.caption-label {
+    margin-top: 0.75rem;
+    font-size: 1.25rem;
+}
+
+.shipping-wrapper {
+    border: var(--color-yellow) 4px solid;
+    border-radius: 5rem;
+    padding: 2rem;
+    margin: 2rem;
+}
+
+.shipping-wrapper input[type="checkbox"] {
+    margin: 1rem 0.5rem;
+    vertical-align: middle;
+}
+
+#ship-merch {
+    color: var(--color-white);
+    vertical-align: middle;
+    font-weight: 600;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.shipping-wrapper a {
+    color: var(--color-purple);
+}
+
+textarea {
+    min-height: 10rem;
+    min-width: 50rem;
 }

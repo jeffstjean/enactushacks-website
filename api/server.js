@@ -33,24 +33,32 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views')
 
 // routes
-app.get('/', (req, res, next) => { res.render('index') });
-app.use('/', require('./routes/MailingListRoute'));
-app.use('/', require('./routes/UserRoute'));
+app.get('/', (req, res, next) => { res.render('index', { is_homepage: true }) });
 app.use('/', require('./routes/AboutRoute'));
+app.use('/', require('./routes/MailingListRoute'));
+if(accepting_applications) {
+  app.use('/', require('./routes/ApplyRoute'));
+}
+app.use('/', require('./routes/AccountRoute'));
+app.use('/', require('./routes/AuthRoute'));
+app.use('/', require('./routes/VerifyRoute'));
 // for debugging
 if(node_env === 'development') {
   const os = require('os');
   app.get('/test', (req, res, next) => { res.send(`Hello from ${os.hostname()}`) });
 }
 app.use((error, req, res, next) => {
+  console.log('ERROR')
   if(res.statusCode === 406) {
-    res.send('406 Bad request')
+    console.log(error)
+    res.render('error', { statusCode })
   }
   else if (res.statusCode >= 500) {
-    res.send('500 Server error')
+    console.log(error)
+    res.render('error', { statusCode })
   }
   else {
-    res.status(404).send('404 Not found')
+    res.status(404).render('error', { statusCode: 404 })
   }
 })
 

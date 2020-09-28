@@ -16,22 +16,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verify Email | EnactusHacks</title>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/typography.css">
+    <link rel="stylesheet" href="/css/button.css">
+    <link rel="stylesheet" href="/css/utility.css">
+    <link rel="stylesheet" href="/css/responsive.css">
     <script src="https://kit.fontawesome.com/9b01fa1231.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHRZRC2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <% if(locals.user) { %>
-    <p>We have sent an email to <%= user.email %>. Please click the link in that email before proceeding (check your spam/junk).</p>
-    <%} else if(locals.expired) { %>
-        <p>Sorry that token has expired. Please request a new one below.</p>
-    <% } %>
-    <h1>Resend Verification</h1></p>
-    <form action="/verify" method="POST" id="verify">
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" required><br>
-        <input type="submit" value="Submit">
-    </form>
+    <%- include('partials/nav.ejs') %>
+    <img class="img-title" src="/img/verify_text.png" alt="Sign-In">
+    <div class="form-container">
+        <div class="flex-container">
+            <form action="/verify" method="POST" id="verify">
+                <div class="verify-msg">
+                    <% if(locals.user) { %>
+                        <p>We have sent an email to <%= user.email %>. Please click the link in that email before proceeding (check your spam/junk).</p>
+                    <%} else if(locals.expired) { %>
+                        <p>Sorry that token has expired. Please request a new one below.</p>
+                    <% } %>
+                </div>
+                <h3>Resend Verification</h3></p>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" placeholder="Email" required><br>
+                <input type="submit" value="Resend Verification" class="btn btn-purple action">
+            </form>
+        </div>
+    </div>
 </body>
 </html>

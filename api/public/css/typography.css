@@ -20,6 +20,20 @@ h3 {
     margin: 0;
 }
 
+p {
+    color: var(--p-color);
+    font-weight: var(--p-font-weight);
+    font-size: var(--p-font-size);
+    margin: 0;
+}
+
+label {
+    color: var(--label-color);
+    font-weight: var(--label-font-weight);
+    font-size: var(--label-font-size);
+    margin: 0;
+}
+
 i {
     color: var(--i-color);
     font-size: 30px;

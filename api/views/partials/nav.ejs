@@ -1,0 +1,12 @@
+<div class="nav">
+    <% if(!locals.is_homepage) { %>
+        <a href="/" class="nav-logo"><img class="logo-small" src="/img/enactushacksLogoNoText.png" alt="EnactusHacks | A 24 Hour Startup"></a>
+    <% } %>
+    <div class="nav-action">
+        <% if(locals.user) { %>
+            <a href="/logout"><button class="btn btn-yellow action">Logout</button></a>
+        <% } else { %>
+            <a href="/login"><button class="btn btn-yellow action">Login</button></a>
+        <% } %>
+    </div>
+</div>
