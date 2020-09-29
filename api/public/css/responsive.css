@@ -1,0 +1,49 @@
+@media screen and (max-width: 1150px) {
+    .title-image {
+        width: var(--container-width);
+    }
+}
+
+@media screen and (max-width: 950px) {
+    #login-form {
+        flex-direction: column;
+    }
+
+    .flex-container form:not(:last-child) {
+        border-right: none;
+        border-bottom: 1px solid var(--color-purple);
+        padding-bottom: 4rem;
+    }
+
+    .flex-container form:not(:first-child) {
+        padding-top: 3rem;
+    }
+
+    .flex-container form h1 {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .img-text-flex {
+        flex-direction: column;
+    }
+
+    .title-image {
+        width: 90vw;
+    }
+
+    .form-container {
+        width: 95vw;
+    }
+
+    :root {
+        --container-width: 90vw;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    :root {
+        font-size: 2vw;
+    }
+}

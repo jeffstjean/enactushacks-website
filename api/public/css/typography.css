@@ -1,0 +1,64 @@
+h1 {
+    color: var(--h1-color);
+    font-weight: var(--h1-font-weight);
+    font-size: var(--h1-font-size);
+    margin: 0;
+}
+
+h2 {
+    color: var(--h2-color);
+    height: var(--h2-height);
+    font-weight: var(--h2-font-weight);
+    font-size: var(--h2-font-size);
+    margin: 0;
+}
+
+h3 {
+    color: var(--h3-color);
+    font-weight: var(--h3-font-weight);
+    font-size: var(--h3-font-size);
+    margin: 0;
+}
+
+p {
+    color: var(--p-color);
+    font-weight: var(--p-font-weight);
+    font-size: var(--p-font-size);
+    margin: 0;
+}
+
+label {
+    color: var(--label-color);
+    font-weight: var(--label-font-weight);
+    font-size: var(--label-font-size);
+    margin: 0;
+}
+
+i {
+    color: var(--i-color);
+    font-size: 30px;
+    transition: 200ms;
+}
+
+i:hover {
+    color: var(--i-color-hover);
+}
+
+a {
+    text-decoration: none;
+}
+
+.text-small {
+    margin-bottom: 2rem;
+    color: var(--color-white);
+    font-size: 2.5rem;
+    font-weight: 400;
+}
+
+.text-yellow {
+    color: var(--color-yellow) !important;
+}
+
+.text-purple {
+    color: var(--color-purple) !important;
+}

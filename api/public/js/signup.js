@@ -12,7 +12,7 @@ form.onsubmit = (event) => {
         return false;
     }
     if(!valid_password.test(data.get('password'))) {
-        console.log('Password must be at least 8 characters, have an uppercase, lowercase, number and special character')
+        console.log('Password must be at least 8 characters, have an uppercase, lowercase, number and one of the following characters: @, $, !, %, *, ?, &, #, ^, (, ), {, }')
         return false;
     }
     return true;

@@ -1,0 +1,58 @@
+:root {
+    --color-white: white;
+    --color-purple: #a13fed;
+    --color-yellow: #f4e600;
+    --color-black: black;
+}
+
+:root {
+    --action-font-size: 1.6rem;
+    --action-height: 4rem;
+    --action-width: 13rem;
+    --vertical-margin-small: 2rem;
+    --section-padding: 5rem;
+    --container-width: 70vw;
+    --title-margin-top: 8rem;
+    --container-vertical-padding: 8rem;
+    --logo-width: 40rem;
+    --logo-margin-top: 0;
+    --logo-small-width: 10rem;
+    --logo-small-margin-top: 1rem;
+    --logo-small-margin-left: 2rem;
+    --h1-color: var(--color-white);
+    --h1-font-weight: 700;
+    --h1-font-size: 4rem;
+    --h2-color: var(--color-white);
+    --h2-font-weight: 600;
+    --h2-font-size: 3rem;
+    --h2-height: 4.5rem;
+    --h3-color: var(--color-white);
+    --h3-font-weight: 400;
+    --h3-font-size: 2.5rem;
+    --p-color: var(--color-white);
+    --p-font-weight: 400;
+    --p-font-size: 1.5rem;
+    --label-color: var(--color-white);
+    --label-font-weight: 400;
+    --label-font-size: 1.5rem;
+    --i-color: var(--color-purple);
+    --i-color-hover: var(--color-white);
+    --title-image-width: 80rem;
+    --btn-round-width: 40rem;
+    --btn-round-height: 6rem;
+    --btn-round-margin-bottom: 2.5rem;
+    --btn-round-hover-scale: 1.05;
+    --btn-padding: 1rem;
+    --btn-text-color-light: var(--color-white);
+    --btn-text-color-dark: var(--color-black);
+    --btn-text-font-size: 3rem;
+    --btn-text-font-size-small: 1.6rem;
+    --btn-yellow-background: var(--color-yellow);
+    --btn-purple-background: var(--color-purple);
+    --btn-shadow-offset-x: 0;
+    --btn-shadow-offset-y: 0;
+    --btn-shadow-offset-blur: 1.8rem;
+    --transition-time: 200ms;
+    --nav-top-margin: 4rem;
+    --nav-lr-margin: 3rem;
+}

@@ -1,0 +1,12 @@
+<div>
+    <% if(!locals.is_homepage) { %>
+        <a href="/" class="nav-logo"><img class="logo-nav" src="/img/enactushacksLogoNoText.png" alt="EnactusHacks | A 24 Hour Startup"></a>
+    <% } %>
+    <div class="nav-action">
+        <% if(locals.id) { %>
+            <a href="/logout" class="btn-nav btn-round btn-yellow action"><span class="btn-text-small">Sign Out</span></a>
+        <% } else { %>
+            <a href="/login" class="btn-nav btn-round btn-yellow action"><span class="btn-text-small">Sign In</span></a>
+        <% } %>
+    </div>
+</div>

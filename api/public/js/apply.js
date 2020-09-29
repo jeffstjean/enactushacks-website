@@ -1,4 +1,4 @@
-const shipping_check = document.getElementById('shipping');
+const shipping_check = document.getElementById('is_shipping');
 const shipping_div = document.getElementById('shipping_div');
 const form = document.getElementById('apply');
 
@@ -7,13 +7,15 @@ const SAVE_DELTA = 100;
 
 const handle_checkbox = (event) => {
     const checked = shipping_check.checked;
+    console.log(checked)
     if(checked) shipping_div.style.display = "block";
     else shipping_div.style.display = "none";
 
     if(!event) return; // don't continue on first invoke
     shipping_div.childNodes.forEach(child => {
         if(child.nodeName === 'INPUT' && child.name !== 'ship_apartment') {
-            child.setAttribute('required', checked)
+            if(checked) child.setAttribute('required', true)
+            else child.removeAttribute('required')
         }
     })
 }
