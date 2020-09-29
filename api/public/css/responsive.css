@@ -29,6 +29,12 @@
         flex-direction: column;
     }
 
+    .img-text-flex img:not(:last-child) {
+        margin-right: 0;
+        margin-bottom: 6rem;
+    }
+
+
     .title-image {
         width: 90vw;
     }
