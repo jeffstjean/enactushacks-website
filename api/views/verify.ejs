@@ -31,7 +31,7 @@
     <!-- End Google Tag Manager (noscript) -->
     <%- include('partials/nav.ejs') %>
     <div class="container u-flex-center">
-        <img class="title-image" src="img/verify_text.png" alt="Verify Your Email">
+        <img class="title-image" src="/img/verify_text.png" alt="Verify Your Email">
         <% if(locals.user) { %>
             <p class="text-small u-text-center">We have sent an email to <%= user.email %>. Please click the link in that email before proceeding (check your spam/junk).</p>
         <%} else if(locals.expired) { %>

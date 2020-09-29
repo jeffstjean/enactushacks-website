@@ -382,3 +382,9 @@ form input[type=email], form input[type=password] {
 textarea {
     min-height: 10rem;
 }
+
+.nav-lower {
+    position: fixed;
+    bottom: 10rem;
+    right: 0;
+}

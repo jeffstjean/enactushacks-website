@@ -23,6 +23,7 @@ router.post('/signup', async (req, res, next) => {
         if(user) {
             console.log(`Created user ${user.email}`)
             user.send_verification_email();
+            console.log('Sent verification')
             req.session.id = user._id;
             return res.redirect('verify')
         }
@@ -36,7 +37,7 @@ router.post('/signup', async (req, res, next) => {
                     return res.render('login', { errors: errors })
                 case 'MongoError':
                     if(err.code === MONGO_DUPLICATE_ERROR_CODE) {
-                        console.log('Duplicate key')
+                        console.log(`Duplicate key ${user_data.email}`)
                         return res.render('login', { errors: [ 'DuplicateUser' ] })
                     }
                     else {

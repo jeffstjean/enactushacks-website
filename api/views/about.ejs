@@ -27,8 +27,8 @@
     <script src="js/main.js" defer></script>
     <script src="https://kit.fontawesome.com/9b01fa1231.js" crossorigin="anonymous"></script>
 </head>
-<%- include('partials/nav.ejs') %>
 <body>
+    <%- include('partials/nav.ejs') %>
     <div class="container u-vertical-margin-small">
         <section>
             <img class="title-image" src="img/aboutPageText.png" alt="Nice to meet you!">
@@ -138,6 +138,11 @@
             </div>
         </section>
     </div>
+    <% if(locals.id) { %>
+        <div class="nav-lower">
+            <a href="/status" class="btn-nav btn-round btn-purple action"><span class="btn-text-small">Account</span></a>
+        </div>
+    <% } %>
 </body>
 </html>
 

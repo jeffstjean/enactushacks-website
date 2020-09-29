@@ -43,7 +43,12 @@ const get_user = async(_id) => {
 const get_user_by_email = async(email) => {
     try {
         const user = await User.findOne({ email: email })
-        return (user) ? { user, err: null } : { user: null, err: 'NoUser' }
+        if(user) {
+            return { user, err: null }
+        }
+        else {
+            return { user: null, err: 'NoUser' }
+        }
     }
     catch(err) {
         return { user: null, err }
