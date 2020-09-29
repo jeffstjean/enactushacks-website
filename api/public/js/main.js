@@ -57,7 +57,7 @@ class TextScramble {
     }
   }
   
-const phrases = ['24 Hours.', 'Huge Prizes.', 'Infinite Ideas.'];
+const phrases = ['24 Hours.', '$5,000 in prizes.', 'Paid meals.', 'Recruitment by McKinsey, RBC, and more.'];
 
 const el = document.getElementById('random-title');
 const fx = new TextScramble(el)

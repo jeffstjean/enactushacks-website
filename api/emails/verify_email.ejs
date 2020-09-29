@@ -21,7 +21,7 @@
       -webkit-text-size-adjust: none;
     }
     a {
-      color: #414EF9;
+      color: white;
     }
     /* Layout ------------------------------ */
     .email-wrapper {
@@ -132,7 +132,7 @@
       width: 200px;
       background-color: #414EF9;
       border-radius: 3px;
-      color: #ffffff;
+      color: #ffffff !important;
       font-size: 15px;
       line-height: 45px;
       text-align: center;
@@ -140,6 +140,7 @@
       -webkit-text-size-adjust: none;
       mso-hide: all;
     }
+
     .button--green {
       background-color: #28DB67;
     }
@@ -182,13 +183,13 @@
                 <tr>
                   <td class="content-cell">
                     <h1>Verify your email address</h1>
-                    <p>Thanks for signing up for EnactusHacks! Please verify your email below. This link will expiry in <%= expiration %> hours.</p>
+                    <p>Thanks for signing up for EnactusHacks! Please verify your email below. This link will expire in <%= expiration %> hours.</p>
                     <!-- Action -->
                     <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0">
                       <tr>
                         <td align="center">
                           <div>
-                            <a href=<%= link %> class="button button--blue">Verify Email</a>
+                            <a class="button button--blue" href=<%= link %>>Verify Email</a>
                           </div>
                         </td>
                       </tr>

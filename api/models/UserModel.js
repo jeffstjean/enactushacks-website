@@ -70,7 +70,6 @@ user_schema.methods.send_verification_email = function() {
 
   const email = ejs.render(fs.readFileSync('./emails/verify_email.ejs', 'utf8'), { link: `http://${hostname}/verify/${token}`, expiration: VERIFICATION_EXPIRATION_HOURS })
   const data = { from: `EnactusHacks <info@enactushacks.com>`, to: user.email, subject: 'Please verify your email', html: email }
-
   mg.messages().send(data, function (error, body) {
     if(error) console.log(error)
     else console.log(`Verification email sent to ${user.email}`)

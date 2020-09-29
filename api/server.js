@@ -25,6 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieSession(cookie_config));
 app.use(cookieParser());
 app.use(express.json());
+app.use((req, res, next) => { res.locals.id = req.session.id; next(); })
 if(node_env === 'production') app.use(morgan('combined'));
 else app.use(morgan('dev'));
 
@@ -33,28 +34,33 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views')
 
 // routes
-app.get('/', (req, res, next) => { res.render('index') });
+app.get('/', (req, res, next) => { res.render('index', { is_homepage: true }) });
+app.use('/', require('./routes/AboutRoute'));
 app.use('/', require('./routes/MailingListRoute'));
-app.use((req, res, next) => {
-  if(req.cookies.dev) next();
-  else res.redirect('/')
-})
-app.use('/', require('./routes/UserRoute'));
+if(accepting_applications) {
+  app.use('/', require('./routes/ApplyRoute'));
+}
+app.use('/', require('./routes/AccountRoute'));
+app.use('/', require('./routes/AuthRoute'));
+app.use('/', require('./routes/VerifyRoute'));
 // for debugging
 if(node_env === 'development') {
   const os = require('os');
   app.get('/test', (req, res, next) => { res.send(`Hello from ${os.hostname()}`) });
 }
+app.use('*', (req, res, next) => { res.status(404).render('error', { statusCode: 404 }) })
 app.use((error, req, res, next) => {
-  console.log(error)
+  console.log('ERROR')
   if(res.statusCode === 406) {
-    res.send('406 Bad request')
+    console.log(error)
+    res.render('error', { statusCode })
   }
   else if (res.statusCode >= 500) {
-    res.send('500 Server error')
+    console.log(error)
+    res.render('error', { statusCode })
   }
   else {
-    res.status(404).send('404 Not found')
+    res.status(404).render('error', { statusCode: 404 })
   }
 })
 
