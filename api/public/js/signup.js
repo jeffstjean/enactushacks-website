@@ -1,5 +1,5 @@
 const form = document.getElementById('apply')
-const valid_password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+const valid_password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^])[A-Za-z\d@$!%*?&#^]{8,}$/;
 
 form.onsubmit = (event) => {
     let data = new FormData(event.target)
@@ -12,7 +12,7 @@ form.onsubmit = (event) => {
         return false;
     }
     if(!valid_password.test(data.get('password'))) {
-        console.log('Password must be at least 8 characters, have an uppercase, lowercase, number and one of the following characters: @, $, !, %, *, ?, &, #, ^, (, ), {, }')
+        console.log('Password must be at least 8 characters, have an uppercase, lowercase, number and one of the following characters: @, $, !, %, *, ?, &, #, ^')
         return false;
     }
     return true;
