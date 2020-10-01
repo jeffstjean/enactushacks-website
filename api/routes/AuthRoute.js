@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { create_user, get_user_by_email } = require('../controllers/UserController')
+const { verify_users } = require('../config/config')
 
 const MONGO_DUPLICATE_ERROR_CODE = 11000;
 const valid_password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^(){}])[A-Za-z\d@$!%*?&#^(){}]{8,}$/;
@@ -19,11 +20,20 @@ router.post('/signup', async (req, res, next) => {
         return res.render('login', { errors: [ 'InvalidPassword' ] })
     }
     try {
-        const { user, err } = await create_user(user_data);
+        let { user, err } = await create_user(user_data);
         if(user) {
             console.log(`Created user ${user.email}`)
-            user.send_verification_email();
-            console.log('Sent verification')
+            if(verify_users) {
+                user.send_verification_email();
+                console.log(`Sent verification to ${user.email}`)
+            }
+            else {
+                user.token = undefined;
+                user.token_expiration = undefined;
+                user.is_verified = true;
+                user.application_status = 'incomplete'
+                await user.save();
+            }
             req.session.id = user._id;
             return res.redirect('verify')
         }
