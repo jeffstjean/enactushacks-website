@@ -9,7 +9,7 @@ const { SALT_ROUNDS } = require('../config/bcrypt')
 const { hostname } = require('../config/config')
 const { mg } = require('../config/mailgun')
 
-const VERIFICATION_EXPIRATION_HOURS = 2
+const VERIFICATION_EXPIRATION_HOURS = 24
 
 const user_schema = mongoose.Schema({
   // account info
