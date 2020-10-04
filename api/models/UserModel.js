@@ -44,6 +44,10 @@ const user_schema = mongoose.Schema({
   ship_country: { type: String },
   ship_province: { type: String },
   ship_postal: { type: String },
+
+  q_quality: { type: String },
+  q_responsibility: { type: String },
+  q_experience: { type: String },
 }, { versionKey: false } );
 
 user_schema.pre('save', function(next) {
