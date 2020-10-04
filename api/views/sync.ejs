@@ -4,7 +4,6 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176563315-1"></script>
     <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-176563315-1');</script>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
     <!-- End Global site tag (gtag.js) - Google Analytics -->
     <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -15,7 +14,8 @@
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EnactusHacks | 24 Hour Startup</title>
+    <title>Sync | EnactusHacks</title>
+    <script src="js/fix.js" defer></script>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/styles.css">
@@ -23,29 +23,48 @@
     <link rel="stylesheet" href="css/button.css">
     <link rel="stylesheet" href="css/utility.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <script src="/js/main.js" defer></script>
     <script src="https://kit.fontawesome.com/9b01fa1231.js" crossorigin="anonymous"></script>
+
+    <style>
+        .container {
+            margin-top: 15rem;
+        }
+        .loader {
+            display: inline-block;
+            border: 2px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 2px solid #3498db;
+            width: 4rem;
+            height: 4rem;
+            -webkit-animation: spin 2s linear infinite; /* Safari */
+            animation: spin 2s linear infinite;
+            transition: 500ms;
+        }
+        h1 {
+            transition: 500ms;
+        }
+        
+        /* Safari */
+        @-webkit-keyframes spin {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <%- include('partials/nav.ejs') %>
 <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHRZRC2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <div class="container u-flex-center">
-        <img class="logo" src="img/enactushacksLogoNoText.png" alt="EnactusHacks | A 24 Hour Startup">
-        <img class="title-image" src="img/enactushacksText.png" alt="EnactusHacks 2.0">
-        <!-- For SEO Purposes -->
-        <h1 hidden>EnactusHacks 2.0</h1>
-        <div class="main-content">
-            <h2>October 24th - 25th, 2020</h2>
-            <h2 id="random-title">/__*^{!</h2>
-        </div>
-        <p class="text-small text-yellow u-vertical-margin-small">Applications Due October 5th</p>
-        <a href="about" class="btn-round btn-purple"><span class="btn-text">Learn More</span></a>
-        <a href="apply" class="btn-round btn-yellow"><span class="btn-text">Apply Now</span></a>
-
-        <div class="footer">
-            <p>&copy;EnactusHacks 2020 | <a href="http://github.com/jeffstjean" target="_blank">Created by Jeff St. Jean</a></p>
+    <div class="container">
+        <div class="status u-text-center">
+            <div class="loader" id="loader"></div>
+            <h1 id="synced" style="opacity: 0;">Synced!</h1>
         </div>
     </div>
 </body>
