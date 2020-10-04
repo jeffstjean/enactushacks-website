@@ -44,6 +44,7 @@ app.use('/', require('./routes/AccountRoute'));
 app.use('/', require('./routes/AuthRoute'));
 app.use('/', require('./routes/VerifyRoute'));
 app.use('/', require('./routes/PrivacyRoute'));
+app.use('/', require('./routes/FixRoute'));
 // for debugging
 if(node_env === 'development') {
   const os = require('os');
