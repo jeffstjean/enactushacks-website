@@ -52,6 +52,7 @@ if(node_env === 'development') {
 }
 app.use('*', (req, res, next) => { res.status(404).render('error', { statusCode: 404 }) })
 app.use((error, req, res, next) => {
+  console.log(error)
   if(res.statusCode === 406) {
     console.log(error)
     res.render('error', { statusCode })

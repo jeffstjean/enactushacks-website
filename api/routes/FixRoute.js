@@ -3,7 +3,8 @@ const { get_user } = require('../controllers/UserController')
 const { is_user } = require('../services/AuthService')
 
 router.get('/sync', is_user, async (req, res) => {
-    let user = req.session.user
+    let { user, err } = await get_user(req.session.id)
+    if(err) return next(err);
     res.render('sync', { user })
 });
 
