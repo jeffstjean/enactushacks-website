@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { create_user, get_user_by_email } = require('../controllers/UserController')
+const { is_user } = require('../services/AuthService')
 const { verify_users } = require('../config/config')
 
 const MONGO_DUPLICATE_ERROR_CODE = 11000;
@@ -35,6 +36,7 @@ router.post('/signup', async (req, res, next) => {
                 await user.save();
             }
             req.session.id = user._id;
+            req.session.name = user.first_name;
             return res.redirect('verify')
         }
         else {
@@ -84,6 +86,7 @@ router.post('/login', async (req, res) => {
         const { user, err } = await get_user_by_email(email)
         if(user && user.is_valid_password(password)) {
             req.session.id = user._id;
+            req.session.name = user.first_name;
             res.redirect('/status')
         }
         else {
