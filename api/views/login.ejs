@@ -43,7 +43,7 @@
                     <% } else if(error === 'DuplicateUser') { %>
                         <p>A user with that email already exists.</p>
                     <% } else if(error === 'InvalidPassword') { %>
-                        <p>Passwords must be at least 8 characters, container one uppercase and lowercase letter, a special character and a number.</p>
+                        <p>Passwords must be at least 8 characters, container one uppercase and lowercase letter, a special character (one of @ $ ! % * ? & # ^) and a number.</p>
                     <% } else {%>
                         <p><%= error %></p>
                     <% } %>
