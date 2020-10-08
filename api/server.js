@@ -10,7 +10,6 @@ const cookieSession = require('cookie-session')
 const database = require('./config/mongo.js').connect(process.env.DB_CONNECTION)
   .then(() => { console.log('Connected to database') })
   .catch((err) => { console.log(err) })
-const { accepting_applications } = require('./config/config.js');
 const cookie_config = require('./config/cookies')
 
 // app configuration
@@ -37,9 +36,7 @@ app.set('views', __dirname + '/views')
 app.get('/', (req, res, next) => { res.render('index', { is_homepage: true }) });
 app.use('/', require('./routes/AboutRoute'));
 app.use('/', require('./routes/MailingListRoute'));
-if(accepting_applications) {
-  app.use('/', require('./routes/ApplyRoute'));
-}
+app.use('/', require('./routes/ApplyRoute'));
 app.use('/', require('./routes/AccountRoute'));
 app.use('/', require('./routes/AuthRoute'));
 app.use('/', require('./routes/VerifyRoute'));

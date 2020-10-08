@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const { is_user } = require('../services/AuthService')
 const { get_user } = require('../controllers/UserController')
+const { accepting_applications } = require('../config/config')  
 
 router.get('/apply', is_user, async (req, res) => {
+    if(!accepting_applications) return res.redirect('/status');
     let { user, err } = await get_user(req.session.id)
     if(err) return next(err);
     if(user.date_application_completed === undefined) res.render('apply', { user: user })
@@ -10,6 +12,7 @@ router.get('/apply', is_user, async (req, res) => {
 })
 
 router.post('/apply', is_user, async (req, res, next) => {
+    if(!accepting_applications) return res.redirect('/status');
     let { user, err } = await get_user(req.session.id)
     if(err) return next(err);
     let application_data = req.body;
