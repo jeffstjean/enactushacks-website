@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { create_user, get_user_by_email } = require('../controllers/UserController')
 const { is_user } = require('../services/AuthService')
 const { verify_users } = require('../config/config')
+const { accepting_applications } = require('../config/config')  
 
 const MONGO_DUPLICATE_ERROR_CODE = 11000;
 const valid_password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^(){}])[A-Za-z\d@$!%*?&#^(){}]{8,}$/;
@@ -16,6 +17,7 @@ router.get('/signup', (req, res) => {
 })
 
 router.post('/signup', async (req, res, next) => {
+    if(!accepting_applications) return res.redirect('/');
     let user_data = req.body;
     if(!valid_password.test(user_data.password)) {
         return res.render('login', { errors: [ 'InvalidPassword' ] })
