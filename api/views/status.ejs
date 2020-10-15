@@ -33,16 +33,19 @@
         <img class="title-image" src="img/status_text.png" alt="Your Profile">
         <div class="status u-text-center">
             <% if(user.first_name) { %>
-                <h1>Hey <span class="status-alternate"><%= user.first_name %></span>! We're currently reviewing all applications and sending offers on a rolling basis. Check your email for updates!</h1>
+                <h1>Hi <span class="status-alternate"><%= user.first_name %></span>, your application status is <span class="status-alternate"><%= user.application_status.toUpperCase() %></span>.</h1>
             <% } else { %>
-                <h1>Hey there! We're currently reviewing all applications and sending offers on a rolling basis. Check your email for updates!</h1>
+                <h1>Hi, your application status is <span class="status-alternate"><%= user.application_status.toUpperCase() %></span>.</h1>
             <% } %>
         </div>
-        <% if(!user.date_application_completed && accepting_applications) { %>
-            <a href="apply" class="btn-round btn-purple"><span class="btn-text">Finish Applying</span></a>
-        <% } else if (!accepting_applications || user.date_application_completed) { %>
-            <a href="about" class="btn-round btn-purple"><span class="btn-text">Learn More</span></a>
+        <% if(accepting_applications && user.date_application_completed === undefined) { %>
+            <a href="apply" class="btn-round btn-yellow"><span class="btn-text">Finish Applying</span></a>
+        <% } else if(user.application_status === 'accepted') { %>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeAaEc16jbdvUanhnD80gE2bWKZaICOdwGCZX2SUbq2gPPPlQ/viewform" class="btn-round btn-purple" target="_blank"><span class="btn-text">RSVP</span></a>
+        <% } else if (user.application_status == 'under review') { %>
+            <p class="text-small">Applications are now closed.</p>
         <% } %>
+        <a href="about" class="btn-round btn-yellow"><span class="btn-text">Learn More</span></a>
     </div>
 </body>
 </html>
