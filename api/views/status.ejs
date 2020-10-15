@@ -39,12 +39,14 @@
             <% } %>
         </div>
         <% if(!user.date_application_completed && accepting_applications) { %>
-            <a href="apply" class="btn-round btn-purple"><span class="btn-text">Finish Applying</span></a>
+            <a href="apply" class="btn-round btn-yellow"><span class="btn-text">Finish Applying</span></a>
         <% } else { %>
-            <a href="about" class="btn-round btn-purple"><span class="btn-text">Learn More</span></a>
+            <a href="about" class="btn-round btn-yellow"><span class="btn-text">Learn More</span></a>
         <% } %>
-        <% if(!accepting_applications) { %>
+        <% if(!accepting_applications && user.application_status == 'under review') { %>
             <p class="text-small">Applications are now closed.</p>
+        <% } else if(user.application_status == 'accepted') { %>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeAaEc16jbdvUanhnD80gE2bWKZaICOdwGCZX2SUbq2gPPPlQ/viewform" class="btn-round btn-purple" target="_blank"><span class="btn-text">RSVP</span></a>
         <% }  %>
     </div>
 </body>
